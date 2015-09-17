@@ -104,9 +104,8 @@
 			<div class="swiper-slider">
 				<div class="motif"></div>
 				<div class="swiper-wrapper">
-					<div class="swiper-slide" style="background-image:url('img/slider-01.jpg');"></div>
-					<div class="swiper-slide" style="background-image:url('img/slider-01.jpg');"></div>
-					<div class="swiper-slide" style="background-image:url('img/slider-01.jpg');"></div>
+					<div class="swiper-slide" style="background-image:url('img/slider-0.jpg');"></div>
+					<div class="swiper-slide" style="background-image:url('img/slider-02.jpg');"></div>
 				</div>
 				<!-- Add Pagination -->
 				<div class="swiper-pagination"></div>
