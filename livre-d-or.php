@@ -55,7 +55,8 @@
 			$sujet = utf8_decode( "Nouveau commentaire" );
 			
 			//$_to = "NePasRepondre@votreimmopro.com";
-			$_to = "franck_langleron@hotmail.com";
+			//$_to = "fjavi.gonzalez@gmail.com";
+			$_to = "contact@votreimmopro.com";
 			//echo "Envoi du message à : " . $_to . "<br><br>";
 			
 			$message = "Bonjour,<br><br>";
@@ -85,7 +86,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Votreimmopro.com | Livre d'or</title>
+		<title>VotreImmoPro.com:votre partenaire en immobilier d’entreprise</title>
+		<?php include('include/meta.php'); ?>
 		<link rel="stylesheet" href="css/foundation.css" />
 	    <link rel="stylesheet" href="js/vendor/swiper/css/swiper.min.css">
 		<link rel="stylesheet" href="style.css" />

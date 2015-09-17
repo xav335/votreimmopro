@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Votreimmopro.com | Conditions Générales d'Utilisation</title>
+		<?php include('include/meta.php'); ?>
 		<link rel="stylesheet" href="css/foundation.css" />
 	    <link rel="stylesheet" href="js/vendor/swiper/css/swiper.min.css">
 		<link rel="stylesheet" href="style.css" />
