@@ -36,7 +36,7 @@
 
   	<div class="container">       
 		<div class="col-md-4">
-			<img src="img/xlogo.png" class="img-responsive" alt="Responsive image">
+			<img src="img/entete.jpg" class="img-responsive" alt="Responsive image">
 		</div>
 	</div>
 	
