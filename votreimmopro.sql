@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: votreimmopro
 -- ------------------------------------------------------
--- Server version	5.5.38-0+wheezy1
+-- Server version	5.5.44-0+deb8u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -170,7 +170,7 @@ CREATE TABLE `goldbook` (
 
 LOCK TABLES `goldbook` WRITE;
 /*!40000 ALTER TABLE `goldbook` DISABLE KEYS */;
-INSERT INTO `goldbook` VALUES (1,'2015-09-06 00:00:00','L\'angléron','franck_langleron@hotmail.com','nouveau',1),(2,'2015-09-07 00:00:00','dfhdfh','qdqs@free.fr','ffdfdqhggfqd dsdgsgqsdf',1);
+INSERT INTO `goldbook` VALUES (1,'2015-09-06 00:00:00','Franck Langleron','franck_langleron@hotmail.com','Très professionnel ! je recommande',1),(2,'2015-09-07 00:00:00','Xavier Gonzalez','xavier@gonzalez.pm','Prestation nickel, très pro, très satisfait',1);
 /*!40000 ALTER TABLE `goldbook` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,7 +216,7 @@ CREATE TABLE `news` (
   `image1` varchar(250) DEFAULT NULL,
   `online` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_news`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,7 +225,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (28,'2015-08-02 00:00:00','1ier Test : l\'autre été','','blabla\r\nre blabla!\r\n...','/940x380_1-28.jpg',1);
+INSERT INTO `news` VALUES (29,'2015-09-22 00:00:00','test','','dggdsgdsgdsgs','/10_Bedroom_III-.jpg',0);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,7 +301,7 @@ CREATE TABLE `offre` (
   `a_la_une` enum('oui','non') NOT NULL DEFAULT 'non',
   `online` enum('oui','non') NOT NULL,
   PRIMARY KEY (`num_offre`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -310,7 +310,7 @@ CREATE TABLE `offre` (
 
 LOCK TABLES `offre` WRITE;
 /*!40000 ALTER TABLE `offre` DISABLE KEYS */;
-INSERT INTO `offre` VALUES (1,'Annonce 1',100,4,'Lorem Ipsum is simply dummy text of the printing and typesetting industry. \r\nLorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\r\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.','/test-1.pdf',150000,'oui','oui'),(2,'Annonce 2',150,5,'blabla...tuyzuzrtutrzur tuurzuurzururtutrzurzutruzututrzuzru tyyzytyteya yreay aryeyaeyraeyryeyareyrey reyaeyeryaer','/test-2.pdf',250000,'oui','oui'),(4,'trurutzr',120,4,'hdgfkskshkgsk  jqgjgfsjgfjfgsjfgsjfsj hgfhfg ghjsjhsgfjgfjgsf','',12000,'oui','oui'),(5,'tekyghgk',165,6,'yfjfjdhdhvkdf df hgkdgkhkgkhdg dddsfsdf dfdsf sqdfqf qsdfqsfqsf','',500000,'oui','oui');
+INSERT INTO `offre` VALUES (7,'Ensemble immobilier mixte activité-bureaux',1500,0,'Au coeur de la ZI de la Madère, à Villenave d\'Ornon, sortie N° 17 de la rocade, bel ensemble immobilier de 1500 m2 sur une parcelle de 3500 m2 entièrement clôturée, avec parking.\r\nLoué à un groupe de distribution.','',2100000,'oui','oui'),(8,'IMMEUBLE DE BUREAUX',1039,0,'A proximité de la zone commerciale Auchan Lac, sortie N° 4 de la rocade, Immeuble de bureaux en R+1 d\'environ 1039 m2, comprenant 36 places de stationnement.\r\nLoué à un établissement bancaire.','',2100000,'oui','oui'),(9,'Immeuble de bureaux indépendant',786,0,'Au coeur d\'Europarc, zone tertiaire importante de la métropole bordelaise, sortie N°14 et 15 de la rocade, immeuble de bureaux de 786 m2 loué à une société d\'envergure internationale.','',1365000,'oui','oui'),(10,'Bâtiment d\'activité',250,0,'Bassin d\'Arcachon, au coeur du parc d\'activité d\'Audenge, sur une parcelle de 1000 m2 entièrement clôturée, bâtiment d\'activité de 250 m2 au sol environ, comprenant à l\'étage un logement, qui peut être transformé en bureaux.\r\nConvient parfaitement à une activité artisanale ou de services, produit disposant de beaucoup de potentiel.','',267500,'oui','oui');
 /*!40000 ALTER TABLE `offre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,7 +327,7 @@ CREATE TABLE `offre_image` (
   `fichier` varchar(100) NOT NULL,
   `defaut` enum('oui','non') NOT NULL DEFAULT 'non',
   PRIMARY KEY (`num_image`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -336,7 +336,7 @@ CREATE TABLE `offre_image` (
 
 LOCK TABLES `offre_image` WRITE;
 /*!40000 ALTER TABLE `offre_image` DISABLE KEYS */;
-INSERT INTO `offre_image` VALUES (1,1,'/03_Front_view-1.jpg','oui'),(2,1,'/09_VIP_Bedroom-1.jpg','non'),(4,1,'/16_Cinema-1.jpg','non'),(17,1,'/18_Kitchen-1.jpg','non'),(18,1,'/16_Cinema-1.jpg','non'),(20,1,'/09_VIP_Bedroom-1.jpg','non'),(21,2,'/10_Bedroom_III-2.jpg','oui'),(27,4,'/10_Bedroom_III-4.jpg','oui'),(28,4,'/18_Kitchen-4.jpg','non'),(29,4,'/16_Cinema-4.jpg','non'),(30,4,'/03_Front_view-4.jpg','non'),(31,4,'/03_Front_view-4.jpg','non'),(32,5,'/18_Kitchen-5.jpg','oui'),(33,5,'/16_Cinema-5.jpg','non');
+INSERT INTO `offre_image` VALUES (35,7,'/IMG_5635-7.jpg','oui'),(36,8,'/IMG_5640-8.jpg','oui'),(37,9,'/IMG_5632-9.jpg','oui'),(38,10,'/IMG_5188-10.jpg','oui');
 /*!40000 ALTER TABLE `offre_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,7 +360,7 @@ CREATE TABLE `offre_type_bien` (
 
 LOCK TABLES `offre_type_bien` WRITE;
 /*!40000 ALTER TABLE `offre_type_bien` DISABLE KEYS */;
-INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3);
+INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2);
 /*!40000 ALTER TABLE `offre_type_bien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -480,4 +480,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-09-14 11:29:32
+-- Dump completed on 2015-09-27 10:12:47
