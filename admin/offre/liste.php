@@ -34,8 +34,7 @@
 							<tr>
 								<th class="col-md-1" style="">Titre</th>
 								<th class="col-md-1" style="">Surface</th>
-								<th class="col-md-1" style="">Nb pièces</th>
-								<th class="col-md-5" style="">Description</th>
+								<th class="col-md-6" style="">Description</th>
 								<th class="col-md-1" style="">Prix</th>
 								<th class="col-md-1" style="">1iere page</th>
 								<th class="col-md-1" style="">En ligne</th>
@@ -55,7 +54,6 @@
 									
 									<td><?=$value[ "titre" ]?></td>
 									<td><?=$value[ "surface" ]?></td>
-									<td><?=$value[ "nb_piece" ]?></td>
 									<td><?=couper_correctement( $value[ "description" ], 200, ' ', false )?> ...</td>
 									<td><?=number_format( $value[ "prix" ], 0, '', ' ' )?>€</td>
 									<td><img src="../img/<?=$a_la_une?>.png" width="30" ></td>

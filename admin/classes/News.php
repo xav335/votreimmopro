@@ -21,14 +21,15 @@ class News extends StorageManager {
 	}
 	
 	
-	public function newsGet($id){
+	public function newsGet( $id, $debug=false ){
 		 $this->dbConnect();
-		if (!isset($id)){
+		if ( !isset( $id ) || intval( $id ) <= 0 ) {
 			$requete = "SELECT * FROM `news` ORDER BY date_news DESC" ;
 		} else {
 			$requete = "SELECT * FROM `news` WHERE id_news=". $id ;
 		}
-		//print_r($requete);
+		
+		if ( $debug ) echo $requete . "<br>";
 		$new_array = null;
 		$result = mysqli_query($this->mysqli,$requete);
 		while( $row = mysqli_fetch_assoc( $result)){

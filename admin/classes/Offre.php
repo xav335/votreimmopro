@@ -92,11 +92,10 @@ class Offre extends StorageManager {
 			( $value[ 'a_la_une' ] == 'oui' ) ? $a_la_une = "oui" : $a_la_une = "non";
 			
 			$sql = "INSERT INTO `offre`
-				(`titre`, `surface`, `nb_piece`, `description`, `prix`, `a_la_une`, `online`)
+				(`titre`, `surface`, `description`, `prix`, `a_la_une`, `online`)
 				VALUES (
 				'". addslashes( $value[ "titre" ] ) ."',
 				". intval( $value[ "surface" ] ) .",
-				". intval( $value[ "nb_piece" ] ) .",
 				'". addslashes( $value[ "description" ] ) ."',
 				". intval( $value[ "prix" ] ) .",
 				'". $online ." ',
@@ -133,7 +132,6 @@ class Offre extends StorageManager {
 			$sql = "UPDATE `offre` SET
 				`titre` = '" . addslashes( $value[ "titre" ] ) . "', 
 				`surface` = " . intval( $value[ "surface" ] ) . ", 
-				`nb_piece` = " . intval( $value[ "nb_piece" ] ) . ",
 				`description` = '" . addslashes( $value[ "description" ] ) . "',
 				`prix` = " . intval( $value[ "prix" ] ) . ",
 				`a_la_une` = '" . $a_la_une ."'	 ,

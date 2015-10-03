@@ -34,7 +34,6 @@
 			$type_bien =	$result[0][ "type_bien" ];
 			$titre =		$result[0][ "titre" ];
 			$surface =		$result[0][ "surface" ];
-			$nb_piece =		$result[0][ "nb_piece" ];
 			$description =	$result[0][ "description" ];
 			$fichier_pdf = 	$result[0][ "fichier_pdf" ];
 			$prix =			$result[0][ "prix" ];
@@ -67,7 +66,6 @@
 		$type_bien =	"vente";
 		$titre =  		null;
 		$surface = 		null;
-		$nb_piece = 	null;
 		$description =	null;
 		$fichier_pdf = 	'';
 		$prix =			null;
@@ -117,11 +115,6 @@
 						<div class="form-group" >
 							<label class="col-sm-2" for="surface">Surface (en chiffres) :</label>
 						    <input type="text" class="col-sm-1" name="surface" required  value="<?=$surface?>">&nbsp;m2
-						</div>
-						
-						<div class="form-group" >
-							<label class="col-sm-2" for="nb_piece">Nombre de pièces :</label>
-						    <input type="text" class="col-sm-1" name="nb_piece" required  value="<?=$nb_piece?>">
 						</div>
 						
 						<div class="form-group" >

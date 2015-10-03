@@ -30,7 +30,6 @@
 		// ---- Données de l'annonce ------------- //
 		$titre = $result[ 0 ][ "titre" ];
 		$surface = $result[ 0 ][ "surface" ];
-		$nb_piece = $result[ 0 ][ "nb_piece" ];
 		$description = nl2br( $result[ 0 ][ "description" ] );
 		$prix = number_format( $result[ 0 ][ "prix" ], 0, '', ' ' );
 		$fichier_pdf = $result[ 0 ][ "fichier_pdf" ];
@@ -73,7 +72,7 @@
 		<div class="row offre">
 			<h1><?=$titre?></h1>
 			<div class="large-6 columns">
-				<a href="/photos/offre/normale<?=$image_defaut[ "fichier" ]?>" class="fancybox photo-principale" rel="offre"><img src="/photos/offre/grande<?=$image_defaut[ "fichier" ]?>" alt="" /></a>
+				<a href="/photos/offre/grande<?=$image_defaut[ "fichier" ]?>" class="fancybox photo-principale" rel="offre"><img src="/photos/offre/normale<?=$image_defaut[ "fichier" ]?>" alt="" /></a>
 				
 				<div class="swiper-vignettes">
 					<ul class="vignettes swiper-wrapper">
@@ -82,7 +81,7 @@
 						// ---- Affichage des vignettes ------------------ //
 						if ( !empty( $liste_image ) ) {
 							foreach ( $liste_image as $_image ) { 
-								echo "<li class='swiper-slide'><a href='/photos/offre/normale" . $_image[ "fichier" ] . "' class='fancybox' rel='offre'><img src='/photos/offre/vignette" . $_image[ "fichier" ] . "' alt='' /></a></li>\n";
+								echo "<li class='swiper-slide'><a href='/photos/offre/grande" . $_image[ "fichier" ] . "' class='fancybox' rel='offre'><img src='/photos/offre/vignette" . $_image[ "fichier" ] . "' alt='' /></a></li>\n";
 							}
 						}
 						// ----------------------------------------------- //
@@ -99,8 +98,6 @@
 				<p>Vente</p>
 				<h4>Surface</h4>
 				<p><?=$surface?> m<sup>2</sup></p>
-				<h4>Nombre de pièces</h4>
-				<p><?=$nb_piece?></p>
 				<h4>Descriptif du bien</h4>
 				<p><?=$description?></p>
 				

@@ -6,7 +6,7 @@
 	$debug = false;
 	
 	$news = new News();
-	$result = $news->newsValidGet( $debug );
+	$result = $news->newsGet( '', $debug );
 	//print_r($result);
 ?>
 

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: votreimmopro
 -- ------------------------------------------------------
--- Server version	5.5.44-0+deb8u1
+-- Server version	5.5.38-0+wheezy1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -111,7 +111,7 @@ CREATE TABLE `contact` (
   `fromgoldbook` tinyint(4) NOT NULL DEFAULT '0',
   `fromcontact` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
-INSERT INTO `contact` VALUES (2,'','','franck_langleron@hotmail.com',NULL,'',1,0,0);
+INSERT INTO `contact` VALUES (10,'Jav','gonz','jav_gonz@yahoo.fr',NULL,NULL,1,0,0),(11,'xav','gonza','xavier.gonzalez@free.fr',NULL,NULL,1,0,0),(12,'x','gg','xavier.gonzalez@laposte.net',NULL,NULL,1,0,0),(13,'xavi','gonz','xavier@gonzalez.pm',NULL,NULL,1,0,0),(14,'xavier','gonzalez','fjavi.gonzalez@gmail.com',NULL,NULL,1,0,0),(15,'x','g','xav335@hotmail.com',NULL,NULL,1,0,0);
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,7 +251,7 @@ CREATE TABLE `newsletter` (
 
 LOCK TABLES `newsletter` WRITE;
 /*!40000 ALTER TABLE `newsletter` DISABLE KEYS */;
-INSERT INTO `newsletter` VALUES (12,'2015-01-01 00:00:00','Ceci est la toute nouvelle actu','ljhjkl');
+INSERT INTO `newsletter` VALUES (12,'2015-01-01 00:00:00','Ceci est la toute nouvelle actu',' ');
 /*!40000 ALTER TABLE `newsletter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,7 +270,7 @@ CREATE TABLE `newsletter_detail` (
   `link` varchar(250) DEFAULT NULL,
   `texte` text,
   PRIMARY KEY (`id`,`id_newsletter`)
-) ENGINE=InnoDB AUTO_INCREMENT=324 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=327 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,7 +279,7 @@ CREATE TABLE `newsletter_detail` (
 
 LOCK TABLES `newsletter_detail` WRITE;
 /*!40000 ALTER TABLE `newsletter_detail` DISABLE KEYS */;
-INSERT INTO `newsletter_detail` VALUES (323,12,'','/uploads/bsport3.jpg','http://dev.bsport.fr/','');
+INSERT INTO `newsletter_detail` VALUES (326,12,'','/IMG_5187-12.jpg','http://dev.votreimmopro.com','');
 /*!40000 ALTER TABLE `newsletter_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,14 +294,13 @@ CREATE TABLE `offre` (
   `num_offre` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(100) NOT NULL,
   `surface` int(11) NOT NULL,
-  `nb_piece` int(11) NOT NULL,
   `description` text NOT NULL,
   `fichier_pdf` varchar(100) NOT NULL,
   `prix` int(11) NOT NULL,
   `a_la_une` enum('oui','non') NOT NULL DEFAULT 'non',
   `online` enum('oui','non') NOT NULL,
   PRIMARY KEY (`num_offre`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -310,7 +309,7 @@ CREATE TABLE `offre` (
 
 LOCK TABLES `offre` WRITE;
 /*!40000 ALTER TABLE `offre` DISABLE KEYS */;
-INSERT INTO `offre` VALUES (7,'Ensemble immobilier mixte activité-bureaux',1500,0,'Au coeur de la ZI de la Madère, à Villenave d\'Ornon, sortie N° 17 de la rocade, bel ensemble immobilier de 1500 m2 sur une parcelle de 3500 m2 entièrement clôturée, avec parking.\r\nLoué à un groupe de distribution.','',2100000,'oui','oui'),(8,'IMMEUBLE DE BUREAUX',1039,0,'A proximité de la zone commerciale Auchan Lac, sortie N° 4 de la rocade, Immeuble de bureaux en R+1 d\'environ 1039 m2, comprenant 36 places de stationnement.\r\nLoué à un établissement bancaire.','',2100000,'oui','oui'),(9,'Immeuble de bureaux indépendant',786,0,'Au coeur d\'Europarc, zone tertiaire importante de la métropole bordelaise, sortie N°14 et 15 de la rocade, immeuble de bureaux de 786 m2 loué à une société d\'envergure internationale.','',1365000,'oui','oui'),(10,'Bâtiment d\'activité',250,0,'Bassin d\'Arcachon, au coeur du parc d\'activité d\'Audenge, sur une parcelle de 1000 m2 entièrement clôturée, bâtiment d\'activité de 250 m2 au sol environ, comprenant à l\'étage un logement, qui peut être transformé en bureaux.\r\nConvient parfaitement à une activité artisanale ou de services, produit disposant de beaucoup de potentiel.','',267500,'oui','oui');
+INSERT INTO `offre` VALUES (7,'Ensemble immobilier mixte activité-bureaux',1500,'Au coeur de la ZI de la Madère, à Villenave d\'Ornon, sortie N° 17 de la rocade, bel ensemble immobilier de 1500 m2 sur une parcelle de 3500 m2 entièrement clôturée, avec parking.\r\nLoué à un groupe de distribution.','',2100000,'oui','oui'),(8,'IMMEUBLE DE BUREAUX',1039,'A proximité de la zone commerciale Auchan Lac, sortie N° 4 de la rocade, Immeuble de bureaux en R+1 d\'environ 1039 m2, comprenant 36 places de stationnement.\r\nLoué à un établissement bancaire.','',2100000,'oui','oui'),(9,'Immeuble de bureaux indépendant',786,'Au coeur d\'Europarc, zone tertiaire importante de la métropole bordelaise, sortie N°14 et 15 de la rocade, immeuble de bureaux de 786 m2 loué à une société d\'envergure internationale.','',1365000,'oui','oui'),(10,'Bâtiment d\'activité',250,'Bassin d\'Arcachon, au coeur du parc d\'activité d\'Audenge, sur une parcelle de 1000 m2 entièrement clôturée, bâtiment d\'activité de 250 m2 au sol environ, comprenant à l\'étage un logement, qui peut être transformé en bureaux.\r\nConvient parfaitement à une activité artisanale ou de services, produit disposant de beaucoup de potentiel.','',267500,'oui','oui'),(11,'Démarrez l\'été en fraicheur',222,'DDZD','',12,'oui','non');
 /*!40000 ALTER TABLE `offre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,7 +326,7 @@ CREATE TABLE `offre_image` (
   `fichier` varchar(100) NOT NULL,
   `defaut` enum('oui','non') NOT NULL DEFAULT 'non',
   PRIMARY KEY (`num_image`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -336,7 +335,7 @@ CREATE TABLE `offre_image` (
 
 LOCK TABLES `offre_image` WRITE;
 /*!40000 ALTER TABLE `offre_image` DISABLE KEYS */;
-INSERT INTO `offre_image` VALUES (35,7,'/IMG_5635-7.jpg','oui'),(36,8,'/IMG_5640-8.jpg','oui'),(37,9,'/IMG_5632-9.jpg','oui'),(38,10,'/IMG_5188-10.jpg','oui');
+INSERT INTO `offre_image` VALUES (40,11,'/IMG_5632-11.jpg','non'),(41,7,'/IMG_5635-7.jpg','oui'),(42,8,'/IMG_5640-8.jpg','oui'),(43,9,'/IMG_5632-9.jpg','oui'),(44,10,'/IMG_5187-10.jpg','oui');
 /*!40000 ALTER TABLE `offre_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -480,4 +479,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-09-27 10:12:47
+-- Dump completed on 2015-10-03 12:17:54

@@ -100,26 +100,6 @@
 			$offre_image = new Offre_image();
 			$imageManager = New ImageManager();
 			
-			/*for ( $i=1; $i<2; $i++ ) {
-				$source = $_SERVER['DOCUMENT_ROOT'] . $_POST[ 'url' . $i ];
-				if ( $debug ) echo "Source : " . $source . "<br>";
-				
-				if( strstr( $source, 'uploads' ) ) {
-					$source = $_SERVER['DOCUMENT_ROOT'] . $_POST[ 'url' . $i ];
-					$filenameDest = $imageManager->fileDestManagement( $source, $_POST['id'] );
-					//Image
-					$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/news' . $filenameDest;
-					if ( $debug ) echo "Destination : " . $destination . "<br>";
-					
-					$imageManager->imageResize( $source, $destination, null, 650 );
-					//Vignette
-					$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/news/thumbs' . $filenameDest;
-					$imageManager->imageResize( $source, $destination, null, 250 );
-					$_POST[ 'url' . $i ] = $filenameDest;
-				}
-			}
-			$imageManager =null;*/
-			
 			// ---- Modifier l'offre --------------------------------------------- //
 			if ( $_POST['action'] == 'modif' ) {
 				try {
@@ -148,7 +128,8 @@
 			else {
 				try {
 					$num_offre = $offre->ajouter( $_POST, $debug );
-					$page = "/admin/offre/edition.php?id=" . $num_offre;
+					//$page = "/admin/offre/edition.php?id=" . $num_offre;
+					$page = "/admin/offre/liste.php";
 				} catch ( Exception $e ) {
 					echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage(), "\n";
 					exit();
@@ -164,27 +145,64 @@
 					$filenameDest = $imageManager->fileDestManagement( $source, $num_offre );
 					if ( $debug ) echo "--- filenameDest : " . $filenameDest . "<br>";
 					
-					// ---- Image de taille "normale" ---- //
-					$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/normale' . $filenameDest;
-					if ( $debug ) echo "--- destination : " . $destination . "<br>";
-					$imageManager->imageResize( $source, $destination, 1500, null );
+					// ---- En fonction de l'orientation de l'image ---- //
+					if ( 1 == 1 ) {
+						/*$size = getimagesize( $filenameDest );
+						$largeur = $size[ 0 ];
+						$hauteur = $size[ 1 ];
 					
-					// ---- Image de taille "grande" ----- //
-					$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/grande' . $filenameDest;
-					if ( $debug ) echo "--- destination : " . $destination . "<br>";
-					$imageManager->imageResize( $source, $destination, 1000, 710 );
+						// ---- Format Paysage ----------------------------- //
+						if ( $largeur >= $hauteur ) {*/
+							
+							// ---- Image de taille "grande" ----- //
+							$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/grande' . $filenameDest;
+							if ( $debug ) echo "--- destination : " . $destination . "<br>";
+							$imageManager->imageResize( $source, $destination, 1500, null );
+							
+							// ---- Image de taille "normale" ---- //
+							$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/normale' . $filenameDest;
+							if ( $debug ) echo "--- destination : " . $destination . "<br>";
+							$imageManager->imageResize( $source, $destination, 470, null );
+							
+							// ---- Image de taille "vignette" --- //
+							$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/vignette' . $filenameDest;
+							if ( $debug ) echo "--- destination : " . $destination . "<br>";
+							$imageManager->imageResize( $source, $destination, 303, null );
+							
+						/*}
+						// ------------------------------------------------- //
+						
+						// ---- Format Portrait ---------------------------- //
+						else {
+							
+							// ---- Image de taille "normale" ---- //
+							$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/normale' . $filenameDest;
+							if ( $debug ) echo "--- destination : " . $destination . "<br>";
+							$imageManager->imageResize( $source, $destination, null, null );
+							
+							// ---- Image de taille "grande" ----- //
+							$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/grande' . $filenameDest;
+							if ( $debug ) echo "--- destination : " . $destination . "<br>";
+							$imageManager->imageResize( $source, $destination, null, 710 );
+							
+							// ---- Image de taille "vignette" --- //
+							$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/vignette' . $filenameDest;
+							if ( $debug ) echo "--- destination : " . $destination . "<br>";
+							$imageManager->imageResize( $source, $destination, 303, 215 );
+							
+						}*/
+						// ------------------------------------------------- //
 					
-					// ---- Image de taille "vignette" --- //
-					$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/vignette' . $filenameDest;
-					if ( $debug ) echo "--- destination : " . $destination . "<br>";
-					$imageManager->imageResize( $source, $destination, 303, 215 );
+					}
+					// ------------------------------------------------- //
 					
-					// ---- Enregistrement de l'image ---- //
+					// ---- Enregistrement de l'image ------------------ //
 					unset( $val );
 					$val[ "num_offre" ] = $num_offre;
 					$val[ "fichier" ] = $filenameDest;
 					$val[ "defaut" ] = 'non';
 					$offre_image->ajouter( $val, $debug );
+					// ------------------------------------------------- //
 				}
 			}
 			// ------------------------------------------------------------------- //
