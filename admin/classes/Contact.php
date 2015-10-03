@@ -72,6 +72,7 @@ class Contact extends StorageManager {
 	public function contactAdd( $value, $debug=false ){
 		//print_r($value);
 		//exit();
+	    $fromcontact=1;
 		$this->dbConnect();
 		$this->begin();
 		try {
