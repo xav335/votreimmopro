@@ -266,4 +266,53 @@ class Contact extends StorageManager {
 		}
 	}
 	
+	public function contactGetForNewsletter()
+	{
+	    $this->dbConnect();
+	    try {
+	        $sql = "SELECT DISTINCT email FROM contact WHERE newsletter=1;";
+	        // print_r($sql);exit();
+	        $new_array = null;
+	        $result = mysqli_query($this->mysqli, $sql);
+	        while (($row = mysqli_fetch_assoc($result)) != false) {
+	            $new_array[] = $row;
+	        }
+	        $this->dbDisConnect();
+	        return $new_array;
+	    } catch (Exception $e) {
+	        throw new Exception("Erreur Mysql contactGet " . $e->getMessage());
+	        return "errrrrrrooooOOor";
+	    }
+	}
+	
+	public function contactUnsubscribeNewsletter($email, $message)
+	{
+	    // print_r($value);
+	    // exit();
+	    $this->dbConnect();
+	    $this->begin();
+	    try {
+	        $sql = "UPDATE  contact SET
+					`newsletter`= 0,
+					`message`='" . addslashes($message) . "'
+					WHERE `email`='" . $email . "';";
+	        $result = mysqli_query($this->mysqli, $sql);
+	
+	        if (! $result) {
+	            throw new Exception($sql);
+	        }
+	
+	        $this->commit();
+	    } catch (Exception $e) {
+	        $this->rollback();
+	        throw new Exception("Erreur Mysql " . $e->getMessage());
+	        return "errrrrrrooooOOor";
+	    }
+	
+	    $this->dbDisConnect();
+	}
+	
+	
+	
+	
 }

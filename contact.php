@@ -160,6 +160,9 @@
 				<p>
 					email : contact@votreimmopro.com
 				</p>
+				<p>
+					<a href="" target="_blank"><img alt="" src="img/linkin.png"></a>
+				</p>
 			</div>
 		</div>
 		<!-- End Offres à la une -->
