@@ -154,8 +154,7 @@
 					33450 Saint-Sulpice-et-Cameyrac, France
 				</p>
 				<p>
-					Tél. 05 57 57 57 57<br/>
-					Fax. 05 57 57 57 58
+					Tél 06.35.33.63.26
 				</p>
 				<p>
 					email : contact@votreimmopro.com
