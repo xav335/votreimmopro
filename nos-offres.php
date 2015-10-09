@@ -52,6 +52,7 @@
 					
 					echo "<section role='tabpanel' aria-hidden='true' class='nos-offres content active' id='panel-location'>\n";
 					if ( !empty( $result ) ) {
+					    if ($result[0]["num_type_bien"]==1) { $fai=''; } else { $fai='FAI'; };
 						foreach ( $result as $value ) { 
 							
 							// ---- Image par défaut ----- //
@@ -61,7 +62,7 @@
 							echo "		<img src='/photos/offre/vignette" . $image_defaut[ "fichier" ] . "' alt='' />\n";
 							echo "		<h2>" . $value[ "titre" ] . "</h2>\n";
 							echo "		<p>" . couper_correctement( $value[ "description" ], 200, ' ', false ) . " ...</p>\n";
-							echo "		<div class='prix'>" . number_format( $value[ "prix" ], 0, '', ' ' ) . " € FAI</div>\n";
+							echo "		<div class='prix'>" . number_format( $value[ "prix" ], 0, '', ' ' ) . " € $fai</div>\n";
 							echo "	</a>\n";
 						}
 					}
