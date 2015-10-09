@@ -71,7 +71,9 @@ class Offre extends StorageManager {
 	
 	public function load( $num_offre, $debug=false ) {
 		$this->dbConnect();
-		$requete = "SELECT * FROM `offre` WHERE num_offre=" . intval( $num_offre ) ;
+		$requete = "SELECT * FROM `offre` INNER JOIN offre_type_bien 
+		    ON offre.num_offre = offre_type_bien.num_offre
+		    WHERE offre.num_offre=" . intval( $num_offre ) ;
 		if ( $debug ) echo $requete . "<br>";
 		$result = mysqli_query( $this->mysqli, $requete );
 		
@@ -166,7 +168,7 @@ class Offre extends StorageManager {
 		$data = $this->load( $num_offre, $debug );
 		//print_pre( $data );
 		
-		// ---- Suppression des images associées ---------------- //
+		// ---- Suppression des images associï¿½es ---------------- //
 		if ( 1 == 1 ) {
 			$offre_image = new Offre_image();
 			

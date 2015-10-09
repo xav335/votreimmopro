@@ -147,7 +147,11 @@
 							echo "	<img src='/photos/offre/vignette" . $image_defaut[ "fichier" ] . "' alt='' />\n";
 							echo "	<h2>" . $_offre[ "titre" ] . "</h2>\n";
 							echo "	<p>" . couper_correctement( $_offre[ "description" ], 100, ' ', false ) . " ...</p>\n";
-							echo "	<div class='prix'>" . number_format( $_offre[ "prix" ], 0, '', ' ' ) . " € FAI</div>\n";
+							if ( $num_type_bien == 1 ){
+							     echo "	<div class='prix'>" . number_format( $_offre[ "prix" ], 0, '', ' ' ) . " € </div>\n";
+							} else {
+							    echo "	<div class='prix'>" . number_format( $_offre[ "prix" ], 0, '', ' ' ) . " € FAI</div>\n";
+							}    
 							echo "</div>\n";
 						}
 					}

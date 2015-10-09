@@ -33,6 +33,22 @@
 		$description = nl2br( $result[ 0 ][ "description" ] );
 		$prix = number_format( $result[ 0 ][ "prix" ], 0, '', ' ' );
 		$fichier_pdf = $result[ 0 ][ "fichier_pdf" ];
+		$num_type_bien = $result[ 0 ][ "num_type_bien" ];
+		$type_bien="";
+		switch ($num_type_bien) {
+		    case 1:
+		      $type_bien="Location";
+		    break;
+		    case 2:
+		       $type_bien="Vente";
+		    break;
+		    case 3:
+		       $type_bien="Spécial investisseurs";
+		    break;
+		    default:
+		        $type_bien="";;
+		    break;
+		}
 		
 		// ---- Image par défaut ----- //
 		$image_defaut = $offre_image->getImageDefaut( $result[ 0 ][ "num_offre" ], $debug );
@@ -91,11 +107,11 @@
 					<div class="swiper-button-next vignettes-next"></div>
 					<div class="swiper-button-prev vignettes-prev"></div>
 				</div>
-				<div class="prix"><?=$prix?> € FAI</div>
+				<div class="prix"><?=$prix?> € <?php if ($num_type_bien!=1 ) echo "FAI" ?></div>
 			</div>
 			<div class="large-6 columns">
 				<h4>Type d'offre</h4>
-				<p>Vente</p>
+				<p><?php echo $type_bien?></p>
 				<h4>Surface</h4>
 				<p><?=$surface?> m<sup>2</sup></p>
 				<h4>Descriptif du bien</h4>
