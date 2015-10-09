@@ -139,3 +139,32 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 .pointer {
 	cursor : pointer;
 }
+
+.left-off-canvas-toggle {display:none;}
+.left-off-canvas-menu ul {list-style-type:none;margin-right:1.1rem; }
+.left-off-canvas-menu ul li {border-bottom:1px dotted #545454;text-transform:uppercase;padding:0 1rem;display:block;}
+.left-off-canvas-menu ul li:first-child {margin-top:1rem;}
+
+/* Responsive */
+@media only screen and (max-width: 48.063em) {
+
+	}
+
+@media only screen and (max-width: 40.063em) {
+	.header {display:none;}
+	.mapcanvas{display: none;}
+	.left-off-canvas-toggle {padding:0.5rem;display:block;}
+	.left-off-canvas-menu {background:#000;}
+	.nos-offres .bien {padding:15px;box-sizing:border-box;width:100%;float:left;}
+	.estimation {display:none;}
+}
+
+@media only screen and (max-width: 30.063em) {
+	.mapcanvas{display: none;}
+}
+
+@media only screen and (max-width: 20.063em) {
+	.mapcanvas{display: none;}
+}
+/* Fin Responsive */
+

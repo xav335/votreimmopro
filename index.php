@@ -212,6 +212,11 @@
 			$(document).ready(function(){
 				$('.header .menu a:first-child').addClass('active');
 			});
+
+			var slidesP=3;
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+				slidesP=1;
+			}
 			
 			var swiper = new Swiper('.swiper-slider', {
 				pagination: '.swiper-pagination',
@@ -220,7 +225,7 @@
 			var swiper2 = new Swiper('.swiper-offres', {
 				nextButton: '.swiper-button-next',
 				prevButton: '.swiper-button-prev',
-				slidesPerView: 3
+				slidesPerView: slidesP
 			});
 			
 			$( ".pointer" ).click( function() {

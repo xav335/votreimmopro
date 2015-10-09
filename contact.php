@@ -88,7 +88,7 @@
 		?>
 		
 		<!-- Google maps -->
-		<div id="map-canvas"></div>
+		<div id="map-canvas" class="mapcanvas"></div>
 		<!-- End Google maps -->
 		
 		
