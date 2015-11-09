@@ -128,7 +128,14 @@
 			else {
 				try {
 					$num_offre = $offre->ajouter( $_POST, $debug );
-					//$page = "/admin/offre/edition.php?id=" . $num_offre;
+					
+					// ---- MAJ des types de bien associés à l'offre --------------------- //
+					foreach( $_POST[ "type_bien" ] as $num_type_bien ) {
+						$val[ "num_offre" ] = $num_offre;
+						$val[ "num_type_bien" ] = $num_type_bien;
+						$offre_type_bien->ajouter( $val, $debug );
+					}
+					
 					$page = "/admin/offre/liste.php";
 				} catch ( Exception $e ) {
 					echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage(), "\n";
@@ -442,7 +449,7 @@
 				try {
 					$result = $offre->supprimer( $_GET[ "id" ], $debug );
 					$offre = null;
-					if ( !$debug ) header( "Location: /admin/contact-list.php" );
+					if ( !$debug ) header( "Location: /admin/offre/liste.php" );
 				} catch (Exception $e) {
 					echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage(), "\n";
 					$offre = null;

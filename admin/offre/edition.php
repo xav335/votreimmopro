@@ -102,9 +102,9 @@
 						
 						<div class="form-group" >
 							<label class="col-sm-2">Type de bien :</label>
-						    <input type="checkbox" name="type_bien[]" value="1" <?=$checked_location?> />&nbsp;Location&nbsp;&nbsp;
-						    <input type="checkbox" name="type_bien[]" value="2" <?=$checked_vente?> />&nbsp;Vente&nbsp;&nbsp;
-						    <input type="checkbox" name="type_bien[]" value="3" <?=$checked_investisseur?> />&nbsp;Investisseur
+						    <input type="checkbox" name="type_bien[]" class="type_bien" value="1" <?=$checked_location?> />&nbsp;Location&nbsp;&nbsp;
+						    <input type="checkbox" name="type_bien[]" class="type_bien" value="2" <?=$checked_vente?> />&nbsp;Vente&nbsp;&nbsp;
+						    <input type="checkbox" name="type_bien[]" class="type_bien" value="3" <?=$checked_investisseur?> />&nbsp;Investisseur
 						</div>
 						
 						<div class="form-group" >
@@ -187,8 +187,8 @@
 						</div>
 						
 						<div style="clear:both;"></div>
-			            <button class="btn btn-success col-sm-6 annuler" type="button"> Annuler </button>
-			            <button class="btn btn-success col-sm-6" type="submit"> Valider </button>
+			            <button type="button" class="btn btn-success col-sm-6 annuler"> Annuler </button>
+			            <button type="button" class="btn btn-success col-sm-6 valider"> Valider </button>
 			            
 			        </form>
 				</div>
@@ -267,7 +267,10 @@
 				return false; 
 			}
 			
-			function openCustomRoxy(idImage){
+			function openCustomRoxy( idImage ) {
+				 $( "#url0" ).val( '' );
+				 $( "#url1" ).val( '' );
+				
 				$('#idImage').val(idImage);
 			 	$('#roxyCustomPanel').dialog({modal:true, width:875,height:600});
 			}
@@ -346,6 +349,33 @@
 			$( ".annuler" ).click(function() {
 				window.location.href = "./liste.php";
 			});
+			
+			$( ".valider" ).click(function() {
+				//alert( "On poste..." );
+				var is_coche = false;
+				
+				// ---- Il faut a moins un type de bien sélectionné ---- //
+				if ( 1 == 1 ) {
+					$( ".type_bien" ).each( function( index ) {
+						//console.log( index + ": " + $( this ).text() );
+						if (  $(this).is( ":checked" ) ) {
+							//alert( "coché!!!" );
+							is_coche = true;
+							return false;
+						}
+					});
+				}
+				
+				// ---- Tout va bien --> On poste ---------------------- //
+				if ( is_coche ) {
+					$( "#formulaire" ).submit();
+					//alert( "On poste..." );
+				}
+				else alert( "Veuillez cocher au moins un type de bien." );
+				
+				return false;
+			});
+			
 				
 		</script>
 		
