@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.21, for osx10.6 (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: votreimmopro
 -- ------------------------------------------------------
--- Server version	5.6.21
+-- Server version	5.5.44-0+deb8u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -111,7 +111,7 @@ CREATE TABLE `contact` (
   `fromgoldbook` tinyint(4) NOT NULL DEFAULT '0',
   `fromcontact` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
-INSERT INTO `contact` VALUES (10,'','Braillard','xavier@braillard.fr',NULL,'pouet',1,0,1),(11,'Jav','gonz','jav_gonz@yahoo.com',NULL,NULL,1,0,0),(12,'xav','gonza','xavier.gonzalez@free.fr',NULL,NULL,1,0,0),(13,'x','gg','xavier.gonzalez@laposte.net',NULL,NULL,1,0,0),(14,'xavi','gonz','xavier@gonzalez.pm',NULL,NULL,0,0,0),(15,'xavier','gonzalez','fjavi.gonzalez@gmail.com',NULL,NULL,1,0,0),(16,'x','g','xav335@hotmail.com',NULL,NULL,1,0,0);
+INSERT INTO `contact` VALUES (10,'','','xavier@braillard.fr',NULL,'',1,0,0),(11,'','','xavier@braillard.com',NULL,'',1,0,0);
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,7 +225,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (29,'2015-09-22 00:00:00','Nouveau site internet','','retrouvez toutes nos actus , nos offres et nos évènements sur notre nouveau site internet','/10_Bedroom_III-.jpg',1);
+INSERT INTO `news` VALUES (29,'2015-10-30 00:00:00','Bientôt à La Teste','','A la vente ou à la location 6150 m2 de surfaces commerciales','/IMG_5659-29.jpg',1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +242,7 @@ CREATE TABLE `newsletter` (
   `titre` varchar(250) DEFAULT NULL,
   `bas_page` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +251,7 @@ CREATE TABLE `newsletter` (
 
 LOCK TABLES `newsletter` WRITE;
 /*!40000 ALTER TABLE `newsletter` DISABLE KEYS */;
-INSERT INTO `newsletter` VALUES (12,'2015-01-01 00:00:00','Une offre à ne pas rater',' ');
+INSERT INTO `newsletter` VALUES (12,'2015-01-01 00:00:00','Une offre à ne pas rater',' '),(13,'2015-10-03 00:00:00','EXCLUVITE',''),(14,'2015-10-03 00:00:00','EXCLUSIVITE !! Espace commercial MACODA','');
 /*!40000 ALTER TABLE `newsletter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,7 +270,7 @@ CREATE TABLE `newsletter_detail` (
   `link` varchar(250) DEFAULT NULL,
   `texte` text,
   PRIMARY KEY (`id`,`id_newsletter`)
-) ENGINE=InnoDB AUTO_INCREMENT=327 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=331 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,7 +279,7 @@ CREATE TABLE `newsletter_detail` (
 
 LOCK TABLES `newsletter_detail` WRITE;
 /*!40000 ALTER TABLE `newsletter_detail` DISABLE KEYS */;
-INSERT INTO `newsletter_detail` VALUES (326,12,'','/IMG_5640-12.jpg','http://dev.votreimmopro.com','');
+INSERT INTO `newsletter_detail` VALUES (325,12,'','/IMG_5187-12.jpg','http://www.votreimmopro.com',''),(330,14,'Livraison 1er semestre 2017','/IMG_5659-.jpg','http://www.votreimmopro.com/','Au coeur du parc d\'activité de La Teste, 6150 m2 de surfaces commerciales');
 /*!40000 ALTER TABLE `newsletter_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,7 +295,7 @@ CREATE TABLE `newsletter_journal` (
   `date_envoi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_newsletter` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,7 +304,7 @@ CREATE TABLE `newsletter_journal` (
 
 LOCK TABLES `newsletter_journal` WRITE;
 /*!40000 ALTER TABLE `newsletter_journal` DISABLE KEYS */;
-INSERT INTO `newsletter_journal` VALUES (27,'2015-10-03 11:29:43',12);
+INSERT INTO `newsletter_journal` VALUES (21,'2015-10-03 12:23:37',12);
 /*!40000 ALTER TABLE `newsletter_journal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,7 +330,7 @@ CREATE TABLE `newsletter_journal_detail` (
 
 LOCK TABLES `newsletter_journal_detail` WRITE;
 /*!40000 ALTER TABLE `newsletter_journal_detail` DISABLE KEYS */;
-INSERT INTO `newsletter_journal_detail` VALUES (27,'xavier@braillard.fr',0,'oHqALcYxOGdS',''),(27,'jav_gonz@yahoo.com',0,'nh6kF1PQuY81',''),(27,'xavier.gonzalez@free.fr',0,'qmtZlGAzdQXM',''),(27,'xavier.gonzalez@laposte.net',0,'QL8sgabtg5DL',''),(27,'fjavi.gonzalez@gmail.com',0,'Ujpc8k3lwm9H',''),(27,'xav335@hotmail.com',0,'Qz6RdQsSspay','');
+INSERT INTO `newsletter_journal_detail` VALUES (21,'jav_gonz@yahoo.com',1,'UCosoqlwA97C',''),(21,'xavier.gonzalez@free.fr',1,'WyxEwoIulZTe',''),(21,'xavier.gonzalez@laposte.net',1,'XglZcgvWGKcS',''),(21,'fjavi.gonzalez@gmail.com',1,'YleokbO7zbyT',''),(21,'xav335@hotmail.com',0,'n7bzVVBI2Kw2','');
 /*!40000 ALTER TABLE `newsletter_journal_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,13 +345,14 @@ CREATE TABLE `offre` (
   `num_offre` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(100) NOT NULL,
   `surface` int(11) NOT NULL,
+  `nb_piece` int(11) NOT NULL,
   `description` text NOT NULL,
   `fichier_pdf` varchar(100) NOT NULL,
   `prix` int(11) NOT NULL,
   `a_la_une` enum('oui','non') NOT NULL DEFAULT 'non',
   `online` enum('oui','non') NOT NULL,
   PRIMARY KEY (`num_offre`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -360,7 +361,7 @@ CREATE TABLE `offre` (
 
 LOCK TABLES `offre` WRITE;
 /*!40000 ALTER TABLE `offre` DISABLE KEYS */;
-INSERT INTO `offre` VALUES (7,'Ensemble immobilier mixte activité-bureaux',1500,'Au coeur de la ZI de la Madère, à Villenave d\'Ornon, sortie N° 17 de la rocade, bel ensemble immobilier de 1500 m2 sur une parcelle de 3500 m2 entièrement clôturée, avec parking.\r\nLoué à un groupe de distribution.','',2100000,'oui','oui'),(8,'IMMEUBLE DE BUREAUX',1039,'A proximité de la zone commerciale Auchan Lac, sortie N° 4 de la rocade, Immeuble de bureaux en R+1 d\'environ 1039 m2, comprenant 36 places de stationnement.\r\nLoué à un établissement bancaire.','',2100000,'oui','oui'),(9,'Immeuble de bureaux indépendant',786,'Au coeur d\'Europarc, zone tertiaire importante de la métropole bordelaise, sortie N°14 et 15 de la rocade, immeuble de bureaux de 786 m2 loué à une société d\'envergure internationale.','',1365000,'oui','oui'),(10,'Bâtiment d\'activité',250,'Bassin d\'Arcachon, au coeur du parc d\'activité d\'Audenge, sur une parcelle de 1000 m2 entièrement clôturée, bâtiment d\'activité de 250 m2 au sol environ, comprenant à l\'étage un logement, qui peut être transformé en bureaux.\r\nConvient parfaitement à une activité artisanale ou de services, produit disposant de beaucoup de potentiel.','',267500,'oui','oui');
+INSERT INTO `offre` VALUES (7,'Ensemble immobilier mixte activité-bureaux',1500,0,'Au coeur de la ZI de la Madère, à Villenave d\'Ornon, sortie N° 17 de la rocade, bel ensemble immobilier de 1500 m2 sur une parcelle de 3500 m2 entièrement clôturée, avec parking.\r\nLoué à un groupe de distribution.','',2100000,'oui','oui'),(8,'IMMEUBLE DE BUREAUX',1039,0,'A proximité de la zone commerciale Auchan Lac, sortie N° 4 de la rocade, Immeuble de bureaux en R+1 d\'environ 1039 m2, comprenant 36 places de stationnement.\r\nLoué à un établissement bancaire.','',2100000,'oui','oui'),(9,'Immeuble de bureaux indépendant',786,0,'Au coeur d\'Europarc, zone tertiaire importante de la métropole bordelaise, sortie N°14 et 15 de la rocade, immeuble de bureaux de 786 m2 loué à une société d\'envergure internationale.','',1365000,'oui','oui'),(11,'Bâtiment d\'activité',225,0,'Au coeur du Parc d\'Activité de la ville d\'AUDENGE, Bassin d\'Arcachon Nord\r\nBâtiment d\'activité d\'une surface de 225 m2 environ sur un terrain entièrement clos de 1000 m2.\r\nBeau potentiel, logement à l\'étage.\r\nIdéal pour une entreprise artisanale qui souhaite résider sur le site.\r\nA voir.','',265000,'oui','oui'),(12,'EXCLUSIVITE !! Espace commercial LE 860',710,0,'LA TESTE, Bassin d\'Arcachon, Ensemble commercial de 6150 m2 situé au coeur du Parc d\'Activité.\r\nLOT N°1: façade commerciale, livré avec vitrine, fluide en attente, bail 3/6/9, Pas de droit d\'entrée, parking....\r\nDossier sur demande.\r\nLoyer annuel HT/HC: 92 300 € . Honoraires d\'agence 15 % HT\r\nLivraison prévue: 1er semestre 2017\r\n','',92300,'oui','oui'),(13,'EXCLUSIVITE !! Espace commercial LE 860',800,0,'LA TESTE, Bassin d\'Arcachon, Ensemble commercial de 6150 m2 situé au coeur du Parc d\'Activité. LOT N°2: livré avec vitrine, fluide en attente, vente en VEFA, ...','',1092000,'oui','oui'),(15,'EXCLUSIVITE !! Espace commercial LE 860',710,0,'LA TESTE, Bassin d\'Arcachon, Ensemble commercial de 6150 m2 situé au coeur du Parc d\'Activité. LOT N°1, première ligne,  livré avec vitrine, fluide en attente, vente en VEFA\r\nDossier sur demande.\r\nLivraison 1er semestre 2017','',1140615,'oui','oui'),(16,'BUREAUX A LOUER',125,0,'Bureaux entièrement cloisonnés d\'une surface de 125 m2 au rez de chaussée d\'un immeuble tertiaire situé à Artigues près Bordeaux.\r\nEtat impeccable, libre le 1er novembre 2015.\r\nLoyer 18 504 € HT /an\r\nCharges: 2 592 €HT /an','',18504,'oui','oui'),(20,'Ensemble immobilier mixte activité-bureaux',735,0,'ZFU, rive droite, accès rocade Bordelaise immédiat.\r\nEnsemble immobilier loué à 3 entreprises, surface bâtie 735 m2, terrain clos 2514 m2 avec nombreux parking.\r\nExcellent état.\r\nrendement 9 % acte en main, frais d\'agence inclus','',1224000,'oui','oui');
 /*!40000 ALTER TABLE `offre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,7 +378,7 @@ CREATE TABLE `offre_image` (
   `fichier` varchar(100) NOT NULL,
   `defaut` enum('oui','non') NOT NULL DEFAULT 'non',
   PRIMARY KEY (`num_image`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -386,7 +387,7 @@ CREATE TABLE `offre_image` (
 
 LOCK TABLES `offre_image` WRITE;
 /*!40000 ALTER TABLE `offre_image` DISABLE KEYS */;
-INSERT INTO `offre_image` VALUES (35,7,'/IMG_5635-7.jpg','oui'),(36,8,'/IMG_5640-8.jpg','oui'),(37,9,'/IMG_5632-9.jpg','oui'),(38,10,'/IMG_5188-10.jpg','oui');
+INSERT INTO `offre_image` VALUES (40,7,'/IMG_5635-7.jpg','oui'),(42,8,'/IMG_5640-8.jpg','oui'),(43,9,'/IMG_5632-9.jpg','oui'),(45,11,'/IMG_5187 - Copy 1-11.jpg','oui'),(50,16,'/IMG_2067-16.jpg','oui'),(52,12,'/MACODA_PERSPECTIVE_RENDU_1_A-12.jpg','oui'),(53,13,'/MACODA_PERSPECTIVE_RENDU_1_A-13.jpg','oui'),(54,15,'/MACODA_PERSPECTIVE_RENDU_1_A-15.jpg','oui'),(59,20,'/012-20.jpg','non'),(60,20,'/061-20.jpg','non');
 /*!40000 ALTER TABLE `offre_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -410,7 +411,7 @@ CREATE TABLE `offre_type_bien` (
 
 LOCK TABLES `offre_type_bien` WRITE;
 /*!40000 ALTER TABLE `offre_type_bien` DISABLE KEYS */;
-INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2);
+INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2),(11,2),(12,1),(13,2),(15,2),(16,1);
 /*!40000 ALTER TABLE `offre_type_bien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -530,4 +531,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-03 13:30:28
+-- Dump completed on 2015-11-09 17:59:57
