@@ -111,7 +111,7 @@ CREATE TABLE `contact` (
   `fromgoldbook` tinyint(4) NOT NULL DEFAULT '0',
   `fromcontact` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,7 +225,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (29,'2015-10-30 00:00:00','Bientôt à La Teste','','A la vente ou à la location 6150 m2 de surfaces commerciales','/IMG_5659-29.jpg',1);
+INSERT INTO `news` VALUES (29,'2015-10-30 00:00:00','Bientôt à La Teste, LE 860','','A la vente ou à la location 6150 m2 de surfaces commerciales, Livraison printemps 2017','/MACODA_PERSPECTIVE_RENDU_1_A-29.jpg',1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,7 +352,7 @@ CREATE TABLE `offre` (
   `a_la_une` enum('oui','non') NOT NULL DEFAULT 'non',
   `online` enum('oui','non') NOT NULL,
   PRIMARY KEY (`num_offre`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -378,7 +378,7 @@ CREATE TABLE `offre_image` (
   `fichier` varchar(100) NOT NULL,
   `defaut` enum('oui','non') NOT NULL DEFAULT 'non',
   PRIMARY KEY (`num_image`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,7 +387,7 @@ CREATE TABLE `offre_image` (
 
 LOCK TABLES `offre_image` WRITE;
 /*!40000 ALTER TABLE `offre_image` DISABLE KEYS */;
-INSERT INTO `offre_image` VALUES (40,7,'/IMG_5635-7.jpg','oui'),(42,8,'/IMG_5640-8.jpg','oui'),(43,9,'/IMG_5632-9.jpg','oui'),(45,11,'/IMG_5187 - Copy 1-11.jpg','oui'),(50,16,'/IMG_2067-16.jpg','oui'),(52,12,'/MACODA_PERSPECTIVE_RENDU_1_A-12.jpg','oui'),(53,13,'/MACODA_PERSPECTIVE_RENDU_1_A-13.jpg','oui'),(54,15,'/MACODA_PERSPECTIVE_RENDU_1_A-15.jpg','oui'),(59,20,'/012-20.jpg','non'),(60,20,'/061-20.jpg','non');
+INSERT INTO `offre_image` VALUES (40,7,'/IMG_5635-7.jpg','oui'),(42,8,'/IMG_5640-8.jpg','oui'),(43,9,'/IMG_5632-9.jpg','oui'),(45,11,'/IMG_5187 - Copy 1-11.jpg','oui'),(50,16,'/IMG_2067-16.jpg','oui'),(52,12,'/MACODA_PERSPECTIVE_RENDU_1_A-12.jpg','oui'),(53,13,'/MACODA_PERSPECTIVE_RENDU_1_A-13.jpg','oui'),(54,15,'/MACODA_PERSPECTIVE_RENDU_1_A-15.jpg','oui'),(59,20,'/012-20.jpg','non'),(60,20,'/061-20.jpg','oui');
 /*!40000 ALTER TABLE `offre_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,7 +411,7 @@ CREATE TABLE `offre_type_bien` (
 
 LOCK TABLES `offre_type_bien` WRITE;
 /*!40000 ALTER TABLE `offre_type_bien` DISABLE KEYS */;
-INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2),(11,2),(12,1),(13,2),(15,2),(16,1);
+INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2),(11,2),(12,1),(13,2),(15,2),(16,1),(20,3),(22,1),(23,2);
 /*!40000 ALTER TABLE `offre_type_bien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -531,4 +531,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-09 17:59:57
+-- Dump completed on 2015-11-14 15:07:26
