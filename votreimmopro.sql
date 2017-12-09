@@ -37,7 +37,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'immo','immo33','administrateur'),(2,'admin','admin33','ico');
+INSERT INTO `admin` VALUES (1,'immo','immo33','administrateur'),(2,'admin','admin335','ico');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,7 +216,7 @@ CREATE TABLE `news` (
   `image1` varchar(250) DEFAULT NULL,
   `online` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_news`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,7 +225,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (29,'2015-10-30 00:00:00','Bientôt à La Teste, LE 860','','A la vente ou à la location 6150 m2 de surfaces commerciales, Livraison printemps 2018','/MACODA_PERSPECTIVE_RENDU_1_A-29.jpg',1);
+INSERT INTO `news` VALUES (30,'2016-04-19 00:00:00','MIRAGE expérience','','Entre Bordeaux et le Bassin, MIRAGE expérience  le must du diner spectacle, pourra accueillir 1000 personnes, \r\nOuverture prévue second semestre 2018','/Logo_Texte_mirage_jpeg-30.jpg',1),(31,'2016-10-18 00:00:00','SPECIAL INVESTISSEUR','','Nous vous proposons de nombreux produits de 500 K€ à 14 000 K€, générant des rendements attractifs.','/1-.jpg',1),(32,'2017-06-23 00:00:00','Le B. Retail Park','','En exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales divisibles à partir de 175 m2.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison 1 er trimestre 2019\r\n','/17.06.14 - le barp - le b rétail park - perspective 2-.jpg',1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +242,7 @@ CREATE TABLE `newsletter` (
   `titre` varchar(250) DEFAULT NULL,
   `bas_page` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +251,7 @@ CREATE TABLE `newsletter` (
 
 LOCK TABLES `newsletter` WRITE;
 /*!40000 ALTER TABLE `newsletter` DISABLE KEYS */;
-INSERT INTO `newsletter` VALUES (12,'2015-01-01 00:00:00','Une offre à ne pas rater',' '),(13,'2015-10-03 00:00:00','EXCLUVITE',''),(14,'2015-10-03 00:00:00','EXCLUSIVITE !! Espace commercial MACODA','');
+INSERT INTO `newsletter` VALUES (12,'2015-01-01 00:00:00','Une offre à ne pas rater',' '),(13,'2015-10-03 00:00:00','EXCLUVITE',''),(14,'2015-10-03 00:00:00','EXCLUSIVITE !! Espace commercial MACODA',''),(15,'2016-04-26 00:00:00','MIRAGE','');
 /*!40000 ALTER TABLE `newsletter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,7 +270,7 @@ CREATE TABLE `newsletter_detail` (
   `link` varchar(250) DEFAULT NULL,
   `texte` text,
   PRIMARY KEY (`id`,`id_newsletter`)
-) ENGINE=InnoDB AUTO_INCREMENT=331 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=333 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,7 +279,7 @@ CREATE TABLE `newsletter_detail` (
 
 LOCK TABLES `newsletter_detail` WRITE;
 /*!40000 ALTER TABLE `newsletter_detail` DISABLE KEYS */;
-INSERT INTO `newsletter_detail` VALUES (325,12,'','/IMG_5187-12.jpg','http://www.votreimmopro.com',''),(330,14,'Livraison 1er semestre 2017','/IMG_5659-.jpg','http://www.votreimmopro.com/','Au coeur du parc d\'activité de La Teste, 6150 m2 de surfaces commerciales');
+INSERT INTO `newsletter_detail` VALUES (325,12,'','/IMG_5187-12.jpg','http://www.votreimmopro.com',''),(330,14,'Livraison 1er semestre 2017','/IMG_5659-.jpg','http://www.votreimmopro.com/','Au coeur du parc d\'activité de La Teste, 6150 m2 de surfaces commerciales'),(332,15,'','/1-.jpg','http://www.votreimmopro.com/','Entre Bordeaux et le Bassin, MIRAGE est le nom du cabaret spectacle actuellement en projet.\r\nLa demande de permis de construire va être déposée prochainement. (A suivre.....)');
 /*!40000 ALTER TABLE `newsletter_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,7 +352,7 @@ CREATE TABLE `offre` (
   `a_la_une` enum('oui','non') NOT NULL DEFAULT 'non',
   `online` enum('oui','non') NOT NULL,
   PRIMARY KEY (`num_offre`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,7 +361,7 @@ CREATE TABLE `offre` (
 
 LOCK TABLES `offre` WRITE;
 /*!40000 ALTER TABLE `offre` DISABLE KEYS */;
-INSERT INTO `offre` VALUES (7,'Ensemble immobilier mixte activité-bureaux',1500,0,'Au coeur de la ZI de la Madère, à Villenave d\'Ornon, sortie N° 17 de la rocade, bel ensemble immobilier de 1500 m2 sur une parcelle de 3500 m2 entièrement clôturée, avec parking.\r\nLoué à un groupe de distribution.','',2100000,'non','oui'),(8,'IMMEUBLE DE BUREAUX',1039,0,'A proximité de la zone commerciale Auchan Lac, sortie N° 4 de la rocade, Immeuble de bureaux en R+1 d\'environ 1039 m2, comprenant 36 places de stationnement.\r\nLoué à un établissement bancaire.','',2100000,'non','oui'),(9,'Immeuble de bureaux indépendant',786,0,'Au coeur d\'Europarc, zone tertiaire importante de la métropole bordelaise, sortie N°14 et 15 de la rocade, immeuble de bureaux de 786 m2 loué à une société d\'envergure internationale.','',1365000,'non','oui'),(11,'Bâtiment d\'activité',225,0,'Au coeur du Parc d\'Activité de la ville d\'AUDENGE, Bassin d\'Arcachon Nord\r\nBâtiment d\'activité d\'une surface de 225 m2 environ sur un terrain entièrement clos de 1000 m2.\r\nBeau potentiel, logement à l\'étage.\r\nIdéal pour une entreprise artisanale qui souhaite résider sur le site.\r\nA voir.','',220000,'non','oui'),(12,'EXCLUSIVITE !! Espace commercial LE 860',710,0,'LA TESTE, Bassin d\'Arcachon, Ensemble commercial de 6150 m2 situé au coeur du Parc d\'Activité.\r\nLOT N°1: façade commerciale, livré avec vitrine, fluide en attente, bail 3/6/9, Pas de droit d\'entrée, parking....\r\nDossier sur demande.\r\nLoyer annuel HT/HC: 92 300 € . Honoraires d\'agence 15 % HT\r\nLivraison prévue: 1er semestre 2018\r\n','',92300,'non','oui'),(13,'EXCLUSIVITE !! Espace commercial LE 860',800,0,'LA TESTE, Bassin d\'Arcachon, Ensemble commercial de 6150 m2 situé au coeur du Parc d\'Activité. LOT N°2: livré avec vitrine, fluide en attente, vente en VEFA, ...','',1092000,'non','oui'),(15,'EXCLUSIVITE !! Espace commercial LE 860',710,0,'LA TESTE, Bassin d\'Arcachon, Ensemble commercial de 6150 m2 situé au coeur du Parc d\'Activité. LOT N°1, première ligne,  livré avec vitrine, fluide en attente, vente en VEFA\r\nDossier sur demande.\r\nLivraison 1er semestre 2018','',1140615,'non','oui'),(16,'BUREAUX A LOUER',60,0,'Bureaux entièrement cloisonnés d\'une surface de 60 m2 au rez de chaussée d\'un immeuble tertiaire situé à Artigues près Bordeaux.\r\nEtat impeccable, libre de suite.\r\nLoyer mensuel pour 60 m2 : 740 € HT\r\nCharges mensuelles : 103 € HT\r\nBail 3-6-9     -    honoraires 1332 € HT\r\n06.35.33.63.26','',740,'oui','oui'),(20,'Ensemble immobilier mixte activité-bureaux',735,0,'ZFU, rive droite, accès rocade Bordelaise immédiat.\r\nEnsemble immobilier loué à 3 entreprises, surface bâtie 735 m2, terrain clos 2514 m2 avec nombreux parking.\r\nExcellent état.\r\nrendement 9 % acte en main, frais d\'agence inclus','',1224000,'oui','oui'),(25,'RESIDENCE ETUDIANTE',22,0,'La résidence étudiante comprenant 139 appartements est à proximité du campus de Bordeaux I (Talence Pessac Gradignan) un des plus grands d’Europe, qui accueille l’université scientifique de Bordeaux mais aussi d’autres établissements d’enseignement supérieur et de recherche. Desservi par le ligne B du tramway, il occupe 235 hectares.','',116000,'non','oui'),(26,'LOCAL COMMERCIAL',300,0,'Au coeur d\'un ensemble immobilier d\'entreprise, local de 300 m2 entièrement équipé en magasin, multiples éclairages, climatisation, sol quartz, parking, très bonne visibilité sur un axe passant important.','',370000,'oui','oui'),(27,'BATIMENT D\'ACTIVITE',120,0,'A LOUER, 1000 m2 de locaux d\'activité divisible à partir de 120 m2.\r\nNombreux parkings, accès camions\r\nSitué sur un axe routier très fréquenté Bordeaux-Lyon.\r\nPossibilité bail précaire - Entreprise en création acceptée.\r\nLoyer de 55 € HT à 80 € HT le m2 par an en fonction de la surface.','',550,'oui','oui'),(28,'LOCAL COMMERCIAL',500,0,'A LOUER, local commercial de 500 m2 au coeur du centre commercial de Biganos.\r\nEntièrement équipé, Climatisation, carrelage, sanitaires, électricité, parking,......\r\nDroit au bail: 40 000 € HT\r\nLoyer annuel HT: 60 000 €\r\nhonoraires d\'agence: 9 000 € HT','',60000,'oui','oui'),(29,'Ensemble immobilier mixte activité-habitation',411,0,'Au coeur du parc d\'activité de la ville d\'Audenge (bassin d\'Arcachon).\r\nEnsemble immobilier composé de 2 ateliers, 1 hangar, 1 maison d\'habitation.\r\nSur un terrain d\'une contenance de 2000 m2 disposant de 2 entrées séparées, ensemble à rafraichir, surface bâtie 411 m2, droits à construire.\r\nProduit disposant d\'un très grand potentiel, idéal pour Artisans, PME,...','',267500,'oui','oui');
+INSERT INTO `offre` VALUES (16,'BUREAUX DIVISIBLES',60,0,'Bureaux entièrement cloisonnés d\'une surface de 60 m2 au rez de chaussée d\'un immeuble tertiaire situé à Artigues près Bordeaux.\r\nEtat impeccable, libre de suite.\r\n honoraires inclus\r\n06.35.33.63.26','',129000,'oui','oui'),(27,'BATIMENT D\'ACTIVITE',120,0,'A LOUER, 1000 m2 de locaux d\'activité divisible à partir de 120 m2.\r\nNombreux parkings, accès camions\r\nSitué sur un axe routier très fréquenté Bordeaux-Lyon.\r\nPossibilité bail précaire - Entreprise en création acceptée.\r\nLoyer de 55 € HT à 80 € HT le m2 par an en fonction de la surface.','',550,'oui','oui'),(33,'Ensemble immobilier atypique sur BORDEAUX',2200,0,'Superbe appartement sur les toits de Bordeaux offrant une surface de 146 m2 entièrement rénové, bénéficiant d\'une terrasse de 600 m2 aménagée.\r\nAscenseur privatif.\r\nL\'ensemble dispose de 70 places de parking, (sous sol et rez de chaussée)','',2100000,'oui','oui'),(34,'LE CLOS DE LESPARRA',80,0,'Le Clos de Lesparra, résidence au coeur de la commune de Lesparre, comprenant 10 maisons T3 et T4 avec terrasse, garage, jardin, livrée avec sa cuisine équipée.','',229246,'oui','oui'),(35,'IMMEUBLE RIVE DROITE',450,0,'Ensemble immobilier située rive droite, ZFU, proche du tram, sur un terrain de plus de 750 m2 avec parking.','',370000,'oui','non'),(36,'Propriété sur le Bassin',520,0,'Nichée, au cœur d’une forêt de Chênes de Bouleaux et de Noyers, dans un écrin de verdure à 8 km d’Arcachon, de la dune du Pyla, et des plages océanes, découvrez cette magnifique propriété de plus de 500 m2 habitable implantée sur un foncier de 7,5 ha.\r\nPropriété rare sur le bassin, compte tenu de la surface et des prestations. ?','',2250000,'oui','oui'),(37,'Ensemble immobilier à ODOS (TARBES)',3100,0,'Ensemble immobilier commercial entièrement rénové, y compris toiture, 4 locataires.\r\nFrais de notaire réduit.','',2813600,'oui','oui'),(38,'Le B. Retail Park',250,0,'En exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales divisibles à partir de 175 m2.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison 1 er trimestre 2019','/17.06.07 - park event - pdv local 1-38.pdf',288750,'oui','oui');
 /*!40000 ALTER TABLE `offre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -378,7 +378,7 @@ CREATE TABLE `offre_image` (
   `fichier` varchar(100) NOT NULL,
   `defaut` enum('oui','non') NOT NULL DEFAULT 'non',
   PRIMARY KEY (`num_image`)
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,7 +387,7 @@ CREATE TABLE `offre_image` (
 
 LOCK TABLES `offre_image` WRITE;
 /*!40000 ALTER TABLE `offre_image` DISABLE KEYS */;
-INSERT INTO `offre_image` VALUES (40,7,'/IMG_5635-7.jpg','oui'),(42,8,'/IMG_5640-8.jpg','oui'),(43,9,'/IMG_5632-9.jpg','oui'),(45,11,'/IMG_5187 - Copy 1-11.jpg','oui'),(52,12,'/MACODA_PERSPECTIVE_RENDU_1_A-12.jpg','oui'),(53,13,'/MACODA_PERSPECTIVE_RENDU_1_A-13.jpg','oui'),(54,15,'/MACODA_PERSPECTIVE_RENDU_1_A-15.jpg','oui'),(59,20,'/012-20.jpg','non'),(60,20,'/061-20.jpg','oui'),(65,25,'/Diapositive1-25.jpg','oui'),(66,26,'/039_3_-26.jpg','oui'),(68,26,'/IMG_3095-26.jpg','non'),(69,27,'/thumb_IMG_5561_1024-27.jpg','oui'),(71,29,'/IMG_5296-29.jpg','oui'),(72,29,'/IMG_5297-29.jpg','non'),(73,29,'/IMG_5302-29.jpg','non'),(74,29,'/IMG_5295-29.jpg','non'),(75,29,'/IMG_5293-29.jpg','non'),(78,16,'/Photo_bureaux-16.jpg','oui');
+INSERT INTO `offre_image` VALUES (69,27,'/thumb_IMG_5561_1024-27.jpg','oui'),(78,16,'/Photo_bureaux-16.jpg','oui'),(84,33,'/thumb_IMG_5909_1024-33.jpg','oui'),(85,34,'/2016.07.05 - lesparre interieur - copie-34.jpg','oui'),(86,34,'/2016.07.05 - lesparre 02 jardin fond - copie-34.jpg','non'),(87,35,'/thumb_IMG_5867_1024-35.jpg','non'),(88,35,'/thumb_IMG_5878_1024-35.jpg','oui'),(89,36,'/DSC_0044-36.jpg','oui'),(90,36,'/DSC_0046-36.jpg','non'),(91,36,'/DSC_0052-36.jpg','non'),(92,37,'/161021IMAGEPROJET_1-37.jpg','oui'),(93,38,'/17.06.14 - le barp - le b rétail park - perspective 2-38.jpg','oui');
 /*!40000 ALTER TABLE `offre_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,7 +411,7 @@ CREATE TABLE `offre_type_bien` (
 
 LOCK TABLES `offre_type_bien` WRITE;
 /*!40000 ALTER TABLE `offre_type_bien` DISABLE KEYS */;
-INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2),(11,2),(12,1),(13,2),(15,2),(16,1),(20,3),(22,1),(23,2),(24,2),(24,3),(25,2),(25,3),(26,2),(27,1),(28,1),(29,2);
+INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2),(11,2),(12,1),(13,2),(15,2),(16,2),(20,3),(22,1),(23,2),(24,2),(24,3),(25,2),(25,3),(26,2),(27,1),(28,1),(29,2),(30,2),(31,3),(32,3),(33,2),(34,2),(35,2),(36,2),(37,3),(38,2),(39,2);
 /*!40000 ALTER TABLE `offre_type_bien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -531,4 +531,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-25  9:42:34
+-- Dump completed on 2017-12-09 11:54:14
