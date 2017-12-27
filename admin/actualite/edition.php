@@ -47,7 +47,7 @@
 		$contenu= 		null;
 		$online = 		null;
 		for ($i=1;$i<2;$i++) {
-			$img[$i]  = '/img/favicon.png';
+			$img[$i]  = "http://www.placehold.it/200x200/EFEFEF/171717&text=Pas d'image";
 			$imgval[$i]  = '';
 		}
 	}
@@ -108,7 +108,7 @@
 							<div class="col-md-4" style="margin-bottom:20px;">
 								<input type="hidden" name="url<?=$i?>" id="url<?=$i?>" value="<?=$imgval[ $i ]?>"><br>
 		            			<a href="javascript:openCustomRoxy('<?=$i?>')"><img src="<?=$img[ $i ]?>" id="customRoxyImage<?=$i?>" style="max-width:200px;"></a>
-								<img src="img/del.png" width="20" alt="Supprimer" onclick="clearImage(<?=$i?>)"/>
+								<img src="/admin/img/del.png" width="20" alt="Supprimer" onclick="clearImage(<?=$i?>)"/>
 							</div>	
 							<?
 						}
