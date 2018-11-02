@@ -88,7 +88,7 @@
 		?>
 		
 		<!-- Google maps -->
-		<div class="mapClick" onclick="javascript:document.location.href='https://goo.gl/eybFoW'">
+		<div style="cursor:pointer" class="mapClick" onclick="javascript:document.location.href='https://goo.gl/eybFoW'">
 		
 		</div>
 		<!-- End Google maps -->
