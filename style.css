@@ -20,6 +20,8 @@ a, a:hover {color:#ff1900;}
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {color:#303030;} 
 input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 
+.mapClick {background:url('img/plan.jpg') no-repeat center center; width:100%;height:476px;}
+
 /* Header */
 .header {background:#191919;text-align:center;padding-top:25px;}
 .header img {margin-bottom:15px;}
@@ -40,7 +42,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 .estimation button {width:100%;background:#303030;font-family:inherit;text-transform:uppercase;color:#fff;font-size:12px;margin:0;}
 .estimation button:hover {background:#ff1900;}
 
-/* Offres à la une */
+/* Offres Ã  la une */
 .offres-une {position:relative;padding-bottom:50px;}
 .offres-une h1 {text-align:center;}
 .offres-une h2 {text-align:center;color:#fff;font-size:24px;}
@@ -83,7 +85,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 .offre h4 {color:#ff1900;margin-bottom:0;}
 .offre .prix {clear:both;margin-bottom:20px;}
 
-/* Actualité */
+/* ActualitÃ© */
 .actualite {margin-top:20px;}
 .actualite ul {margin-left:0;}
 .actualite li {list-style-type:none;padding-bottom:20px;}
@@ -97,8 +99,8 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 .livre-or ul {margin-left:0;}
 .livre-or li {list-style-type:none;padding-bottom:20px;}
 .livre-or p {color:#fff;}
-.livre-or p.citation:before {content:'“';}
-.livre-or p.citation:after {content:'”';}
+.livre-or p.citation:before {content:'â€œ';}
+.livre-or p.citation:after {content:'â€�';}
 .livre-or p.signature {text-align:right;}
 .livre-or p.signature_gauche {text-align:left;}
 
@@ -108,7 +110,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 .contact form textarea {resize:none;}
 .contact .coordonnees h3, .contact .coordonnees p {color:#fff;}
 
-/* Mentions légales */
+/* Mentions lÃ©gales */
 .mentions-legales {margin-top:20px;color:#fff;}
 .mentions-legales h3 {color:#fff;}
 .mentions-legales p {line-height:1.2;}

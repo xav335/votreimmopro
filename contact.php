@@ -70,7 +70,7 @@
 <!doctype html>
 <html class="no-js" lang="fr">
 	<head>
-	    <?php include('inc/meta.php'); ?>
+	    <?php include('include/meta.php'); ?>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Votreimmopro.com | Contact</title>
@@ -88,7 +88,9 @@
 		?>
 		
 		<!-- Google maps -->
-		<div id="map-canvas" class="mapcanvas"></div>
+		<div class="mapClick" onclick="javascript:document.location.href='https://goo.gl/eybFoW'">
+		
+		</div>
 		<!-- End Google maps -->
 		
 		
