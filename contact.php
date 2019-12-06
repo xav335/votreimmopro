@@ -23,11 +23,11 @@
 	    . "&remoteip=" . $remoteip ;
 	
 	$decode = json_decode(file_get_contents($api_url), true);
-	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "Before\n", 3, "../spy.log");
-	error_log(date("Y-m-d H:i:s") ." : ". $decode .  "\n", 3, "../spy.log");
+	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "Before\n", 3, "spy.log");
+	error_log(date("Y-m-d H:i:s") ." : ". $decode .  "\n", 3, "spy.log");
 	
 	if ($decode['success'] == true) {
-	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "../spy.log");
+	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "spy.log");
 			// ---- Post du formulaire ------------------------------- //
         	if ( $mon_action == "poster" && $anti_spam == '' ) {
         		if ( $debug ) echo "On poste...<br>";
@@ -87,7 +87,7 @@
 	
 	else {
 		// C'est un robot ou le code de vérification est incorrecte
-	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "FAIL\n", 3, "../spy.log");
+	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "FAIL\n", 3, "spy.log");
 	}
 		
 	
