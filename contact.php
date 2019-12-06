@@ -10,6 +10,83 @@
 	$anti_spam = $_POST[ "as" ];
 	//print_pre( $_POST );
 	
+	// Ma clé privée
+	$secret = "6Le4bsYUAAAAAFIFRKYMtRNDcE2udNP3uDReY1B_";
+	// Paramètre renvoyé par le recaptcha
+	$response = $_POST['g-recaptcha-response'];
+	// On récupère l'IP de l'utilisateur
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+	
+	$api_url = "https://www.google.com/recaptcha/api/siteverify?secret=" 
+	    . $secret
+	    . "&response=" . $response
+	    . "&remoteip=" . $remoteip ;
+	
+	$decode = json_decode(file_get_contents($api_url), true);
+	
+	if ($decode['success'] == true) {
+			// ---- Post du formulaire ------------------------------- //
+        	if ( $mon_action == "poster" && $anti_spam == '' ) {
+        		if ( $debug ) echo "On poste...<br>";
+        		
+        		// ---- Enregistrement dans "contact" -------- //
+        		if ( 1 == 1 ) {
+        			$num_contact = $contact->isContact( $_POST[ "email" ], $debug );
+        			
+        			unset( $val );
+        			$val[ "id"] = $num_contact;
+        			$val[ "name"] = $_POST[ "nom" ];
+        			$val[ "email"] = $_POST[ "email" ];
+        			$val[ "message"] = $_POST[ "message" ];
+        			$val[ "newsletter"] = $_POST[ "newsletter" ];
+        			$val[ "fromcontact"] = "on";
+        			if ( $num_contact <= 0 ) $contact->contactAdd( $val, $debug );
+        			else $contact->contactModify( $val, $debug );
+        		}
+        		// ------------------------------------------- //
+        		
+        		// ---- Envoi du mail à l'admin -------------- //
+        		if ( 1 == 1 ) {
+        			$entete = "From: ". $val[ "name"] ." <". $val[ "email"]. ">\n";
+        			$entete .= "MIME-version: 1.0\n";
+        			$entete .= "Content-type: text/html; charset= iso-8859-1\n";
+        			//$entete .= "Bcc:webmaster@worldselectholidays.com\n";
+        			//echo "Entete :<br>" . $entete . "<br><br>";
+        			
+        			$sujet = utf8_decode( "Prise de contact" );
+        			
+        			//$_to = "NePasRepondre@votreimmopro.com";
+        			$_to = "fjavi.gonzalez@gmail.com";
+        			//$_to = "contact@votreimmopro.com";
+        			//echo "Envoi du message à : " . $_to . "<br><br>";
+        			
+        			$message = "Bonjour,<br><br>";
+        			$message .= "La personne suivante a rempli le formulaire de contact de votre site :<br>";
+        			$message .= "Nom : <b>" . $_POST[ "nom" ] . " " . $_POST[ "prenom" ] . "</b><br>";
+        			$message .= "E-mail / Téléphone : <b>" . $_POST[ "email" ] . " / " . $_POST[ "tel" ] . "</b><br>";
+        			$message .= "Type de bien : <b>" . $_POST[ "type_bien" ] . "</b><br>";
+        			$message .= "Surface : <b>" . $_POST[ "surface" ] . "</b><br>";
+        			$message .= "Code postal : <b>" . $_POST[ "cp" ] . "</b><br>";
+        			$message .= "Ville : <b>" . $_POST[ "ville" ] . "</b><br>";
+        			$message .= "Message : <br><i>" . nl2br( $_POST[ "message" ] ) . "</i><br><br>";
+        			$message .= "Cordialement.";
+        			$message = utf8_decode( $message );
+        			if ( $debug ) echo $message;
+        			
+        			mail( $_to, $sujet, stripslashes( $message ), $entete );
+        			//exit();
+        		}
+        		// ------------------------------------------- //
+        		
+        	}
+        	// ------------------------------------------------------- //
+	}
+	
+	else {
+		// C'est un robot ou le code de vérification est incorrecte
+	}
+		
+	
 	// ---- Post du formulaire ------------------------------- //
 	if ( $mon_action == "poster" && $anti_spam == '' ) {
 		if ( $debug ) echo "On poste...<br>";
@@ -32,7 +109,7 @@
 		
 		// ---- Envoi du mail à l'admin -------------- //
 		if ( 1 == 1 ) {
-			$entete = "From:Votre immo pro <NePasRepondre@votreimmopro.com>\n";
+			$entete = "From: ". $val[ "name"] ." <". $val[ "email"]. ">\n";
 			$entete .= "MIME-version: 1.0\n";
 			$entete .= "Content-type: text/html; charset= iso-8859-1\n";
 			//$entete .= "Bcc:webmaster@worldselectholidays.com\n";
@@ -41,8 +118,8 @@
 			$sujet = utf8_decode( "Prise de contact" );
 			
 			//$_to = "NePasRepondre@votreimmopro.com";
-			//$_to = "fjavi.gonzalez@gmail.com";
-			$_to = "contact@votreimmopro.com";
+			$_to = "fjavi.gonzalez@gmail.com";
+			//$_to = "contact@votreimmopro.com";
 			//echo "Envoi du message à : " . $_to . "<br><br>";
 			
 			$message = "Bonjour,<br><br>";
@@ -147,7 +224,7 @@
 						<p><input type="checkbox" name="newsletter" value="on" />&nbsp;Je souhaite m'inscrire à votre newsletter</p>
 					</div>
 					<div class="row">
-					<div class="large-4 columns g-recaptcha" data-sitekey="6LcsYMQUAAAAAA2btopDEEM4Qdkfo12CTosh6E1k"></div>
+					<div class="large-4 columns g-recaptcha" data-sitekey="6Le4bsYUAAAAAFIFRKYMtRNDcE2udNP3uDReY1B_"></div>
 					<div class="large-4 columns"><button>Envoyer votre demande</button></div>
 					</div>
 				</form>
