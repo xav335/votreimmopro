@@ -9,7 +9,7 @@
 	$mon_action = $_POST[ "mon_action" ];
 	$anti_spam = $_POST[ "as" ];
 	//print_pre( $_POST );
-	print_r($decode);
+	
 	
 	// Ma clé privée
 	$secret = "6Le4bsYUAAAAAFIFRKYMtRNDcE2udNP3uDReY1B_";
@@ -23,6 +23,7 @@
 	    . "&remoteip=" . $remoteip ;
 	
 	$decode = json_decode(file_get_contents($api_url), true);
+	print_r($decode);
 	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "Before\n", 3, "spy.log");
 	
 	if ($decode['success'] == true) {
