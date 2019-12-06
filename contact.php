@@ -9,6 +9,7 @@
 	$mon_action = $_POST[ "mon_action" ];
 	$anti_spam = $_POST[ "as" ];
 	//print_pre( $_POST );
+	print_r($decode);
 	
 	// Ma clé privée
 	$secret = "6Le4bsYUAAAAAFIFRKYMtRNDcE2udNP3uDReY1B_";
@@ -23,7 +24,6 @@
 	
 	$decode = json_decode(file_get_contents($api_url), true);
 	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "Before\n", 3, "spy.log");
-	error_log(date("Y-m-d H:i:s") ." : ". print_r($decode) .  "\n", 3, "spy.log");
 	
 	if ($decode['success'] == true) {
 	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "spy.log");
