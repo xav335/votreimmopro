@@ -12,7 +12,7 @@
 	
 	
 	// Ma clé privée
-	$secret = "6Le4bsYUAAAAAFIFRKYMtRNDcE2udNP3uDReY1B_";
+	$secret = "6Le4bsYUAAAAAL-nUWFWqRsAelcnrspXQWcidBZx";
 	// Paramètre renvoyé par le recaptcha
 	$response = $_POST['g-recaptcha-response'];
 	// On récupère l'IP de l'utilisateur
