@@ -84,64 +84,11 @@
 	
 	else {
 		// C'est un robot ou le code de vérification est incorrecte
+	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] ."\n", 3, "../spy.log");
 	}
 		
 	
-	// ---- Post du formulaire ------------------------------- //
-	if ( $mon_action == "poster" && $anti_spam == '' ) {
-		if ( $debug ) echo "On poste...<br>";
-		
-		// ---- Enregistrement dans "contact" -------- //
-		if ( 1 == 1 ) {
-			$num_contact = $contact->isContact( $_POST[ "email" ], $debug );
-			
-			unset( $val );
-			$val[ "id"] = $num_contact;
-			$val[ "name"] = $_POST[ "nom" ];
-			$val[ "email"] = $_POST[ "email" ];
-			$val[ "message"] = $_POST[ "message" ];
-			$val[ "newsletter"] = $_POST[ "newsletter" ];
-			$val[ "fromcontact"] = "on";
-			if ( $num_contact <= 0 ) $contact->contactAdd( $val, $debug );
-			else $contact->contactModify( $val, $debug );
-		}
-		// ------------------------------------------- //
-		
-		// ---- Envoi du mail à l'admin -------------- //
-		if ( 1 == 1 ) {
-			$entete = "From: ". $val[ "name"] ." <". $val[ "email"]. ">\n";
-			$entete .= "MIME-version: 1.0\n";
-			$entete .= "Content-type: text/html; charset= iso-8859-1\n";
-			//$entete .= "Bcc:webmaster@worldselectholidays.com\n";
-			//echo "Entete :<br>" . $entete . "<br><br>";
-			
-			$sujet = utf8_decode( "Prise de contact" );
-			
-			//$_to = "NePasRepondre@votreimmopro.com";
-			$_to = "fjavi.gonzalez@gmail.com";
-			//$_to = "contact@votreimmopro.com";
-			//echo "Envoi du message à : " . $_to . "<br><br>";
-			
-			$message = "Bonjour,<br><br>";
-			$message .= "La personne suivante a rempli le formulaire de contact de votre site :<br>";
-			$message .= "Nom : <b>" . $_POST[ "nom" ] . " " . $_POST[ "prenom" ] . "</b><br>";
-			$message .= "E-mail / Téléphone : <b>" . $_POST[ "email" ] . " / " . $_POST[ "tel" ] . "</b><br>";
-			$message .= "Type de bien : <b>" . $_POST[ "type_bien" ] . "</b><br>";
-			$message .= "Surface : <b>" . $_POST[ "surface" ] . "</b><br>";
-			$message .= "Code postal : <b>" . $_POST[ "cp" ] . "</b><br>";
-			$message .= "Ville : <b>" . $_POST[ "ville" ] . "</b><br>";
-			$message .= "Message : <br><i>" . nl2br( $_POST[ "message" ] ) . "</i><br><br>";
-			$message .= "Cordialement.";
-			$message = utf8_decode( $message );
-			if ( $debug ) echo $message;
-			
-			mail( $_to, $sujet, stripslashes( $message ), $entete );
-			//exit();
-		}
-		// ------------------------------------------- //
-		
-	}
-	// ------------------------------------------------------- //
+	
 ?>
 
 <!doctype html>
