@@ -16,7 +16,6 @@
 	$response = $_POST['g-recaptcha-response'];
 	// On récupère l'IP de l'utilisateur
     $remoteip = $_SERVER['REMOTE_ADDR'];
-	
 	$api_url = "https://www.google.com/recaptcha/api/siteverify?secret=" 
 	    . $secret
 	    . "&response=" . $response
@@ -24,7 +23,7 @@
 	
 	$decode = json_decode(file_get_contents($api_url), true);
 	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "Before\n", 3, "spy.log");
-	error_log(date("Y-m-d H:i:s") ." : ". printr($decode) .  "\n", 3, "spy.log");
+	error_log(date("Y-m-d H:i:s") ." : ". print_r($decode) .  "\n", 3, "spy.log");
 	
 	if ($decode['success'] == true) {
 	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "spy.log");
