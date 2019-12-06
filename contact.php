@@ -24,7 +24,7 @@
 	
 	$decode = json_decode(file_get_contents($api_url), true);
 	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "Before\n", 3, "spy.log");
-	error_log(date("Y-m-d H:i:s") ." : ". $decode .  "\n", 3, "spy.log");
+	error_log(date("Y-m-d H:i:s") ." : ". printr($decode) .  "\n", 3, "spy.log");
 	
 	if ($decode['success'] == true) {
 	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "spy.log");
