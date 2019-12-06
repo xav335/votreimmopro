@@ -78,6 +78,7 @@
 	    <link rel="stylesheet" href="js/vendor/swiper/css/swiper.min.css">
 		<link rel="stylesheet" href="style.css" />
 		<script src="js/vendor/modernizr.js"></script>
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	</head>
 	
 	<body class="contact">
@@ -145,7 +146,10 @@
 					<div class="large-12 columns coordonnees">
 						<p><input type="checkbox" name="newsletter" value="on" />&nbsp;Je souhaite m'inscrire à votre newsletter</p>
 					</div>
-					<button>Envoyer votre demande</button>
+					<div class="row">
+					<div class="large-4 columns g-recaptcha" data-sitekey="6LcsYMQUAAAAAA2btopDEEM4Qdkfo12CTosh6E1k"></div>
+					<div class="large-4 columns"><button>Envoyer votre demande</button></div>
+					</div>
 				</form>
 			</div>
 			
@@ -178,8 +182,18 @@
 	    <script src="js/vendor/swiper/js/swiper.min.js"></script>
 	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 	    
+	    <script type="text/javascript">
+          var onloadCallback = function() {
+            alert("grecaptcha is ready!");
+          };
+        </script>
+	   
+	    
 		<script>
-			
+
+
+
+		
 			// ---- Google Maps ----------------------------------------- //
 			if ( 1 == 1 ) {
 				
