@@ -18,13 +18,15 @@
 	if ( $mon_action == "poster" && $anti_spam == '' ) {
 		//echo "On poste...<br>";
 		
-		$entete = "From:Votre immo pro <NePasRepondre@votreimmopro.com>\n";
+	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  " FromHome\n", 3, "spy.log");
+	    
+		$entete = "From: ". $_POST[ "nom"] ." <". $_POST[ "email"]. ">\n";
 		$entete .= "MIME-version: 1.0\n";
 		$entete .= "Content-type: text/html; charset= iso-8859-1\n";
 		//$entete .= "Bcc:webmaster@worldselectholidays.com\n";
 		//echo "Entete :<br>" . $entete . "<br><br>";
 		
-		$sujet = utf8_decode( "Demande d'estimation" );
+		$sujet = utf8_decode( "Demande d'estimation " );
 		
 		//$_to = "NePasRepondre@votreimmopro.com";
 		//$_to = "fjavi.gonzalez@gmail.com";

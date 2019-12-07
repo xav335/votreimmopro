@@ -46,7 +46,9 @@
 		
 		// ---- Envoi du mail à l'admin -------------- //
 		if ( 1 == 1 ) {
-			$entete = "From:Votre immo pro <NePasRepondre@votreimmopro.com>\n";
+		    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  " FromGoldBook\n", 3, "spy.log");
+		    
+			$entete = "From: ". $val[ "name"] ." <". $val[ "email"]. ">\n";
 			$entete .= "MIME-version: 1.0\n";
 			$entete .= "Content-type: text/html; charset= iso-8859-1\n";
 			//$entete .= "Bcc:webmaster@worldselectholidays.com\n";
