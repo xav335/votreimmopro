@@ -6,11 +6,9 @@
 	
 	$contact = new Contact();
 	
-	$mon_action = $_POST[ "mon_action" ];
-	$anti_spam = $_POST[ "as" ];
 	//print_pre( $_POST );
 	
-	
+	/////////////////////////  GOOGLE CAPTCHA //////////////////////////
 	// Ma clé privée
 	$secret = "6Le4bsYUAAAAAL-nUWFWqRsAelcnrspXQWcidBZx";
 	// Paramètre renvoyé par le recaptcha
@@ -27,9 +25,8 @@
 	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "Before\n", 3, "spy.log");
 	
 	if ($decode['success'] == true) {
-	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "spy.log");
+	       error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "spy.log");
 			// ---- Post du formulaire ------------------------------- //
-        	if ( $mon_action == "poster" && $anti_spam == '' ) {
         		if ( $debug ) echo "On poste...<br>";
         		
         		// ---- Enregistrement dans "contact" -------- //
@@ -81,16 +78,13 @@
         		}
         		// ------------------------------------------- //
         		
-        	}
-        	// ------------------------------------------------------- //
 	}
 	
 	else {
 		// C'est un robot ou le code de vérification est incorrecte
 	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "FAIL\n", 3, "spy.log");
 	}
-		
-	
+	//////////////   FIN GOOGLE CAPTCHA ///////////////////
 	
 ?>
 
@@ -129,9 +123,6 @@
 			</div>
 			<div class="large-8 medium-8 small-12 columns">
 				<form id="formulaire" method="post" action="contact.php">
-					<input type="hidden" name="mon_action" id="mon_action" value="" />
-					<input type="hidden" name="as" value="" />
-					
 					<div class="row">
 						<div class="large-6 columns">
 							<label><input type="text" name="nom" id="nom" placeholder="Nom" /></label>
