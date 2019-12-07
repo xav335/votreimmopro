@@ -22,7 +22,7 @@
 	
 	$decode = json_decode(file_get_contents($api_url), true);
 	print_r($decode);
-	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "Before\n", 3, "spy.log");
+	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "BeforeFORM\n", 3, "spy.log");
 	
 	if ($decode['success'] == true) {
 	       error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "spy.log");
@@ -53,11 +53,11 @@
         			//$entete .= "Bcc:webmaster@worldselectholidays.com\n";
         			//echo "Entete :<br>" . $entete . "<br><br>";
         			
-        			$sujet = utf8_decode( "Prise de contact" );
+        			$sujet = utf8_decode( "Prise de contact VOTREIMMOPRO.COM" );
         			
         			//$_to = "NePasRepondre@votreimmopro.com";
-        			$_to = "fjavi.gonzalez@gmail.com";
-        			//$_to = "contact@votreimmopro.com";
+        			//$_to = "fjavi.gonzalez@gmail.com";
+        			$_to = "contact@votreimmopro.com";
         			//echo "Envoi du message à : " . $_to . "<br><br>";
         			
         			$message = "Bonjour,<br><br>";
