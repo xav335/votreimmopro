@@ -29,8 +29,8 @@
 		$sujet = utf8_decode( "Demande d'estimation " );
 		
 		//$_to = "NePasRepondre@votreimmopro.com";
-		//$_to = "fjavi.gonzalez@gmail.com";
-		$_to = "contact@votreimmopro.com";
+		$_to = "fjavi.gonzalez@gmail.com";
+		//$_to = "contact@votreimmopro.com";
 		//echo "Envoi du message à : " . $_to . "<br><br>";
 		
 		$message = "Bonjour,<br><br>";
