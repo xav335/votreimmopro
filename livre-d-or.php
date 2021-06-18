@@ -114,10 +114,10 @@
 						$i=0;
 						foreach ($result as $value) { 
 							$i++;
-							echo "<li>\n";
-							echo "	<p class='citation'>" . nl2br( $value[ "message" ] ) . "</p>\n";
-							echo "	<p class='signature'>" . $value[ "nom" ] . "</p>\n";
-							echo "</li>\n";
+							echo "<li>";
+							echo "<p class='citation'>----" . nl2br( $value[ "message" ] ) . "</p>";
+							echo "<p class='signature'>" . $value[ "nom" ] . "</p>";
+							echo "</li>";
 						}
 					}
 					?>
