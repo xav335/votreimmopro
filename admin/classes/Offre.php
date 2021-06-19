@@ -92,16 +92,20 @@ class Offre extends StorageManager {
 		try {
 			( $value[ 'online' ] == 'oui' ) ? $online = "oui" : $online = "non";
 			( $value[ 'a_la_une' ] == 'oui' ) ? $a_la_une = "oui" : $a_la_une = "non";
+			$nb_piece = 0;
+			$fichier_pdf = '';
 			
 			$sql = "INSERT INTO `offre`
-				(`titre`, `surface`, `description`, `prix`, `a_la_une`, `online`)
+				(`titre`, `surface`, `description`, `prix`, `fichier_pdf`, `nb_piece`, `a_la_une`, `online`)
 				VALUES (
 				'". addslashes( $value[ "titre" ] ) ."',
 				". intval( $value[ "surface" ] ) .",
 				'". addslashes( $value[ "description" ] ) ."',
 				". intval( $value[ "prix" ] ) .",
-				'". $online ." ',
-				'". $a_la_une ." '
+				'". $fichier_pdf ." ',
+				'". $nb_piece ." ',
+				'". $a_la_une ." ',
+				'". $online ." '
 			);";
 			if ( $debug ) echo $sql . "<br>";
 			else {

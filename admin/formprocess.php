@@ -105,10 +105,10 @@
 				try {
 					$num_offre = $offre->modifier( $_POST, $debug );
 					
-					// ---- Suppression éventuelle des anciennes données ----------------- //
+					// ---- Suppression ï¿½ventuelle des anciennes donnï¿½es ----------------- //
 					$offre_type_bien->supprimer( $num_offre, 0, $debug );
 					
-					// ---- MAJ des types de bien associés à l'offre --------------------- //
+					// ---- MAJ des types de bien associï¿½s ï¿½ l'offre --------------------- //
 					foreach( $_POST[ "type_bien" ] as $num_type_bien ) {
 						$val[ "num_offre" ] = $num_offre;
 						$val[ "num_type_bien" ] = $num_type_bien;
@@ -124,12 +124,12 @@
 			} 
 			// ------------------------------------------------------------------- //
 			
-			// ---- Ajouter une offre -------------------------------------------- //
+			// ---- Ajouter une offre ----action = ADD---------------------------------------- //
 			else {
 				try {
 					$num_offre = $offre->ajouter( $_POST, $debug );
 					
-					// ---- MAJ des types de bien associés à l'offre --------------------- //
+					// ---- MAJ des types de bien associï¿½s ï¿½ l'offre --------------------- //
 					foreach( $_POST[ "type_bien" ] as $num_type_bien ) {
 						$val[ "num_offre" ] = $num_offre;
 						$val[ "num_type_bien" ] = $num_type_bien;
@@ -153,14 +153,13 @@
 					if ( $debug ) echo "--- filenameDest : " . $filenameDest . "<br>";
 					
 					// ---- En fonction de l'orientation de l'image ---- //
-					if ( 1 == 1 ) {
 						/*$size = getimagesize( $filenameDest );
 						$largeur = $size[ 0 ];
 						$hauteur = $size[ 1 ];
 					
 						// ---- Format Paysage ----------------------------- //
 						if ( $largeur >= $hauteur ) {*/
-							
+					   try {		
 							// ---- Image de taille "grande" ----- //
 							$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/grande' . $filenameDest;
 							if ( $debug ) echo "--- destination : " . $destination . "<br>";
@@ -176,6 +175,10 @@
 							if ( $debug ) echo "--- destination : " . $destination . "<br>";
 							$imageManager->imageResize( $source, $destination, 303, null );
 							
+    					} catch ( Exception $e ) {
+    					    echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage(), "\n";
+    					    exit();
+    					}	
 						/*}
 						// ------------------------------------------------- //
 						
@@ -200,14 +203,13 @@
 						}*/
 						// ------------------------------------------------- //
 					
-					}
 					// ------------------------------------------------- //
 					
 					// ---- Enregistrement de l'image ------------------ //
 					unset( $val );
 					$val[ "num_offre" ] = $num_offre;
 					$val[ "fichier" ] = $filenameDest;
-					$val[ "defaut" ] = 'non';
+					$val[ "defaut" ] = ($_POST['action'] == 'add') ? 'oui' : 'non';
 					$offre_image->ajouter( $val, $debug );
 					// ------------------------------------------------- //
 				}
@@ -244,7 +246,7 @@
 			$recherche[ "num_offre" ] = $_POST[ "num_offre" ];
 			$liste_image = $offre_image->getListe( $recherche, $debug );
 			
-			// ---- On passe toutes les autres à "non" ---- //
+			// ---- On passe toutes les autres ï¿½ "non" ---- //
 			if ( !empty( $liste_image ) ) {
 				foreach( $liste_image as $_image ) {
 					$offre_image->setChamp( "defaut", 'non', $_image[ "num_image" ], $debug );

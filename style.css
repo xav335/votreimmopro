@@ -99,8 +99,8 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 .livre-or ul {margin-left:0;}
 .livre-or li {list-style-type:none;padding-bottom:20px;}
 .livre-or p {color:#fff;}
-.livre-or p.citation:before {content:'â€œ';}
-.livre-or p.citation:after {content:'â€�';}
+.livre-or p.citation:before {content:'\2666  ';}
+.livre-or p.citation:after {content:'  \2666';}
 .livre-or p.signature {text-align:right;}
 .livre-or p.signature_gauche {text-align:left;}
 

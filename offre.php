@@ -92,17 +92,16 @@
 				
 				<div class="swiper-vignettes">
 					<ul class="vignettes swiper-wrapper">
-					
 						<?
 						// ---- Affichage des vignettes ------------------ //
-						if ( !empty( $liste_image ) ) {
-							foreach ( $liste_image as $_image ) { 
-								echo "<li class='swiper-slide'><a href='/photos/offre/grande" . $_image[ "fichier" ] . "' class='fancybox' rel='offre'><img src='/photos/offre/vignette" . $_image[ "fichier" ] . "' alt='' /></a></li>\n";
-							}
-						}
-						// ----------------------------------------------- //
-						?>
-					
+						if ( !empty( $liste_image ) ) :
+							foreach ( $liste_image as $_image ) : ?> 
+								<li class="swiper-slide">
+								    <a href="/photos/offre/grande<?php echo $_image[ "fichier" ] ?>" class="fancybox" rel="offre">
+								        <img src="/photos/offre/vignette<?php echo $_image[ "fichier" ] ?>" alt='' /></a>
+								</li>
+					  <?php endforeach;
+						endif;?>
 					</ul>
 					<div class="swiper-button-next vignettes-next"></div>
 					<div class="swiper-button-prev vignettes-prev"></div>

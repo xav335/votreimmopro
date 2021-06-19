@@ -1,10 +1,4 @@
 <?php
-/*
-define("DBHOST", "localhost");
-define("DBNAME", "accleaner");
-define("DBUSER", "accleaner");
-define("DBPASSWD", "accleaner33");
-*/
 // CONSTANTES CONSTANTES CONSTANTES CONSTANTES CONSTANTES CONSTANTES CONSTANTES CONSTANTES
 //mail parametrage
 $mailCustomer = "contact@votreimmopro.com";

@@ -109,19 +109,16 @@
 			<div class="large-7 columns">
 				<h1>Livre d'or</h1>
 				<ul>
-					<?
-					if (!empty($result)) {
+					<?if (!empty($result)) :
 						$i=0;
-						foreach ($result as $value) { 
-							$i++;
-							echo "<li>";
-							echo "<p class='citation'>----" . nl2br( $value[ "message" ] ) . "</p>";
-							echo "<p class='signature'>" . $value[ "nom" ] . "</p>";
-							echo "</li>";
-						}
-					}
-					?>
-					
+						foreach ($result as $value) : 
+							$i++; ?>
+							<li>
+    							<p class="citation"><?php echo nl2br( $value[ "message" ] )?></p>
+    							<p class="signature"><?php echo  $value[ "nom" ] ?></p>
+							</li>
+				  <?php endforeach;
+					endif;?>
 				</ul>
 			</div>
 			
