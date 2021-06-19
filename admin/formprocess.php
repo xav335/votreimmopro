@@ -146,8 +146,10 @@
 			
 			// ---- Gestion des images de l'offre -------------------------------- //
 			//print_pre( $_POST[ "mes_images" ] );
-			if ( !empty( $_POST[ "mes_images" ] ) ) {
-				foreach( $_POST[ "mes_images" ] as $_image ) {
+			if ( !empty( $_POST[ "mes_images" ] ) ) :
+			    $cptImage=0;
+				foreach( $_POST[ "mes_images" ] as $_image ) :
+				    $cptImage++;
 					$source = $_SERVER['DOCUMENT_ROOT'] . $_image;
 					$filenameDest = $imageManager->fileDestManagement( $source, $num_offre );
 					if ( $debug ) echo "--- filenameDest : " . $filenameDest . "<br>";
@@ -209,11 +211,11 @@
 					unset( $val );
 					$val[ "num_offre" ] = $num_offre;
 					$val[ "fichier" ] = $filenameDest;
-					$val[ "defaut" ] = ($_POST['action'] == 'add') ? 'oui' : 'non';
+					$val[ "defaut" ] = ($_POST['action'] == 'add' && $cptImage==1) ? 'oui' : 'non';
 					$offre_image->ajouter( $val, $debug );
 					// ------------------------------------------------- //
-				}
-			}
+				endforeach;
+			endif;
 			// ------------------------------------------------------------------- //
 			
 			// ---- Gestion du PDF ----------------------------------------------- //
