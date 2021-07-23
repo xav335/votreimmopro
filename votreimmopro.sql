@@ -1,8 +1,8 @@
--- MySQL dump 10.18  Distrib 10.3.27-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.19  Distrib 10.3.29-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: votreimmopro
 -- ------------------------------------------------------
--- Server version	10.3.27-MariaDB-0+deb10u1
+-- Server version	10.3.29-MariaDB-0+deb10u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -111,7 +111,7 @@ CREATE TABLE `contact` (
   `fromgoldbook` tinyint(4) NOT NULL DEFAULT 0,
   `fromcontact` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=266 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=268 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
-INSERT INTO `contact` VALUES (264,'','Rukbat','saftulih@yandex.ru',NULL,'<a href=https://drawing-portal.com>Leçons AutoCAD</a>',0,0,1),(265,'','Carennom','carennom@allsets.xyz',NULL,'Yes\r\nhttp://quifilaches.gq/chk/21\r\n',0,0,1);
+INSERT INTO `contact` VALUES (264,'','Rukbat','saftulih@yandex.ru',NULL,'<a href=https://drawing-portal.com>Leçons AutoCAD</a>',0,0,1),(265,'','Carennom','carennom@allsets.xyz',NULL,'Yes\r\nhttp://quifilaches.gq/chk/21\r\n',0,0,1),(266,'','Jamesagego','no-replyUnamunusisk@gmail.com',NULL,'Hello!  votreimmopro.com \r\n \r\nDo you know the best way to talk about your product or services? Sending messages through feedback forms will allow you to simply enter the markets of any country (full geographical coverage for all countries of the world).  The advantage of such a mailing  is that the emails that will be sent through it will find yourself in the mailbox that\'s intended for such messages. Causing messages using Feedback forms isn\'t blocked by mail systems, which suggests it is guaranteed to reach the client. You may be able to send your supply to potential customers who were antecedently untouchable because of spam filters. \r\nWe offer you to check our service for free. We are going to send up to 50,000 message for you. \r\nThe cost of sending one million messages is us $ 49. \r\n \r\nThis letter is created automatically. Please use the contact details below to contact us. \r\n \r\nContact us. \r\nTelegram - @FeedbackMessages \r\nSkype  live:contactform_18 \r\nWhatsApp - +375259112693 \r\nWe only use chat.',0,0,1),(267,'','Eric','eric.jones.z.mail@gmail.com',NULL,'Hi, Eric here with a quick thought about your website votreimmopro.com...\r\n\r\nI’m on the internet a lot and I look at a lot of business websites.\r\n\r\nLike yours, many of them have great content. \r\n\r\nBut all too often, they come up short when it comes to engaging and connecting with anyone who visits.\r\n\r\nI get it – it’s hard.  Studies show 7 out of 10 people who land on a site, abandon it in moments without leaving even a trace.  You got the eyeball, but nothing else.\r\n\r\nHere’s a solution for you…\r\n\r\nTalk With Web Visitor is a software widget that’s works on your site, ready to capture any visitor’s Name, Email address and Phone Number.  You’ll know immediately they’re interested and you can call them directly to talk with them literally while they’re still on the web looking at your site.\r\n\r\nCLICK HERE https://talkwithwebvisitors.com to try out a Live Demo with Talk With Web Visitor now to see exactly how it works.\r\n\r\nIt could be huge for your business – and because you’ve got that phone number, with our new SMS Text With Lead feature, you can automatically start a text (SMS) conversation – immediately… and contacting someone in that 5 minute window is 100 times more powerful than reaching out 30 minutes or more later.\r\n\r\nPlus, with text messaging you can follow up later with new offers, content links, even just follow up notes to keep the conversation going.\r\n\r\nEverything I’ve just described is extremely simple to implement, cost-effective, and profitable. \r\n \r\nCLICK HERE https://talkwithwebvisitors.com to discover what Talk With Web Visitor can do for your business.\r\n\r\nYou could be converting up to 100X more eyeballs into leads today!\r\n\r\nEric\r\nPS: Talk With Web Visitor offers a FREE 14 days trial – and it even includes International Long Distance Calling. \r\nYou have customers waiting to talk with you right now… don’t keep them waiting. \r\nCLICK HERE https://talkwithwebvisitors.com to try Talk With Web Visitor now.\r\n\r\nIf you\'d like to unsubscribe click here http://talkwithwebvisitors.com/unsubscribe.aspx?d=votreimmopro.com\r\n',0,0,1);
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,7 +225,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (32,'2020-01-24 00:00:00','Le B. Retail Park','linkedin','En exclusivité, sur la commune de Le Barp, 3672 m2 de surfaces commerciales VENTE ou LOCATION divisibles à partir de 121 m2.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022\r\n','/2018.11.05 - le barp 01 final-32.jpg',1);
+INSERT INTO `news` VALUES (32,'2020-01-24 00:00:00','Le B. Retail Park','linkedin','L\'enseigne MON BRICO (WELDOM, LEROY MERLIN,...) s\'implantera au coeur du programme Le B. Retail Park, encore quelques lots disponibles, \r\n\r\nLivraison second semestre 2022\r\n','/2018.11.05 - le barp 01 final-32.jpg',1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,14 +345,14 @@ CREATE TABLE `offre` (
   `num_offre` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(100) NOT NULL,
   `surface` int(11) NOT NULL,
-  `nb_piece` int(11) NOT NULL,
+  `nb_piece` int(11) NOT NULL DEFAULT 0,
   `description` text NOT NULL,
-  `fichier_pdf` varchar(100) NOT NULL,
+  `fichier_pdf` varchar(100) DEFAULT '',
   `prix` int(11) NOT NULL,
   `a_la_une` enum('oui','non') NOT NULL DEFAULT 'non',
   `online` enum('oui','non') NOT NULL,
   PRIMARY KEY (`num_offre`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,7 +361,7 @@ CREATE TABLE `offre` (
 
 LOCK TABLES `offre` WRITE;
 /*!40000 ALTER TABLE `offre` DISABLE KEYS */;
-INSERT INTO `offre` VALUES (38,'Le B. Retail Park',239,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales divisibles à partir de 239 m2.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 29 900 € HT, LOT C 1, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',29000,'oui','oui'),(52,'LOCAL COMMERCIAL TARBES',1800,0,'Local commercial d\'une surface de 1800 m2, façade en première ligne, sur axe principal de Tarbes.\r\nIdéal activité négoce, mobilier,.......\r\ndisponible immédiatement.\r\nHonoraires preneur 15 % HT ','',8750,'non','oui'),(64,'Le B. Retail Park',428,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 46 000 € HT, LOT C 2, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',46000,'oui','oui'),(65,'Le B. Retail Park',184,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 23 000 € HT, LOT C 3, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',23000,'oui','oui'),(67,'Le B. Retail Park',331,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 33 100 € HT, LOT C 5, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',33100,'oui','oui'),(68,'Le B. Retail Park',121,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 16 000 € HT, LOT C 6a, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',16000,'oui','oui'),(69,'Le B. Retail Park',121,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 16 000 € HT, LOT C 6b, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',16000,'oui','oui'),(70,'Le B. Retail Park',271,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 32 000 € HT, LOT C 7, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',32000,'oui','oui'),(71,'Le B. Retail Park',271,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 36 000 € HT, LOT C 8, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',36000,'oui','oui'),(72,'Le B. Retail Park',348,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 45 000 € HT, LOT C 9, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',45000,'oui','oui');
+INSERT INTO `offre` VALUES (38,'Le B. Retail Park',239,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales divisibles à partir de 239 m2.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 29 900 € HT, LOT C 1, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',29000,'oui','oui'),(52,'LOCAL COMMERCIAL TARBES',1800,0,'Local commercial d\'une surface de 1800 m2, façade en première ligne, sur axe principal de Tarbes.\r\nIdéal activité négoce, mobilier,.......\r\ndisponible immédiatement.\r\nHonoraires preneur 15 % HT ','',8750,'non','oui'),(64,'Le B. Retail Park',428,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 46 000 € HT, LOT C 2, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',46000,'oui','oui'),(65,'Le B. Retail Park',184,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 23 000 € HT, LOT C 3, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',23000,'oui','oui'),(67,'Le B. Retail Park',331,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 33 100 € HT, LOT C 5, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',33100,'oui','oui'),(68,'Le B. Retail Park',121,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 16 000 € HT, LOT C 6a, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',16000,'oui','oui'),(69,'Le B. Retail Park',121,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 16 000 € HT, LOT C 6b, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',16000,'oui','oui'),(70,'Le B. Retail Park',271,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 32 000 € HT, LOT C 7, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',32000,'oui','oui'),(71,'Le B. Retail Park',271,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 36 000 € HT, LOT C 8, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',36000,'oui','oui'),(72,'Le B. Retail Park',348,0,'A LOUER, en exclusivité, sur la commune de Le Barp, 3715 m2 de surfaces commerciales.\r\nA proximité des supermarchés SUPER U et LEADER PRICE\r\nLivraison second semestre 2022, loyer annuel 45 000 € HT, LOT C 9, Bail 6 ans ferme.\r\nHonoraires: 30 % HT','',45000,'oui','oui'),(78,'VILLA MERIGNAC',120,0,'A vendre à Mérignac, quartier résidentiel, proche accès rocade, villa T5, comprenant au rdc, un grand séjour, cuisine, cellier, WC.\r\nA l\'étage, 3 chambres, une suite parentale avec douche italienne, une salle de bains familiale, WC.\r\nGarage et jardin clos.\r\nLes travaux ont démarré, livraison fin du premier trimestre 2022.','',496000,'oui','oui');
 /*!40000 ALTER TABLE `offre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -378,7 +378,7 @@ CREATE TABLE `offre_image` (
   `fichier` varchar(100) NOT NULL,
   `defaut` enum('oui','non') NOT NULL DEFAULT 'non',
   PRIMARY KEY (`num_image`)
-) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,7 +387,7 @@ CREATE TABLE `offre_image` (
 
 LOCK TABLES `offre_image` WRITE;
 /*!40000 ALTER TABLE `offre_image` DISABLE KEYS */;
-INSERT INTO `offre_image` VALUES (109,38,'/2018.11.05 - le barp 01 final-38.jpg','oui'),(120,38,'/EXTRAIT_IMAGE_1-38.png','non'),(131,52,'/Diapositive1-52.jpg','oui'),(137,64,'/2018.11.05 - le barp 01 final-64.jpg','non'),(138,65,'/2018.11.05 - le barp 01 final-65.jpg','non'),(140,67,'/2018.11.05 - le barp 01 final-67.jpg','non'),(141,68,'/2018.11.05 - le barp 01 final-68.jpg','non'),(142,69,'/2018.11.05 - le barp 01 final-69.jpg','non'),(143,70,'/2018.11.05 - le barp 01 final-70.jpg','non'),(144,71,'/2018.11.05 - le barp 01 final-71.jpg','non'),(145,72,'/2018.11.05 - le barp 01 final-72.jpg','non');
+INSERT INTO `offre_image` VALUES (109,38,'/2018.11.05 - le barp 01 final-38.jpg','oui'),(120,38,'/EXTRAIT_IMAGE_1-38.png','non'),(131,52,'/Diapositive1-52.jpg','oui'),(137,64,'/2018.11.05 - le barp 01 final-64.jpg','oui'),(138,65,'/2018.11.05 - le barp 01 final-65.jpg','oui'),(140,67,'/2018.11.05 - le barp 01 final-67.jpg','oui'),(141,68,'/2018.11.05 - le barp 01 final-68.jpg','oui'),(142,69,'/2018.11.05 - le barp 01 final-69.jpg','oui'),(143,70,'/2018.11.05 - le barp 01 final-70.jpg','oui'),(144,71,'/2018.11.05 - le barp 01 final-71.jpg','oui'),(145,72,'/2018.11.05 - le barp 01 final-72.jpg','oui'),(146,73,'/mars-73.jpg','oui'),(147,74,'/mars-74.jpg','oui'),(162,78,'/Visuel_jour_villa_56-78.jpg','oui');
 /*!40000 ALTER TABLE `offre_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,7 +411,7 @@ CREATE TABLE `offre_type_bien` (
 
 LOCK TABLES `offre_type_bien` WRITE;
 /*!40000 ALTER TABLE `offre_type_bien` DISABLE KEYS */;
-INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2),(11,2),(12,1),(13,2),(15,2),(16,2),(16,3),(20,3),(22,1),(23,2),(24,2),(24,3),(25,2),(25,3),(26,2),(27,1),(28,1),(29,2),(30,2),(31,3),(32,3),(33,2),(34,2),(35,2),(36,2),(37,3),(38,1),(39,1),(40,2),(41,1),(42,1),(43,1),(44,1),(45,1),(46,1),(47,1),(48,1),(49,2),(50,1),(51,1),(52,1),(53,2),(54,2),(55,1),(56,2),(57,2),(58,2),(59,2),(60,2),(61,2),(62,2),(63,2),(64,1),(65,1),(66,1),(67,1),(68,1),(69,1),(70,1),(71,1),(72,1);
+INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2),(11,2),(12,1),(13,2),(15,2),(16,2),(16,3),(20,3),(22,1),(23,2),(24,2),(24,3),(25,2),(25,3),(26,2),(27,1),(28,1),(29,2),(30,2),(31,3),(32,3),(33,2),(34,2),(35,2),(36,2),(37,3),(38,1),(39,1),(40,2),(41,1),(42,1),(43,1),(44,1),(45,1),(46,1),(47,1),(48,1),(49,2),(50,1),(51,1),(52,1),(53,2),(54,2),(55,1),(56,2),(57,2),(58,2),(59,2),(60,2),(61,2),(62,2),(63,2),(64,1),(65,1),(66,1),(67,1),(68,1),(69,1),(70,1),(71,1),(72,1),(73,2),(74,2),(75,2),(76,2),(77,1),(78,2);
 /*!40000 ALTER TABLE `offre_type_bien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -531,4 +531,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-18 17:30:15
+-- Dump completed on 2021-07-23 11:51:06
