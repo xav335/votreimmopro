@@ -1,6 +1,7 @@
 <? 
 	require 'admin/classes/Contact.php';
 	include_once( $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/utils.php" );
+	include_once 'inc/inc.config.php';
 	
 	$debug = false;
 	
@@ -50,6 +51,7 @@
         			$entete = "From: ". $val[ "name"] ." <". $val[ "email"]. ">\n";
         			$entete .= "MIME-version: 1.0\n";
         			$entete .= "Content-type: text/html; charset= iso-8859-1\n";
+        			$entete .= "Bcc:" . $mailBcc . "\n";
         			//$entete .= "Bcc:webmaster@worldselectholidays.com\n";
         			//echo "Entete :<br>" . $entete . "<br><br>";
         			
@@ -57,7 +59,7 @@
         			
         			//$_to = "NePasRepondre@votreimmopro.com";
         			//$_to = "fjavi.gonzalez@gmail.com";
-        			$_to = "contact@votreimmopro.com";
+        			$_to = $mailContact;
         			//echo "Envoi du message à : " . $_to . "<br><br>";
         			
         			$message = "Bonjour,<br><br>";
