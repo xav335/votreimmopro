@@ -21,13 +21,13 @@
 	    . "&remoteip=" . $remoteip ;
 	
 	$decode = json_decode(file_get_contents($api_url), true);
-	print_r($decode);
+	//print_r($decode);
 	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "BeforeFORM\n", 3, "spy.log");
 	
 	if ($decode['success'] == true) {
 	       error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "spy.log");
 			// ---- Post du formulaire ------------------------------- //
-        		echo "On poste...<br>";
+        		//echo "On poste...<br>";
         		
         		// ---- Enregistrement dans "contact" -------- //
         		if ( 1 == 1 ) {
