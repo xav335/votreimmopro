@@ -6,7 +6,7 @@
 	
 	$contact = new Contact();
 	
-	//print_pre( $_POST );
+	print_pre( $_POST );
 	
 	/////////////////////////  GOOGLE CAPTCHA //////////////////////////
 	// Ma clé privée
@@ -27,7 +27,7 @@
 	if ($decode['success'] == true) {
 	       error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "spy.log");
 			// ---- Post du formulaire ------------------------------- //
-        		if ( $debug ) echo "On poste...<br>";
+        		echo "On poste...<br>";
         		
         		// ---- Enregistrement dans "contact" -------- //
         		if ( 1 == 1 ) {
@@ -109,12 +109,6 @@
 		include_once( $_SERVER['DOCUMENT_ROOT'] . "/include/header.php" );
 		?>
 		
-		<!-- Google maps -->
-		<div style="cursor:pointer" class="mapClick" onclick="javascript:document.location.href='https://goo.gl/eybFoW'">
-		
-		</div>
-		<!-- End Google maps -->
-		
 		
 		<!-- Contact -->
 		<div class="row">
@@ -125,18 +119,18 @@
 				<form id="formulaire" method="post" action="contact.php">
 					<div class="row">
 						<div class="large-6 columns">
-							<label><input type="text" name="nom" id="nom" placeholder="Nom" /></label>
+							<label><input type="text" name="nom" id="nom" placeholder="Nom" required /></label>
 						</div>
 						<div class="large-6 columns">
-							<label><input type="text" name="prenom" id="prenom" placeholder="Prénom" /></label>
+							<label><input type="text" name="prenom" id="prenom" placeholder="Prénom" required /></label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="large-6 columns">
-							<label><input type="text" name="email" id="email" placeholder="e-mail" /></label>
+							<label><input type="email" name="email" id="email" placeholder="e-mail" required /></label>
 						</div>
 						<div class="large-6 columns">
-							<label><input type="tel" name="tel" id="tel" placeholder="Téléphone" /></label>
+							<label><input type="tel" name="tel" id="tel" placeholder="Téléphone" required /></label>
 						</div>
 					</div>
 					<div class="row">
@@ -160,7 +154,7 @@
 							<label><input type="text" name="ville" placeholder="Ville" /></label>
 						</div>
 					</div>
-					<textarea name="message" id="message" rows="6" placeholder="Votre message"></textarea>
+					<textarea name="message" id="message" rows="6" placeholder="Votre message" required ></textarea>
 					<div class="large-12 columns coordonnees">
 						<p><input type="checkbox" name="newsletter" value="on" />&nbsp;Je souhaite m'inscrire à votre newsletter</p>
 					</div>
@@ -198,7 +192,6 @@
 		<script src="js/vendor/jquery.js"></script>
 		<script src="js/foundation.min.js"></script>
 	    <script src="js/vendor/swiper/js/swiper.min.js"></script>
-	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 	    
 	    <script type="text/javascript">
           var onloadCallback = function() {
@@ -212,119 +205,7 @@
 
 
 		
-			// ---- Google Maps ----------------------------------------- //
-			if ( 1 == 1 ) {
-				
-				var map;
-				function initialize() {
-					var mapOptions = {
-						mapTypeId: google.maps.MapTypeId.ROADMAP,
-						mapTypeControl: false,
-						zoom: 11,
-						scrollwheel: false,
-						zoomControl: false,
-						panControl: false,
-						streetViewControl: false,
-						scaleControl: false,
-						overviewMapControl: false,
-						center: new google.maps.LatLng(44.901272, -0.38138100000003305)
-					};
-					map = new google.maps.Map(document.getElementById('map-canvas'),
-						mapOptions);
-					var mapStyles = [
-						{
-							"featureType": "landscape",
-							"stylers": [
-								{ "visibility": "on" },
-								{ "hue": "#ff0000" },
-								{ "saturation": -100 },
-								{ "lightness": 0 },
-								{ "gamma": 1 }
-							]
-						},{
-							"featureType": "water",
-							"stylers": [
-								{ "visibility": "on" },
-								{ "hue": "#ff0000" },
-								{ "saturation": -100 },
-								{ "lightness": 0 },
-								{ "gamma": 1 }
-							]
-						},{
-							"featureType": "water",
-							"elementType": "labels",
-							"stylers": [
-								{ "visibility": "on" }
-							]
-						},{
-							"featureType": "administrative",
-							"stylers": [
-								{ "visibility": "on" },
-								{ "hue": "#ff0000" },
-								{ "saturation": -100 },
-								{ "lightness": 0 },
-								{ "gamma": 1 }
-							]
-						},{
-							"featureType": "administrative",
-							"elementType": "labels",
-							"stylers": [
-								{ "visibility": "on" }
-							]
-						},{
-							"featureType": "poi",
-							"stylers": [
-								{ "visibility": "on" },
-								{ "hue": "#ff0000" },
-								{ "saturation": -100 },
-								{ "lightness": 0 },
-								{ "gamma": 1 }
-							]
-						},{
-							"featureType": "road",
-							"stylers": [
-								{ "visibility": "on" },
-								{ "hue": "#ff0000" },
-								{ "saturation": -100 },
-								{ "lightness": 0 },
-								{ "gamma": 1 }
-							]
-						},{
-							"featureType": "transit",
-							"stylers": [
-								{ "visibility": "on" },
-								{ "hue": "#ff0000" },
-								{ "saturation": -100 },
-								{ "lightness": 0 },
-								{ "gamma": 1 }
-							]
-						}
-					];
-					map.setOptions({styles: mapStyles});
-					var icon = {
-						path: 'M16.5,51s-16.5-25.119-16.5-34.327c0-9.2082,7.3873-16.673,16.5-16.673,9.113,0,16.5,7.4648,16.5,16.673,0,9.208-16.5,34.327-16.5,34.327zm0-27.462c3.7523,0,6.7941-3.0737,6.7941-6.8654,0-3.7916-3.0418-6.8654-6.7941-6.8654s-6.7941,3.0737-6.7941,6.8654c0,3.7916,3.0418,6.8654,6.7941,6.8654z',
-						anchor: new google.maps.Point(16.5, 51),
-						fillColor: '#ff1900',
-						fillOpacity: 1,
-						strokeWeight: 0,
-						scale: 0.66
-					};
-					var marker = new google.maps.Marker({
-						position: new google.maps.LatLng(44.901272, -0.38138100000003305),
-						map: map,
-						icon: icon,
-						title: 'marker'
-					});
-				}
-				google.maps.event.addDomListener(window, 'load', initialize);
-				function checkResize(){
-					var center = map.getCenter();
-					google.maps.event.trigger(map, 'resize');
-					map.setCenter(center);
-				}
-				window.onresize = checkResize;
-			}
-			// ---------------------------------------------------------- //
+			
 			
 			// ---- Validation du formulaire ---------------------------- //
 			if ( 1 == 1 ) {
