@@ -7,7 +7,7 @@
 	
 	$contact = new Contact();
 	
-	print_pre( $_POST );
+	//print_pre( $_POST );
 	
 	/////////////////////////  GOOGLE CAPTCHA //////////////////////////
 	// Ma clé privée
