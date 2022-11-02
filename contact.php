@@ -180,7 +180,7 @@
 					email : contact@votreimmopro.com
 				</p>
 				<p>
-					<a href="" target="_blank"><img alt="" src="img/linkin.png"></a>
+					<a href="https://www.linkedin.com/company/votre-immo-pro/" target="_blank"><img alt="" src="img/linkin.png"></a>
 				</p>
 			</div>
 		</div>
