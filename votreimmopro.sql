@@ -170,7 +170,7 @@ CREATE TABLE `goldbook` (
 
 LOCK TABLES `goldbook` WRITE;
 /*!40000 ALTER TABLE `goldbook` DISABLE KEYS */;
-INSERT INTO `goldbook` VALUES (1,'2015-09-06 00:00:00','Franck Langleron','franck_langleron@hotmail.com','Très professionnel ! je recommande !',1),(2,'2015-09-07 00:00:00','Xavier Gonzalez','xavier@gonzalez.pm','Prestation nickel, très pro, très satisfait',1);
+INSERT INTO `goldbook` VALUES (1,'2015-09-06 00:00:00','Franck Langleron','franck_langleron@hotmail.com','Très professionnel ! je recommande !',1),(2,'2015-09-07 00:00:00','Xavier Gonzalez','xavier@gonzalez.pm','Prestation nickel, très professionels, très satisfait',1);
 /*!40000 ALTER TABLE `goldbook` ENABLE KEYS */;
 UNLOCK TABLES;
 

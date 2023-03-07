@@ -22,14 +22,10 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 
 .mapClick {background:url('img/plan.jpg') no-repeat center center; width:100%;height:476px;}
 
-/* Home */
-.home h3 {color:#fff;padding-top: 15px;}
-.home a {color:#fff;padding-top: 15px;}
-.home a:hover {color:#ff1900;}
 /* Header */
-.header {background: rgba(25, 25, 25, 0.24);text-align:center;padding-top:25px;}
+.header {background:#191919;text-align:center;padding-top:25px;}
 .header img {margin-bottom:15px;}
-.header .menu {background:#fff;height: 20px;}
+.header .menu {background:#fff;}
 .header .menu a {color:#000;font-size:14px;text-transform:uppercase;padding:15px;display:inline-block;border-bottom:5px solid transparent;}
 .header .menu a:hover, .header .menu a.active {border-color:#ff1900;}
 
@@ -38,7 +34,6 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 .swiper-slider .swiper-slide {height:475px;background-size:cover;}
 .swiper-pagination-bullet-active {background:#ff1900;}
 .motif {background:url('img/motif.png');position:absolute;width:100%;height:100%;z-index:10;}
-.motif2 {position:absolute;width:100%;height:100%;z-index:10;}
 
 /* Estimation */
 .estimation {width:320px;position:absolute;z-index:15;background:rgba(255,255,255,0.85);padding:15px;top:180px;right:50%;margin-right:-500px;}
@@ -134,7 +129,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 .footer .actualites h2 {font-size:48px;}
 .footer .actualites h4 {margin:0;}
 .footer .actualites h4, .footer .actualites p {font-size:14px;line-height:16px;}
-.footer .links {font-size:14px;padding-top:10px;border-left:1px solid #161616;}
+.footer .links {font-size:14px;padding-top:80px;border-left:1px solid #161616;}
 .footer .links a {display:block;color:#161616;}
 .footer .links a:hover {color:#ff1900;}
 
