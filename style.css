@@ -129,7 +129,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 
 /* Footer */
 .footer {background:#fff;padding-top:20px;}
-.footer .row {margin:0 auto;max-width:62.5rem;width:100%;}
+.footer .row {margin:0 auto;max-width:90rem;width:100%;}
 .footer ul {margin:0;list-style-type:none;}
 .footer .actualites h2 {font-size:48px;}
 .footer .actualites h4 {margin:0;}

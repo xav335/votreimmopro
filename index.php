@@ -30,9 +30,9 @@
 		?>
         <div class="row fullwidth home">
             <div class="large-6 text-center columns" id="professionnels">
-                <h3><a href="professionels/index.php">Espace professionnels</a></h3>
+                <h3><a href="professionnels/index.php">Immobilier d'entreprise</a></h3>
                 &nbsp;<!-- Slider -->
-                <a href="professionels/index.php">
+                <a href="professionnels/index.php">
                     <div>
                         <div class="swiper-slider">
                             <div id="decopro" class="motif"></div>

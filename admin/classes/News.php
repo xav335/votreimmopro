@@ -9,7 +9,7 @@ class News extends StorageManager {
 	public function newsValidGet( $debug=false ){
 		$this->dbConnect();
 		$requete = "SELECT * FROM `news` WHERE online=1 ORDER BY `date_news` DESC" ;
-		if ( $debug ) print_r($requete);
+		print_r($requete);
 		
 		$new_array = null;
 		$result = mysqli_query($this->mysqli,$requete);
