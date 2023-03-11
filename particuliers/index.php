@@ -1,16 +1,16 @@
 <?
-	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre.php" ;
-	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_type_bien.php" ;
-	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_image.php" ;
-    require $_SERVER['DOCUMENT_ROOT'] .'/admin/classes/News.php';
+	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_part.php" ;
+	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_type_bien_part.php" ;
+	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_image_part.php" ;
+    require $_SERVER['DOCUMENT_ROOT'] .'/admin/classes/News_part.php';
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/utils.php" ;
 	session_start();
 	
 	$debug = false;
 	
-	$offre = new Offre();
-	$offre_type_bien = new Offre_type_bien();
-	$offre_image = new Offre_image();
+	$offre = new Offre_part();
+	$offre_type_bien = new Offre_type_bien_part();
+	$offre_image = new Offre_image_part();
 	
 	$mon_action = $_POST[ "mon_action" ];
 	$anti_spam = $_POST[ "as" ];
@@ -94,8 +94,8 @@
 					<div class="large-6 columns">
 						<select name="type_bien" id="type">
 							<option value="">Type de bien</option>
-							<option value="Bureau">Bureau</option>
-							<option value="Bâtiment">Bâtiment</option>
+							<option value="Maison">Maison</option>
+							<option value="Appartement">Appartement</option>
 							<option value="Terrain">Terrain</option>
 						</select>
 					</div>

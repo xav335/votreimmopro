@@ -30,7 +30,7 @@
 				} 
 				else {
 					//$img[ $i ]  = '/photos/news/thumbs'. $image[ $i ];
-					$img[ $i ]  = '/photos/news/thumbs'. $image[ $i ];
+					$img[ $i ]  = '/professionnels/photos/news/thumbs'. $image[ $i ];
 					$imgval[ $i ]  = $image[ $i ];
 				}
 			}

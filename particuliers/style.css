@@ -23,6 +23,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 .mapClick {background:url('img/plan.jpg') no-repeat center center; width:100%;height:476px;}
 
 /* Header */
+.logo {height: 60px;}
 .header {background:#191919;text-align:center;padding-top:25px;}
 .header img {margin-bottom:15px;}
 .header .menu {background:#fff;}

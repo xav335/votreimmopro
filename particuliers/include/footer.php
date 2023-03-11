@@ -5,7 +5,7 @@
 	
 	$debug = false;
 	
-	$news = new News();
+	$news = new News_part();
 	$result = $news->newsValidGet( $debug );
 	//print_r($result);
 	?>

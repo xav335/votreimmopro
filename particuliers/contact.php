@@ -140,8 +140,8 @@
 						<div class="large-6 columns">
 							<select name="type_bien" id="type_bien">
 								<option value="-">Type de bien</option>
-								<option value="Bureau">Bureau</option>
-								<option value="Bâtiment">Bâtiment</option>
+								<option value="Maison">Maison</option>
+								<option value="Appartement">Appartement</option>
 								<option value="Terrain">Terrain</option>
 							</select>
 						</div>

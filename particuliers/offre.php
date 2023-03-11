@@ -1,14 +1,14 @@
 <?
-	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre.php" ;
-	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_image.php" ;
+	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_part.php" ;
+	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_image_part.php" ;
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/utils.php" ;
-    require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/News.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/News_part.php';
 	session_start();
 	
 	$debug = false;
 	
-	$offre = new Offre();
-	$offre_image = new Offre_image();
+	$offre = new Offre_part();
+	$offre_image = new Offre_image_part();
 	$result = $offre->load( $_GET[ "id" ], $debug );
 	//print_pre( $result );
 	

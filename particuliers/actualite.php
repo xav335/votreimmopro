@@ -1,11 +1,11 @@
 <? 
-	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/News.php" ;
+	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/News_part.php" ;
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/utils.php" ;
 	session_start();
 	
 	$debug = false;
 	
-	$news = new News();
+	$news = new News_part();
 	$result = $news->newsGet( '', $debug );
 	//print_r($result);
 ?>

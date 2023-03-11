@@ -114,17 +114,17 @@ class Offre_image extends StorageManager {
 		// ---- Suppression physique des fichiers ---- //
 		if ( 1 == 1 ) {
 			
-			$fichier_a_supprimer = $_SERVER['DOCUMENT_ROOT'] . "/photos/offre/grande" . $data[ 0 ][ "fichier" ];
+			$fichier_a_supprimer = $_SERVER['DOCUMENT_ROOT'] . "/professionnels/photos/offre/grande" . $data[ 0 ][ "fichier" ];
 			if ( file_exists( $fichier_a_supprimer ) ) {
 				if ( $debug ) echo "On supprime " . $fichier_a_supprimer . "<br>\n";
 				if ( !$debug ) unlink( $fichier_a_supprimer );
 			}
-			$fichier_a_supprimer = $_SERVER['DOCUMENT_ROOT'] . "/photos/offre/normale" . $data[ 0 ][ "fichier" ];
+			$fichier_a_supprimer = $_SERVER['DOCUMENT_ROOT'] . "/professionnels/photos/offre/normale" . $data[ 0 ][ "fichier" ];
 			if ( file_exists( $fichier_a_supprimer ) ) {
 				if ( $debug ) echo "On supprime " . $fichier_a_supprimer . "<br>\n";
 				if ( !$debug ) unlink( $fichier_a_supprimer );
 			}
-			$fichier_a_supprimer = $_SERVER['DOCUMENT_ROOT'] . "/photos/offre/vignette" . $data[ 0 ][ "fichier" ];
+			$fichier_a_supprimer = $_SERVER['DOCUMENT_ROOT'] . "/professionnels/photos/offre/vignette" . $data[ 0 ][ "fichier" ];
 			if ( file_exists( $fichier_a_supprimer ) ) {
 				if ( $debug ) echo "On supprime " . $fichier_a_supprimer . "<br>\n";
 				if ( !$debug ) unlink( $fichier_a_supprimer );

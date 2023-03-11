@@ -1,14 +1,14 @@
 <?
-	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre.php" ;
-	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_image.php" ;
+	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_part.php" ;
+	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_image_part.php" ;
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/utils.php" ;
-    require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/News.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/News_part.php';
 	session_start();
 	
 	$debug = false;
 	
-	$offre = new Offre();
-	$offre_image = new Offre_image();
+	$offre = new Offre_part();
+	$offre_image = new Offre_image_part();
 ?>
 
 <!doctype html>
@@ -60,7 +60,7 @@
 							$image_defaut = $offre_image->getImageDefaut( $value[ "num_offre" ], $debug );
 							
 							echo "	<a class='bien' href='offre.php?id=" . $value[ "num_offre" ] . "'>\n";
-							echo "		<img src='/particuliers//photos/offre/vignette" . $image_defaut[ "fichier" ] . "' alt='' />\n";
+							echo "		<img src='/particuliers/photos/offre/vignette" . $image_defaut[ "fichier" ] . "' alt='' />\n";
 							echo "		<h2>" . $value[ "titre" ] . "</h2>\n";
 							echo "		<p>" . couper_correctement( $value[ "description" ], 200, ' ', false ) . " ...</p>\n";
 							echo "		<div class='prix'>" . number_format( $value[ "prix" ], 0, '', ' ' ) . " € $fai</div>\n";
@@ -77,6 +77,7 @@
 					$recherche[ "num_type_bien" ] = 2;
 					
 					$result = $offre->getListeAvecTypeBien( $recherche, $debug );
+                    //print_r($result);
 					
 					echo "<section role='tabpanel' aria-hidden='true' class='nos-offres content' id='panel-vente'>\n";
 					if ( !empty( $result ) ) {

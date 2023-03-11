@@ -57,41 +57,9 @@
 			}
 		}
 		// ----------------------------------------------------------- //
+
 		
-		// ---- Traitement du Bon de commande /planning -------------- //
-		if ($_POST['reference'] == 'planning'){
-			$planning = new Planning();
-			$imageManager = New ImageManager();
-			
-				$source = $_SERVER['DOCUMENT_ROOT'].$_POST['pdf'];
-				if(strstr($source,'uploads')){
-					$source = $_SERVER['DOCUMENT_ROOT'].$_POST['pdf'];
-					$filenameDest = $imageManager->fileDestManagement($source,date('Ymd'));
-					//Image
-					$destination=$_SERVER['DOCUMENT_ROOT'].'/photos/bdc'.$filenameDest;
-					//print_r($source);exit();
-					if (!copy($source, $destination)) {
-						throw new Exception('Erreur contactez votre administrateur <br> Le PDF error:',  $e->getMessage(), "\n");
-						exit;
-					}
-					 
-					//Vignette
-					$_POST['pdf']=$filenameDest;
-				}
-			$imageManager =null;
-			if ($_POST['action'] == 'modif') { //Modifier la news
-				try {
-					$result = $planning->planningModify($_POST);
-					header('Location: /admin/planning.php');
-				} catch (Exception $e) {
-					echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage(), "\n";
-					exit();
-				}
-			} 
-		}
-		// ----------------------------------------------------------- //
-		
-		// ---- Traitement des offres -------------------------------- //
+		// ---- Traitement des offres PRO-------------------------------- //
 		if ( $_POST[ "reference" ] == "offres" ){
 			if ( $debug ) echo "Traitement des offres...<br>";
 			
@@ -163,17 +131,17 @@
 						if ( $largeur >= $hauteur ) {*/
 					   try {		
 							// ---- Image de taille "grande" ----- //
-							$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/grande' . $filenameDest;
+							$destination = $_SERVER['DOCUMENT_ROOT'] . '/professionnels/photos/offre/grande' . $filenameDest;
 							if ( $debug ) echo "--- destination : " . $destination . "<br>";
 							$imageManager->imageResize( $source, $destination, 1500, null );
 							
 							// ---- Image de taille "normale" ---- //
-							$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/normale' . $filenameDest;
+							$destination = $_SERVER['DOCUMENT_ROOT'] . '/professionnels/photos/offre/normale' . $filenameDest;
 							if ( $debug ) echo "--- destination : " . $destination . "<br>";
 							$imageManager->imageResize( $source, $destination, 470, null );
 							
 							// ---- Image de taille "vignette" --- //
-							$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/offre/vignette' . $filenameDest;
+							$destination = $_SERVER['DOCUMENT_ROOT'] . '/professionnels/photos/offre/vignette' . $filenameDest;
 							if ( $debug ) echo "--- destination : " . $destination . "<br>";
 							$imageManager->imageResize( $source, $destination, 303, null );
 							
@@ -225,7 +193,7 @@
 					$filenameDest = $imageManager->fileDestManagement( $source, $num_offre );
 					if ( $debug ) echo "--- filenameDest : " . $filenameDest . "<br>";
 					
-					$destination = $_SERVER['DOCUMENT_ROOT'] . '/fichier/pdf' . $filenameDest;
+					$destination = $_SERVER['DOCUMENT_ROOT'] . '/professionnels/fichier/pdf' . $filenameDest;
 					if ( $debug ) echo "--- destination : " . $destination . "<br>";
 					
 					// ---- Copie du fichier ----------- //
@@ -280,12 +248,12 @@
 					$source = $_SERVER['DOCUMENT_ROOT'] . $_POST[ 'url' . $i ];
 					$filenameDest = $imageManager->fileDestManagement( $source, $_POST['id'] );
 					//Image
-					$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/news' . $filenameDest;
+					$destination = $_SERVER['DOCUMENT_ROOT'] . '/professionnels/photos/news' . $filenameDest;
 					if ( $debug ) echo "Destination : " . $destination . "<br>";
 					
 					$imageManager->imageResize( $source, $destination, null, 650 );
 					//Vignette
-					$destination = $_SERVER['DOCUMENT_ROOT'] . '/photos/news/thumbs' . $filenameDest;
+					$destination = $_SERVER['DOCUMENT_ROOT'] . '/professionnels/photos/news/thumbs' . $filenameDest;
 					$imageManager->imageResize( $source, $destination, null, 250 );
 					$_POST[ 'url' . $i ] = $filenameDest;
 				}
@@ -346,99 +314,7 @@
 		}
 		// ----------------------------------------------------------- //
 		
-		// Traitement des Categories --------------------------------- //
-		if ($_POST['reference'] == 'categorie'){
-			//print_r($_POST);exit();
-			$imageManager = New ImageManager();
-			$catproduct = new Catproduct();
-			if ($_POST['action'] == 'modif') { //Modifier
-				try {
-					//Gestion des images
-					$source = $_SERVER['DOCUMENT_ROOT'].$_POST['url1'];
-	
-					if (strstr($source,'uploads')){
-						$source = $_SERVER['DOCUMENT_ROOT'].$_POST['url1'];
-						$filenameDest = $imageManager->fileDestManagement($source,$_POST['id']);
-						//Image
-						$destination=$_SERVER['DOCUMENT_ROOT'].'/photos/categories'.$filenameDest;
-						$imageManager->imageResize($source, $destination, null, 650);
-						//Vignette
-						$destination=$_SERVER['DOCUMENT_ROOT'].'/photos/categories/thumbs'.$filenameDest;
-						$imageManager->imageResize($source, $destination, null, 350);
-						$_POST['url1']=$filenameDest;
-					}
-					$imageManager =null;
-					
-					$result = $catproduct->catproductModify($_POST);
-					$catproduct = null;
-					header('Location: /admin/catproduct-list.php');
-				} catch (Exception $e) {
-					echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage(), "\n";
-					$catproduct = null;
-					exit();
-				}
-		
-			} else {  //ajouter
-				try {
-					//print_r($_POST);exit();
-					$result = $catproduct->catproductAdd($_POST);
-					$catproduct = null;
-					header('Location: /admin/catproduct-list.php');
-				} catch (Exception $e) {
-					echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage(), "\n";
-					$catproduct = null;
-					exit();
-				}
-			}
-		}
-		// ----------------------------------------------------------- //
-		
-		// ---- Traitement des Produits ------------------------------ //
-		if ($_POST['reference'] == 'product'){
-			//print_r($_POST);exit();
-			$catproduct = new Catproduct();
-			$imageManager = New ImageManager();
-			for ($i=1;$i<4;$i++){
-				$source = $_SERVER['DOCUMENT_ROOT'].$_POST['url'.$i];
-				if(strstr($source,'uploads')){
-					$source = $_SERVER['DOCUMENT_ROOT'].$_POST['url'.$i];
-					$filenameDest = $imageManager->fileDestManagement($source,$_POST['id']);
-					//Image
-					$destination=$_SERVER['DOCUMENT_ROOT'].'/photos/products'.$filenameDest;
-					$imageManager->imageResize($source, $destination, null, 650);
-					//Vignette
-					$destination=$_SERVER['DOCUMENT_ROOT'].'/photos/products/thumbs'.$filenameDest;
-					$imageManager->imageResize($source, $destination, null, 250);
-					$_POST['url'.$i]=$filenameDest;
-				}
-			}
-	
-			if ($_POST['action'] == 'modif') { //Modifier
-				try {
-					$result = $catproduct->productModify($_POST);
-					$catproduct = null;
-					header('Location: /admin/product-list.php');
-				} catch (Exception $e) {
-					echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage(), "\n";
-					$catproduct = null;
-					exit();
-				}
-		
-			} else {  //ajouter
-				try {
-					//print_r($_POST);exit();
-					$result = $catproduct->productAdd($_POST);
-					$catproduct = null;
-					header('Location: /admin/product-list.php');
-				} catch (Exception $e) {
-					echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage(), "\n";
-					$catproduct = null;
-					exit();
-				}
-			}
-		}
-		// ----------------------------------------------------------- //
-		
+
 	} 
 	// ------------------------------------------------------------------------ //
 	
@@ -509,42 +385,7 @@
 			}
 		}
 		
-		if ($_GET['reference'] == 'categorie'){ //supprimer
-			$catproduct = new Catproduct();
-			if ($_GET['action'] == 'delete'){
-				try {
-					$result = $catproduct->catproductDelete($_GET['id']);
-					$catproduct = null;
-					header('Location: /admin/catproduct-list.php');
-				} catch (Exception $e) {
-						echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage() , '\n';
-						$catproduct = null;
-						if($e->getCode() == 1234){
-							header('Location: /admin/catproduct-list.php?message='.$e->getCode());
-						}
-						exit();
-				}
-			}
-		}
-		
-		if ($_GET['reference'] == 'product'){ //supprimer
-			$catproduct = new Catproduct();
-			if ($_GET['action'] == 'delete'){
-				try {
-					$result = $catproduct->productDelete($_GET['id']);
-					$catproduct = null;
-					header('Location: /admin/product-list.php');
-				} catch (Exception $e) {
-					echo 'Erreur contactez votre administrateur <br> :',  $e->getMessage() , '\n';
-					$catproduct = null;
-					if($e->getCode() == 1234){
-						header('Location: /admin/catproduct-list.php?message='.$e->getCode());
-					}
-					exit();
-				}
-			}
-		}
-		
+
 		if ($_GET['reference'] == 'newsletter'){ //supprimer
 			$newsletter = new Newsletter();
 			if ($_GET['action'] == 'delete'){

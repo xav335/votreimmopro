@@ -169,7 +169,7 @@
 								foreach( $liste_image as $_image ) {
 									
 									echo "<div class='col-md-3' style='text-align:center; margin-bottom:20px; border:0px solid red;'>\n";
-				            		echo "	<img src='/photos/offre/vignette/" . $_image[ "fichier" ] . "' width='230' style='max-width:230px;'></a><br>\n";
+				            		echo "	<img src='/professionnels/photos/offre/vignette/" . $_image[ "fichier" ] . "' width='230' style='max-width:230px;'></a><br>\n";
 				            		if ( $_image[ "defaut" ] == 'non' ) echo "	<input type='button' id='" . $_image[ "num_image" ] . "' value='Par défaut' class='par_defaut' />\n";
 				            		echo "	<input type='button' id='" . $_image[ "num_image" ] . "' value='Supprimer' class='supprimer_image_precise' />\n";
 									echo "</div>\n";
