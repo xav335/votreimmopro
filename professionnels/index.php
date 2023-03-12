@@ -82,6 +82,26 @@
 		
 		<!-- Slider -->
 		<div>
+            <div class="slogan">
+
+
+                <h4>
+                    Votreimmopro est à votre
+                    écoute et met tout en
+                    oeuvre pour vous
+                    accompagner dans la
+                    réussite de votre projet
+                    immobilier.<br>
+
+                    Notre philosophie s’appuie
+                    sur 4 piliers.<br>
+                    - Le sur-mesure<br>
+                    - l’exigence<br>
+                    - La confiance<br>
+                    - La confidentialité</h4>
+
+            </div>
+
 			<form method="post" action="index.php" class="estimation">
 				<input type="hidden" name="mon_action" value="poster" />
 				<input type="hidden" name="as" value="" />
@@ -109,7 +129,7 @@
 			<div class="swiper-slider">
 				<div class="motif"></div>
 				<div class="swiper-wrapper">
-					<div class="swiper-slide" style="background-image:url('img/slider-03.jpg');"></div>
+					<div class="swiper-slide" style="background-image:url('img/slider-02.jpg');"></div>
 					<div class="swiper-slide" style="background-image:url('img/slider-03.jpg');"></div>
 				</div>
 				<!-- Add Pagination -->

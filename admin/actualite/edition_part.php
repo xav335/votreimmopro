@@ -2,14 +2,13 @@
 <? include_once ( $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/utils.php" );?>
 <? 
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/News_part.php";
-	
+
 	// ---- Modification ---------------------------- //
 	if ( !empty($_GET) ) {
 		$action = 'modif';
 		$news = new News_part();
 		$result = $news->newsGet( $_GET['id'] );
-		print_r($result);
-		
+
 		if (empty($result)) {
 			$message = 'Aucun enregistrements';
 		} 
@@ -61,7 +60,6 @@
 	
 	<body>	
 		<? require_once $_SERVER['DOCUMENT_ROOT'] . "/admin/inc-menu.php";?>
-	
 		<div class="container">
 	
 			<div class="row">

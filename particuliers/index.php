@@ -82,30 +82,51 @@
 		
 		<!-- Slider -->
 		<div>
-			<form method="post" action="index.php" class="estimation">
-				<input type="hidden" name="mon_action" value="poster" />
-				<input type="hidden" name="as" value="" />
-				
-				<h2>Estimer un bien</h2>
-				<label><input type="text" name="nom" placeholder="Nom" /></label>
-				<label><input type="email" name="email" placeholder="e-mail" /></label>
-				<label><input type="tel" name="tel" placeholder="Téléphone" /></label>
-				<div class="row collapse">
-					<div class="large-6 columns">
-						<select name="type_bien" id="type">
-							<option value="">Type de bien</option>
-							<option value="Maison">Maison</option>
-							<option value="Appartement">Appartement</option>
-							<option value="Terrain">Terrain</option>
-						</select>
-					</div>
-					<div class="large-6 columns">
-						<label><input type="text" name="surface" placeholder="Surface (m2)" /></label>
-					</div>
-				</div>
-				<label><input type="text" name="ville" placeholder="Ville" /></label>
-				<button>Estimer mon bien</button>
-			</form>
+            <div class="slogan">
+
+
+                <h4>
+                Votreimmopro est à votre
+                écoute et met tout en
+                oeuvre pour vous
+                accompagner dans la
+                réussite de votre projet
+                immobilier.<br>
+
+                Notre philosophie s’appuie
+                sur 4 piliers.<br>
+                - Le sur-mesure<br>
+                - l’exigence<br>
+                - La confiance<br>
+                - La confidentialité</h4>
+
+            </div>
+
+            <form method="post" action="index.php" class="estimation">
+                <input type="hidden" name="mon_action" value="poster" />
+                <input type="hidden" name="as" value="" />
+
+                <h2>Estimer un bien</h2>
+                <label><input type="text" name="nom" placeholder="Nom" /></label>
+                <label><input type="email" name="email" placeholder="e-mail" /></label>
+                <label><input type="tel" name="tel" placeholder="Téléphone" /></label>
+                <div class="row collapse">
+                    <div class="large-6 columns">
+                        <select name="type_bien" id="type">
+                            <option value="">Type de bien</option>
+                            <option value="Maison">Maison</option>
+                            <option value="Appartement">Appartement</option>
+                            <option value="Terrain">Terrain</option>
+                        </select>
+                    </div>
+                    <div class="large-6 columns">
+                        <label><input type="text" name="surface" placeholder="Surface (m2)" /></label>
+                    </div>
+                </div>
+                <label><input type="text" name="ville" placeholder="Ville" /></label>
+                <button>Estimer mon bien</button>
+            </form>
+
 			<div class="swiper-slider">
 				<div class="motif"></div>
 				<div class="swiper-wrapper">

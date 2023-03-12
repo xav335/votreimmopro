@@ -30,7 +30,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {color:#303030;}
 .logo {height: 60px;}
 .header {background: rgba(25, 25, 25, 0.24);text-align:center;padding-top:25px;}
 .header img {margin-bottom:15px;}
-.header .menu {background:#fff;height: 20px;}
+.header .menu {background:#fff;padding-top: 8px}
 .header .menu a {color:#000;font-size:14px;text-transform:uppercase;padding:15px;display:inline-block;border-bottom:5px solid transparent;}
 .header .menu a:hover, .header .menu a.active {border-color:#ff1900;}
 

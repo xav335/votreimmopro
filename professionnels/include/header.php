@@ -6,6 +6,7 @@
 				<aside class="left-off-canvas-menu">
 					<!-- whatever you want goes here -->
 					<ul>
+                        <li><a href="/index.php">Accueil</a></li>
 					    <li><a href="index.php">Présentation</a></li>
 						<li><a href="nos-offres.php">Nos offres</a></li>
 						<li><a href="actualite.php">Actualité</a></li>

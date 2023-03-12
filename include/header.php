@@ -22,6 +22,22 @@
                                                                                                 src="img/linkin.png"></a>
             </div>
             <div class="large-12 columns menu">
+                <span>
+                    <h5>Votreimmopro est à votre
+                écoute et met tout en
+                oeuvre pour vous
+                accompagner dans la
+                réussite de votre projet
+                immobilier.<br>
+
+                Notre philosophie s’appuie
+                sur 4 piliers :
+                 Le sur-mesure
+                - l’exigence
+                - La confiance
+                - La confidentialité</h5>
+
+                </span>
 
             </div>
         </div>

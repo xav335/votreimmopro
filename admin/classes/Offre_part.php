@@ -71,7 +71,7 @@ class Offre_part extends StorageManager {
 	
 	public function load( $num_offre, $debug=false ) {
 		$this->dbConnect();
-		$requete = "SELECT * FROM `offre_part` INNER JOIN offre_type_bien_part 
+		$requete = "SELECT * FROM `offre_part` LEFT JOIN offre_type_bien_part 
 		    ON offre_part.num_offre = offre_type_bien_part.num_offre
 		    WHERE offre_part.num_offre=" . intval( $num_offre ) ;
 		if ( $debug ) echo $requete . "<br>";
