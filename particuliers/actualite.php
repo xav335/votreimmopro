@@ -29,36 +29,38 @@
 		// ---- Header de la page ------------------ //
 		include_once( $_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/header.php" );
 		?>
-		
-		
-		<!-- Actualité -->
-		<div class="row actualite">
-			<h1>Actualité</h1>
-			<ul>
-				<?
-				if ( !empty( $result ) ) {
-					foreach ( $result as $value ) { 
-						$mon_image = ( $value[ "image1" ] != '' &&  file_exists( $_SERVER['DOCUMENT_ROOT'] . "/particuliers/photos/news" . $value[ "image1" ] ) )
-							? "/particuliers/photos/news" . $value[ "image1" ]
-							: "http://www.placehold.it/200x200/EFEFEF/171717&text=:(";
-							
-						echo "<li class='row'>\n";
-						echo "	<div class='large-3 columns'>\n";
-						echo "		<img src='" . $mon_image . "' alt='' />\n";
-						echo "	</div>\n";
-						echo "	<div class='large-9 columns'>\n";
-						echo "		<h4>" . $value[ "titre" ] . "</h4>\n";
-						echo "		<h5>" . traitement_datetime_affiche( $value[ "date_news" ] ) . "</h5>\n";
-						echo "		<p>" . nl2br( $value[ "contenu" ] ) . "</p>\n";
-						echo "	</div>\n";
-						echo "</li>\n";
-					}
-				}
-				?>
-				
-			</ul>
-		</div>
-		<!-- End Actualité -->
+
+
+        <!-- Actualité -->
+        <div class="row actualite">
+            <h1>Actualité</h1>
+            <ul>
+                <?
+                if (!empty($result)) :
+                    foreach ($result as $value) :
+                        $mon_image = ($value["image1"] != '' && file_exists($_SERVER['DOCUMENT_ROOT'] . "/particuliers/photos/news" . $value["image1"]))
+                            ? "/particuliers/photos/news" . $value["image1"]
+                            : "/img/default.png"; ?>
+                        <li class="row">
+                            <div class='large-3 columns' >
+                                <img src='<? echo $mon_image ?>' alt=''/>
+                            </div>
+                            <div class='large-9 columns'>
+                                <h4><? echo $value["titre"] ?> . "</h4>
+                                <h5><? echo traitement_datetime_affiche($value["date_news"]) ?></h5>
+                                <p><? echo nl2br($value["contenu"]) ?></p>
+                                <? if (isset($value["accroche"])) : ?>
+                                    <p><a href="<? echo ($value["accroche"]) ?>" target="_blank">En savoir plus...</a></p>
+                                <? endif; ?>
+                            </div>
+                        </li>
+                    <?php
+                    endforeach;
+                endif; ?>
+
+            </ul>
+        </div>
+        <!-- End Actualité -->
 		
 		<?
 		// ---- Footer de la page ------------------ //

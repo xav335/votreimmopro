@@ -14,7 +14,7 @@
 		<div class="row">
             <div class="large-2 medium-2 small-2 columns text-left" >
                 <a href="https://www.fnaim.fr/" target="_blank"><img src="/img/fnaim.png"></a>
-
+                <a href="#"><img src="/img/logoPro.png"></a>
             </div>
 			<div class="large-6 medium-6 small-12 columns actualites">
 				<h2>Actualité</h2>

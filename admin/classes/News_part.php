@@ -28,7 +28,7 @@ class News_part extends StorageManager {
 		} else {
 			$requete = "SELECT * FROM `news_part` WHERE id_news=". $id ;
 		}
-		print_r($requete);
+		//print_r($requete);
 
 		if ( $debug ) echo $requete . "<br>";
 		$new_array = null;
