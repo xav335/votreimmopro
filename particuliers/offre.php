@@ -32,6 +32,7 @@
 		$titre = $result[ 0 ][ "titre" ];
 		$surface = $result[ 0 ][ "surface" ];
 		$description = nl2br( $result[ 0 ][ "description" ] );
+        $bilan_energie = nl2br( $result[ 0 ][ "bilan_energie" ] );
 		$prix = number_format( $result[ 0 ][ "prix" ], 0, '', ' ' );
 		$fichier_pdf = $result[ 0 ][ "fichier_pdf" ];
 		$num_type_bien = $result[ 0 ][ "num_type_bien" ];
@@ -114,6 +115,7 @@
 				<p><?php echo $type_bien?></p>
 				<h4>Surface</h4>
 				<p><?=$surface?> m<sup>2</sup></p>
+
 				<h4>Descriptif du bien</h4>
 				<p><?=$description?></p>
 				
@@ -128,7 +130,9 @@
 				}
 				// ----------------------------------- //
 				?>
-				
+                <h4>Bilan Energétique</h4>
+                <p><?=$bilan_energie?></p>
+                <img src="img/bilanEnergie.png" alt="bilan">
 			</div>
 		</div>
 		<!-- End Offre -->

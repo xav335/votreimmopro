@@ -96,12 +96,13 @@ class Offre_part extends StorageManager {
 			$fichier_pdf = '';
 			
 			$sql = "INSERT INTO `offre_part`
-				(`titre`, `surface`, `description`, `prix`, `fichier_pdf`, `nb_piece`, `a_la_une`, `online`)
+				(`titre`, `surface`, `description`, `prix`, 'bilan_energie', `fichier_pdf`, `nb_piece`, `a_la_une`, `online`)
 				VALUES (
 				'". addslashes( $value[ "titre" ] ) ."',
 				". intval( $value[ "surface" ] ) .",
 				'". addslashes( $value[ "description" ] ) ."',
 				". intval( $value[ "prix" ] ) .",
+				'". addslashes( $value[ "bilan_energie" ] ) ."',
 				'". $fichier_pdf ." ',
 				'". $nb_piece ." ',
 				'". $a_la_une ." ',
@@ -140,6 +141,7 @@ class Offre_part extends StorageManager {
 				`surface` = " . intval( $value[ "surface" ] ) . ", 
 				`description` = '" . addslashes( $value[ "description" ] ) . "',
 				`prix` = " . intval( $value[ "prix" ] ) . ",
+				`bilan_energie` = '" . addslashes( $value[ "bilan_energie" ] ) . "',
 				`a_la_une` = '" . $a_la_une ."'	 ,
 				`online` = '" . $online ."'	 
 				WHERE `num_offre` = " . $value[ "num_offre" ] . ";";

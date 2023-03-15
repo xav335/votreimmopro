@@ -30,13 +30,14 @@
 		if ( empty( $result ) ) $message = 'Aucun enregistrement';
 		else {
 			$labelTitle = 	'Offre N°: '. $_GET[ "id" ];
-			$num_offre =	$_GET[ "id" ];
-			$type_bien =	$result[0][ "type_bien" ];
-			$titre =		$result[0][ "titre" ];
-			$surface =		$result[0][ "surface" ];
-			$description =	$result[0][ "description" ];
-			$fichier_pdf = 	$result[0][ "fichier_pdf" ];
-			$prix =			$result[0][ "prix" ];
+			$num_offre =	 $_GET[ "id" ];
+			$type_bien =	 $result[0][ "type_bien" ];
+			$titre =		 $result[0][ "titre" ];
+			$surface =		 $result[0][ "surface" ];
+			$description =	 $result[0][ "description" ];
+			$fichier_pdf = 	 $result[0][ "fichier_pdf" ];
+			$prix =			 $result[0][ "prix" ];
+            $bilan_energie = $result[0][ "bilan_energie" ];
 			$online = 		( $result[0][ "online" ] == 'oui' ) ? "checked" : '';
 			$a_la_une = 	( $result[0][ "a_la_une" ] == 'oui' ) ? "checked" : '';
 			
@@ -121,7 +122,12 @@
 							<label class="col-sm-2" for="prix">Prix :</label>
 						    <input type="text" class="col-sm-1" name="prix" required  value="<?=$prix?>">
 						</div>
-						
+
+                        <div class="form-group" >
+                            <label class="col-sm-2" for="bilan_energie">Bilan energétique :</label>
+                            <input type="text" class="col-sm-4" name="bilan_energie" required  value="<?=$bilan_energie?>">
+                        </div>
+
 						<div class="form-group">
 							<label class="col-sm-2" for="description">Description :</label>
 			           		<textarea class="col-sm-10" name="description" id="description" rows="5" required ><?=$description?></textarea>

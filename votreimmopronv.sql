@@ -125,7 +125,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (32,'2022-06-09 00:00:00','Le B. Retail Park','linkedin','Les enseignes WELDOM, MIDAS, ORANGE BLEU, GENERATION PISCINE, GSF, ....s\'implantent au coeur du programme Le B. Retail Park, il ne reste que deux lots disponibles, \r\n\r\nOuverture octobre','/2018.11.05 - le barp 01 final-32.jpg',1),(34,'2022-10-12 00:00:00','WELDOM OUVRE SES PORTES','','L\'enseigne WELDOM, magasin de bricolage situé au sein du Retail Park du Barp , a ouvert ses portes le 12 octobre.','/Capture_d_cran_2022_10_13_10..02-34.png',1);
+INSERT INTO `news` VALUES (32,'2022-06-09 00:00:00','Le B. Retail Park','https://www.linkedin.com/company/votre-immo-pro/','Les enseignes WELDOM, MIDAS, ORANGE BLEU, GENERATION PISCINE, GSF, ....s\'implantent au coeur du programme Le B. Retail Park, il ne reste que deux lots disponibles, \r\n\r\nOuverture octobre','/EXTRAIT_IMAGE_2-32.png',1),(34,'2022-10-12 00:00:00','WELDOM OUVRE SES PORTES','http://votreimmopro.localxav.lan/admin/actualite/edition_part.php?id=34','L\'enseigne WELDOM, magasin de bricolage situé au sein du Retail Park du Barp , a ouvert ses portes le 12 octobre.','/Capture_d_cran_2022_10_13_10..02-34.png',1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +154,7 @@ CREATE TABLE `news_part` (
 
 LOCK TABLES `news_part` WRITE;
 /*!40000 ALTER TABLE `news_part` DISABLE KEYS */;
-INSERT INTO `news_part` VALUES (34,'2023-03-09 00:00:00','Ouverte de l\'espace particulier','','L\'enseigne WELDOM, magasin de bricolage situé au sein du Retail Park du Barp , a ouvert ses portes le 12 octobre.','/hellfest-34.jpg',1);
+INSERT INTO `news_part` VALUES (34,'2023-03-09 00:00:00','Ouverte de l\'espace particulier','http://votreimmopro.localxav.lan/particuliers','A partir du mois d\'avril 2023 vous pourrez trouver des offres de particuliers également dans notre agence.','/Capture_d_cran_2022_06_09_14..41-34.png',1);
 /*!40000 ALTER TABLE `news_part` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,7 +307,7 @@ CREATE TABLE `offre_image` (
   `fichier` varchar(100) NOT NULL,
   `defaut` enum('oui','non') NOT NULL DEFAULT 'non',
   PRIMARY KEY (`num_image`)
-) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,6 +361,7 @@ CREATE TABLE `offre_part` (
   `description` text NOT NULL,
   `fichier_pdf` varchar(100) DEFAULT '',
   `prix` int(11) NOT NULL,
+  `bilan_energie` varchar(250) DEFAULT NULL,
   `a_la_une` enum('oui','non') NOT NULL DEFAULT 'non',
   `online` enum('oui','non') NOT NULL,
   PRIMARY KEY (`num_offre`)
@@ -373,7 +374,7 @@ CREATE TABLE `offre_part` (
 
 LOCK TABLES `offre_part` WRITE;
 /*!40000 ALTER TABLE `offre_part` DISABLE KEYS */;
-INSERT INTO `offre_part` VALUES (86,'Maison T4 part',103,0,'Terr\'Acotta est un programme de 6 villas T4, avec garage et place de midi, en pleine propriété.\r\nLes villas sauront vous séduire par la qualité de leurs prestations et leurs agencements idéalement pensés :\r\n\r\n=> Jardins plantés, cloturés et équipés d\'une terrasse bois avec pergola\r\n=> Volets roulants motorisés avec commande radio\r\n=> Climatisation réversible dans le séjour\r\n=> Suite parentale avec dressing et salle d\'eau.\r\n','',549000,'oui','oui'),(88,'Local commercial et d\'activité Part',370,0,'LE BARP (33) Local commercial d\'une surface de 370 m2 neuf, conviendrait à une activité commerciale et professionnelle.\r\nLe local dispose d\'une surface vitrée et à l\'arrière d\'une porte rideau.\r\nParking et aire de livraison.\r\nBail 3-6-9\r\nLoyer 2758 € HT/mois soit 33100 € HT/an\r\nHonoraires 30 % HT sur le loyer annuel HT\r\nDisponibilité immédiate.',' ',2758,'oui','oui'),(89,'VILLA ANDROMEDE - Artigues-Près-Bordeaux',110,0,'Villas Andromède , c\'est un programme de 16 villas Premium de 4 et 5 pièces toutes équipées d\'un étage, d\'un garage, 2 stationnements extérieurs aménagés au centre-bourg d\'Artigues-Près-Bordeaux .\r\nMitoyennes d\'un seul côté (par le garage), et dans un domaine complètement clos, ces habitations réservent à leurs occupants toute l\'intimité, la verdure et le calme de l\'Entre-Deux-Mers avec commerces et services urbains accessibles à pieds .\r\n=> Accession en pleine propriété\r\n=> Domaine sécurisé\r\n=> Jardins plantés, clôturés, et équipés d\'une terrasse bois avec pergola\r\n=> Piscines 5 x 3 sur certaines typologies\r\n=> Prestations et équipements grand confort\r\n=> Parcelles de 280 à 540m²\r\n=> Architecture contemporaine, toits terrasses végétalisées\r\n',' ',539000,'oui','oui'),(90,'Apparte T3',123,0,'une petite description','/Compe_tencesNB-90.pdf',1234,'oui','oui');
+INSERT INTO `offre_part` VALUES (86,'Maison T4 part',103,0,'Terr\'Acotta est un programme de 6 villas T4, avec garage et place de midi, en pleine propriété.\r\nLes villas sauront vous séduire par la qualité de leurs prestations et leurs agencements idéalement pensés :\r\n\r\n=> Jardins plantés, cloturés et équipés d\'une terrasse bois avec pergola\r\n=> Volets roulants motorisés avec commande radio\r\n=> Climatisation réversible dans le séjour\r\n=> Suite parentale avec dressing et salle d\'eau.\r\n','',549000,'209 Classe D','oui','oui'),(88,'Local commercial et d\'activité Part',370,0,'LE BARP (33) Local commercial d\'une surface de 370 m2 neuf, conviendrait à une activité commerciale et professionnelle.\r\nLe local dispose d\'une surface vitrée et à l\'arrière d\'une porte rideau.\r\nParking et aire de livraison.\r\nBail 3-6-9\r\nLoyer 2758 € HT/mois soit 33100 € HT/an\r\nHonoraires 30 % HT sur le loyer annuel HT\r\nDisponibilité immédiate.',' ',2758,NULL,'oui','oui'),(89,'VILLA ANDROMEDE - Artigues-Près-Bordeaux',110,0,'Villas Andromède , c\'est un programme de 16 villas Premium de 4 et 5 pièces toutes équipées d\'un étage, d\'un garage, 2 stationnements extérieurs aménagés au centre-bourg d\'Artigues-Près-Bordeaux .\r\nMitoyennes d\'un seul côté (par le garage), et dans un domaine complètement clos, ces habitations réservent à leurs occupants toute l\'intimité, la verdure et le calme de l\'Entre-Deux-Mers avec commerces et services urbains accessibles à pieds .\r\n=> Accession en pleine propriété\r\n=> Domaine sécurisé\r\n=> Jardins plantés, clôturés, et équipés d\'une terrasse bois avec pergola\r\n=> Piscines 5 x 3 sur certaines typologies\r\n=> Prestations et équipements grand confort\r\n=> Parcelles de 280 à 540m²\r\n=> Architecture contemporaine, toits terrasses végétalisées\r\n','',539000,NULL,'oui','oui'),(90,'Apparte T3',123,0,'une petite description','/Compe_tencesNB-90.pdf',1234,NULL,'oui','oui');
 /*!40000 ALTER TABLE `offre_part` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,6 +422,7 @@ CREATE TABLE `offre_type_bien_part` (
 
 LOCK TABLES `offre_type_bien_part` WRITE;
 /*!40000 ALTER TABLE `offre_type_bien_part` DISABLE KEYS */;
+INSERT INTO `offre_type_bien_part` VALUES (86,2),(88,1),(89,2),(90,3);
 /*!40000 ALTER TABLE `offre_type_bien_part` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -457,4 +459,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-11 20:27:08
+-- Dump completed on 2023-03-15 19:58:16
