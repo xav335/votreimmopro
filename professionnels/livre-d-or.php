@@ -246,7 +246,7 @@
 			window.addEventListener('DOMMouseScroll', scrollEvent); // Firefox
 			function scrollEvent(evt) {
 				var pos_top = (document.documentElement.scrollTop||document.body.scrollTop);
-				if(pos_top < 98) {
+				if(pos_top < 68) {
 					$('.menu').removeClass('fixed');
 				} else {
 					$('.menu').addClass('fixed');

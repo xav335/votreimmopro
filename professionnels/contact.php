@@ -314,6 +314,19 @@
 				prevButton: '.swiper-button-prev',
 				slidesPerView: 3
 			});
+
+            /* Gestion du scroll et du menu */
+            window.addEventListener('scroll', scrollEvent);
+            window.addEventListener('DOMMouseScroll', scrollEvent); // Firefox
+            function scrollEvent(evt) {
+                var pos_top = (document.documentElement.scrollTop||document.body.scrollTop);
+                if(pos_top < 58) {
+                    $('.menu').removeClass('fixed');
+                } else {
+                    $('.menu').addClass('fixed');
+                }
+            };
+            /* End Gestion du scroll et du menu */
 		</script>
 		
 	</body>

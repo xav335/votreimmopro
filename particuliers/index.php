@@ -14,9 +14,29 @@
 	
 	$mon_action = $_POST[ "mon_action" ];
 	$anti_spam = $_POST[ "as" ];
+
+
+    /////////////////////////  GOOGLE CAPTCHA //////////////////////////
+    // Ma clé privée
+    //$secret = "6Le4bsYUAAAAAL-nUWFWqRsAelcnrspXQWcidBZx"; //prod
+    $secret = "6LdhMg4lAAAAAAAd23Z9ryv3EkzAX72kfs_fD64d"; //localxav
+
+    // Paramètre renvoyé par le recaptcha
+    $response = $_POST['g-recaptcha-response'];
+    // On récupère l'IP de l'utilisateur
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+    $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
+        . $secret
+        . "&response=" . $response
+        . "&remoteip=" . $remoteip;
+    //print_r($api_url);
+    $decode = json_decode(file_get_contents($api_url), true);
+    //print_r($decode);
+    error_log(date("Y-m-d H:i:s") . " : " . $_POST['email'] . "BeforeFORM\n", 3, "spy.log");
+
 	
 	// ---- Actions à mener --------------------------- //
-	if ( $mon_action == "poster" && $anti_spam == '' ) {
+	if ( $mon_action == "poster" && $decode['success'] == true) {
 		//echo "On poste...<br>";
 		
 	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  " FromHome\n", 3, "spy.log");
@@ -46,7 +66,10 @@
 		if ( $debug ) echo $message;
 		
 		mail( $_to, $sujet, stripslashes( $message ), $entete );
-	}
+	} else {
+        // C'est un robot ou le code de vérification est incorrecte
+        error_log(date("Y-m-d H:i:s") . " : " . $_POST['email'] . "FAIL\n", 3, "spy.log");
+    }
 	// ------------------------------------------------ //
 	
 	
@@ -74,7 +97,7 @@
 	</head>
 	
 	<body>
-		
+
 		<?
 		// ---- Header de la page ------------------ //
 		include_once( $_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/header.php" );
@@ -102,13 +125,13 @@
 
             </div>
 
-            <form method="post" action="index.php" class="estimation">
+            <form method="post" id="formulaire" action="index.php" class="estimation">
                 <input type="hidden" name="mon_action" value="poster" />
                 <input type="hidden" name="as" value="" />
 
                 <h2>Estimer un bien</h2>
                 <label><input type="text" name="nom" placeholder="Nom" /></label>
-                <label><input type="email" name="email" placeholder="e-mail" /></label>
+                <label><input type="email" name="email" placeholder="e-mail" required /></label>
                 <label><input type="tel" name="tel" placeholder="Téléphone" /></label>
                 <div class="row collapse">
                     <div class="large-6 columns">
@@ -124,10 +147,17 @@
                     </div>
                 </div>
                 <label><input type="text" name="ville" placeholder="Ville" /></label>
-                <button>Estimer mon bien</button>
+                <button class="g-recaptcha" data-sitekey="6LdhMg4lAAAAAFEXkAf5TRTFYY5JZJ7gTN1mwUlt"
+                        data-callback="onSubmit" >Estimer mon bien</button>
             </form>
+            <script type="text/javascript">
+                function onSubmit(token) {
+                    console.log(token);
+                    document.getElementById("formulaire").submit();
+                }
+            </script>
 
-			<div class="swiper-slider">
+            <div class="swiper-slider">
 				<div class="motif"></div>
 				<div class="swiper-wrapper">
 					<div class="swiper-slide" style="background-image:url('img/slider-04.jpg');"></div>
@@ -193,11 +223,13 @@
 		// ---- Footer de la page ------------------ //
 		include_once( $_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/footer.php" );
 		?>
-	
+
+
+
 		<script src="js/vendor/jquery.js"></script>
 		<script src="js/foundation.min.js"></script>
 	    <script src="js/vendor/swiper/js/swiper.min.js"></script>
-	    
+
 		<script>
 			
 			// ---- Validation du formulaire de newsletter -------------- //
@@ -259,7 +291,19 @@
 				window.location.href = "/particuliers/offre.php?id=" + val;
 				return false;
 			});
-			
+
+            /* Gestion du scroll et du menu */
+            window.addEventListener('scroll', scrollEvent);
+            window.addEventListener('DOMMouseScroll', scrollEvent); // Firefox
+            function scrollEvent(evt) {
+                var pos_top = (document.documentElement.scrollTop||document.body.scrollTop);
+                if(pos_top < 98) {
+                    $('.menu').removeClass('fixed');
+                } else {
+                    $('.menu').addClass('fixed');
+                }
+            };
+            /* End Gestion du scroll et du menu */
 		</script>
 		
 	</body>

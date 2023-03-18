@@ -2,7 +2,7 @@
     require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/Goldbook.php';
     require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/Contact.php';
     require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/utils.php';
-    require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/News.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/News_part.php';
 	session_start();
 	
 	$debug = false;
@@ -246,7 +246,7 @@
 			window.addEventListener('DOMMouseScroll', scrollEvent); // Firefox
 			function scrollEvent(evt) {
 				var pos_top = (document.documentElement.scrollTop||document.body.scrollTop);
-				if(pos_top < 98) {
+				if(pos_top < 58) {
 					$('.menu').removeClass('fixed');
 				} else {
 					$('.menu').addClass('fixed');
