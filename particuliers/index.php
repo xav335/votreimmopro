@@ -39,7 +39,7 @@
 	if ( $mon_action == "poster" && $decode['success'] == true) {
 		//echo "On poste...<br>";
 		
-	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  " FromHome\n", 3, "spy.log");
+	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  " SUCCESS\n", 3, "spy.log");
 	    
 		$entete = "From: ". $_POST[ "nom"] ." <". $_POST[ "email"]. ">\n";
 		$entete .= "MIME-version: 1.0\n";
@@ -125,7 +125,7 @@
 
             </div>
 
-            <form method="post" id="formulaire" action="index.php" class="estimation">
+            <form method="post" id="formulaire" class="estimation" action="index.php">
                 <input type="hidden" name="mon_action" value="poster" />
                 <input type="hidden" name="as" value="" />
 
@@ -150,12 +150,7 @@
                 <button class="g-recaptcha" data-sitekey="6LdhMg4lAAAAAFEXkAf5TRTFYY5JZJ7gTN1mwUlt"
                         data-callback="onSubmit" >Estimer mon bien</button>
             </form>
-            <script type="text/javascript">
-                function onSubmit(token) {
-                    console.log(token);
-                    document.getElementById("formulaire").submit();
-                }
-            </script>
+
 
             <div class="swiper-slider">
 				<div class="motif"></div>
@@ -229,6 +224,14 @@
 		<script src="js/vendor/jquery.js"></script>
 		<script src="js/foundation.min.js"></script>
 	    <script src="js/vendor/swiper/js/swiper.min.js"></script>
+
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script type="text/javascript">
+            function onSubmit(token) {
+                console.log(token);
+                document.getElementById("formulaire").submit();
+            }
+        </script>
 
 		<script>
 			
