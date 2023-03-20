@@ -37,13 +37,14 @@
 				<div class="row">
 				    <form id="form_news" method="post" action="#" class="newsletter">
 				        <input type="hidden" name="as" value="" />
-						<div class="large-6 columns">
+						<div class="large-9 columns">
 							<input type="email" name="email_news" value="" placeholder="Inscrivez-vous à la newsletter" />
+                            <button>OK</button>
+                        </div>
+						<div class="large-3 columns text-left">
+                            &nbsp;
 						</div>
-						<div class="large-6 columns">
-							<button>OK</button>
-						</div>
-					</form>	
+					</form>
 				</div>
 			</div>
 			<div class="large-4 medium-4 small-12 columns links">

@@ -34,17 +34,18 @@
 					}
 					?>
 				</ul>
-				<div class="row">
-				    <form id="form_news" method="post" action="#" class="newsletter">
-				        <input type="hidden" name="as" value="" />
-						<div class="large-6 columns">
-							<input type="email" name="email_news" value="" placeholder="Inscrivez-vous à la newsletter" />
-						</div>
-						<div class="large-6 columns">
-							<button>OK</button>
-						</div>
-					</form>	
-				</div>
+                <div class="row">
+                    <form id="form_news" method="post" action="#" class="newsletter">
+                        <input type="hidden" name="as" value="" />
+                        <div class="large-9 columns">
+                            <input type="email" name="email_news" value="" placeholder="Inscrivez-vous à la newsletter" />
+                            <button>OK</button>
+                        </div>
+                        <div class="large-3 columns text-left">
+                            &nbsp;
+                        </div>
+                    </form>
+                </div>
 			</div>
 			<div class="large-4 medium-4 small-12 columns links">
 				<a href="index.php">Qui sommes-nous</a>
