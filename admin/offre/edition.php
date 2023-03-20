@@ -347,7 +347,7 @@
 			});
 			
 			$( ".annuler" ).click(function() {
-				window.location.href = "./liste.php";
+				window.location.href = "liste.php";
 			});
 			
 			$( ".valider" ).click(function() {

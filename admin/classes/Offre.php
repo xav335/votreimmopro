@@ -96,13 +96,12 @@ class Offre extends StorageManager {
 			$fichier_pdf = '';
 			
 			$sql = "INSERT INTO `offre`
-				(`titre`, `surface`, `description`, `prix`, `fichier_pdf`, `nb_piece`, `a_la_une`, `online`)
+				(`titre`, `surface`, `description`, `prix`, `nb_piece`, `a_la_une`, `online`)
 				VALUES (
 				'". addslashes( $value[ "titre" ] ) ."',
 				". intval( $value[ "surface" ] ) .",
 				'". addslashes( $value[ "description" ] ) ."',
 				". intval( $value[ "prix" ] ) .",
-				'". $fichier_pdf ." ',
 				'". $nb_piece ." ',
 				'". $a_la_une ." ',
 				'". $online ." '
