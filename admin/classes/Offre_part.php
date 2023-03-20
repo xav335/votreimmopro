@@ -96,28 +96,27 @@ class Offre_part extends StorageManager {
 			$fichier_pdf = '';
 			
 			$sql = "INSERT INTO `offre_part`
-				(`titre`, `surface`, `description`, `prix`, 'bilan_energie', `fichier_pdf`, `nb_piece`, `a_la_une`, `online`)
+				(`titre`, `surface`, `description`, `prix`, `bilan_energie`, `nb_piece`, `a_la_une`, `online`)
 				VALUES (
 				'". addslashes( $value[ "titre" ] ) ."',
 				". intval( $value[ "surface" ] ) .",
 				'". addslashes( $value[ "description" ] ) ."',
 				". intval( $value[ "prix" ] ) .",
 				'". addslashes( $value[ "bilan_energie" ] ) ."',
-				'". $fichier_pdf ." ',
 				'". $nb_piece ." ',
 				'". $a_la_une ." ',
 				'". $online ." '
 			);";
-			if ( $debug ) echo $sql . "<br>";
-			else {
-				$result = mysqli_query( $this->mysqli, $sql );
-				
-				if ( !$result ) {
-					throw new Exception( $sql );
-				}
-				$id_record = mysqli_insert_id( $this->mysqli );
-			}
-			
+
+            //print_r($sql);exit();
+
+            $result = mysqli_query($this->mysqli, $sql);
+
+            if (!$result) {
+                throw new Exception($sql);
+            }
+            $id_record = mysqli_insert_id( $this->mysqli );
+
 			$this->commit();
 		
 		} catch (Exception $e) {
@@ -176,7 +175,7 @@ class Offre_part extends StorageManager {
 		
 		// ---- Suppression des images associ�es ---------------- //
 		if ( 1 == 1 ) {
-			$offre_image = new Offre_image();
+			$offre_image = new Offre_image_part();
 			
 			unset( $recherche );
 			$recherche[ "num_offre" ] = $num_offre;
@@ -237,7 +236,7 @@ class Offre_part extends StorageManager {
 			$requete .= " " . $champ . " = '" . $this->traiter_champ( $valeur ) . "'";
 			$requete .= " WHERE `num_offre`=" . $num_offre . ";";
 			$result = mysqli_query( $this->mysqli, $requete );
-			
+			//print_r($requete);exit();
 			if ( $debug ) echo $requete . "<br>";
 			else {
 				if ( !$result ) {

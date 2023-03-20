@@ -1,19 +1,20 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/Contact.php';
 require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/News_part.php";
+require $_SERVER['DOCUMENT_ROOT'] .'/admin/classes/Email.php';
 include_once($_SERVER['DOCUMENT_ROOT'] . '/admin/classes/utils.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/inc/inc.config.php');
 
 $debug = false;
 
 $contact = new Contact();
-
+$email = new Email();
 //print_pre( $_POST );
 
 /////////////////////////  GOOGLE CAPTCHA //////////////////////////
 // Ma clé privée
-//$secret = "6Le4bsYUAAAAAL-nUWFWqRsAelcnrspXQWcidBZx"; //prod
-$secret = "6LdhMg4lAAAAAAAd23Z9ryv3EkzAX72kfs_fD64d"; //localxav
+$secret = "6Le4bsYUAAAAAL-nUWFWqRsAelcnrspXQWcidBZx"; //prod
+//$secret = "6LdhMg4lAAAAAAAd23Z9ryv3EkzAX72kfs_fD64d"; //localxav
 
 // Paramètre renvoyé par le recaptcha
 $response = $_POST['g-recaptcha-response'];
@@ -23,9 +24,9 @@ $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
     . $secret
     . "&response=" . $response
     . "&remoteip=" . $remoteip;
-print_r($api_url);
+//print_r($api_url);
 $decode = json_decode(file_get_contents($api_url), true);
-print_r($decode);
+//print_r($decode);
 error_log(date("Y-m-d H:i:s") . " : " . $_POST['email'] . "BeforeFORM\n", 3, "spy.log");
 
 if ($decode['success'] == true) {
@@ -33,13 +34,25 @@ if ($decode['success'] == true) {
     // ---- Post du formulaire ------------------------------- //
     //echo "On poste...<br>";
 
+    try {
+        if (!empty($_POST)){
+            $_POST["message"] = "Type de bien : ". $_POST["type_bien"] ." - Surface: ". $_POST["surface"]." \n Message : ".$_POST["message"];
+            $_POST["id_type"] = "2";  // 1-estimation particulier 2-estimation pro - 3 - contact part - 4 contact pro
+            $email->add($_POST);
+        }
+    } catch (Exception $e) {
+        error_log(date("Y-m-d H:i:s") ." Erreur: ". $e->getMessage() ."\n", 3, "spy.log");
+        $email = null;
+        exit();
+    }
+
     // ---- Enregistrement dans "contact" -------- //
     if (1 == 1) {
         $num_contact = $contact->isContact($_POST["email"], $debug);
 
         unset($val);
         $val["id"] = $num_contact;
-        $val["name"] = $_POST["nom"];
+        $val["name"] = $_POST["name"];
         $val["email"] = $_POST["email"];
         $val["message"] = $_POST["message"];
         $val["newsletter"] = $_POST["newsletter"];
@@ -67,12 +80,12 @@ if ($decode['success'] == true) {
 
         $message = "Bonjour,<br><br>";
         $message .= "La personne suivante a rempli le formulaire de contact de votre site :<br>";
-        $message .= "Nom : <b>" . $_POST["nom"] . " " . $_POST["prenom"] . "</b><br>";
-        $message .= "E-mail / Téléphone : <b>" . $_POST["email"] . " / " . $_POST["tel"] . "</b><br>";
+        $message .= "Nom : <b>" . $_POST["name"] . " " . $_POST["firstname"] . "</b><br>";
+        $message .= "E-mail / Téléphone : <b>" . $_POST["email"] . " / " . $_POST["phone"] . "</b><br>";
         $message .= "Type de bien : <b>" . $_POST["type_bien"] . "</b><br>";
         $message .= "Surface : <b>" . $_POST["surface"] . "</b><br>";
         $message .= "Code postal : <b>" . $_POST["cp"] . "</b><br>";
-        $message .= "Ville : <b>" . $_POST["ville"] . "</b><br>";
+        $message .= "Ville : <b>" . $_POST["town"] . "</b><br>";
         $message .= "Message : <br><i>" . nl2br($_POST["message"]) . "</i><br><br>";
         $message .= "Cordialement.";
         $message = utf8_decode($message);
@@ -122,10 +135,10 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/header.php");
         <form id="formulaire" method="post" action="contact.php">
             <div class="row">
                 <div class="large-6 columns">
-                    <label><input type="text" name="nom" id="nom" placeholder="Nom" required/></label>
+                    <label><input type="text" name="name" id="nom" placeholder="Nom" required/></label>
                 </div>
                 <div class="large-6 columns">
-                    <label><input type="text" name="prenom" id="prenom" placeholder="Prénom" required/></label>
+                    <label><input type="text" name="firstname" id="prenom" placeholder="Prénom" required/></label>
                 </div>
             </div>
             <div class="row">
@@ -133,7 +146,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/header.php");
                     <label><input type="email" name="email" id="email" placeholder="e-mail" required/></label>
                 </div>
                 <div class="large-6 columns">
-                    <label><input type="tel" name="tel" id="tel" placeholder="Téléphone" required/></label>
+                    <label><input type="tel" name="phone" id="tel" placeholder="Téléphone" required/></label>
                 </div>
             </div>
             <div class="row">
@@ -154,7 +167,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/header.php");
                     <label><input type="text" name="cp" placeholder="Code postal"/></label>
                 </div>
                 <div class="large-8 columns">
-                    <label><input type="text" name="ville" placeholder="Ville"/></label>
+                    <label><input type="text" name="town" placeholder="Ville"/></label>
                 </div>
             </div>
             <textarea name="message" id="message" rows="6" placeholder="Votre message" required></textarea>
@@ -163,12 +176,11 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/header.php");
                 </p>
             </div>
             <div class="row">
-                <!-- <div class="large-4 columns g-recaptcha" data-sitekey="6Le4bsYUAAAAAFIFRKYMtRNDcE2udNP3uDReY1B_"></div> -->
+                <div class="large-4 columns g-recaptcha" data-sitekey="6Le4bsYUAAAAAFIFRKYMtRNDcE2udNP3uDReY1B_"></div>
                 <div class="large-4 columns">
-              <button class="g-recaptcha" data-sitekey="6LdhMg4lAAAAAFEXkAf5TRTFYY5JZJ7gTN1mwUlt"
+              <!--  <button class="g-recaptcha" data-sitekey="6LdhMg4lAAAAAFEXkAf5TRTFYY5JZJ7gTN1mwUlt"
                             data-callback="onSubmit">Envoyer votre demande</button> localxav-->
-                    <!-- <button class="g-recaptcha" data-sitekey="6Le4bsYUAAAAAFIFRKYMtRNDcE2udNP3uDReY1B_"
-                data-callback="onSubmit">Envoyer votre demande</button> prod-->
+                    <button data-callback="onSubmit">Envoyer votre demande</button>
                 </div>
             </div>
         </form>

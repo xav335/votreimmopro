@@ -157,7 +157,7 @@
 							
 							<div id="div_pdf" style="display:<?=$display_pdf?>;">
 								<img src="/admin/img/pdf.png" />&nbsp;
-								<span id="span_pdf"><?=$fichier_pdf?></span>&nbsp;&nbsp;
+                                <span id="span_pdf"><a href="/particuliers/fichier/pdf<?=$fichier_pdf?>" target="_blank"><?=$fichier_pdf?></a></span>&nbsp;&nbsp;
 						  		<input type="button" value="Changer" onclick="javascript:openCustomRoxy('1');" />&nbsp;
 						  		<input type="button" value="Annuler" onclick="javascript:annuler_pdf();" />
 							</div>

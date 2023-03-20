@@ -63,7 +63,7 @@
 										<div style="display: none;" class="supp<?=$value[ "num_offre" ]?> alert alert-warning alert-dismissible fade in" role="alert">
 									      <button type="button" class="close"  aria-label="Close" onclick="$('.supp<?=$value[ "num_offre" ]?>').css('display', 'none');"><span aria-hidden="true">×</span></button>
 									      <strong>Voulez vous vraiment supprimer ?</strong>
-									      <button type="button" class="btn btn-danger" onclick="location.href='../formprocess.php?reference=offre&action=delete&id=<?=$value[ "num_offre" ] ?>'">Oui !</button>
+									      <button type="button" class="btn btn-danger" onclick="location.href='../formprocess_part.php?reference=offre&action=delete&id=<?=$value[ "num_offre" ] ?>'">Oui !</button>
 									 	</div>
 									<img src="../img/del.png" width="20" alt="Supprimer" onclick="$('.supp<?=$value[ "num_offre" ]?>').css('display', 'block');"> </td>
 								</tr>

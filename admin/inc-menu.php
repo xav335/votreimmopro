@@ -37,6 +37,14 @@
                         <li><a href="/admin/livre_dor/liste.php">Modif / Suppr</a></li>
                     </ul>
                 </li>
+
+                <li class="dropdown">
+                    <a href="contact-list.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Messagerie <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/admin/email-list.php">Liste</a></li>
+                    </ul>
+                </li>
+
                 <!-- PARTICULIERS PARTICULIERS PARTICULIERS PARTICULIERS PARTICULIERS PARTICULIERS PARTICULIERS -->
                 <li class="dropdown">
                     <a href="/admin/offre/liste_part.php" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -55,6 +63,8 @@
                         <li><a href="/admin/actualite/liste_part.php">Modif / Suppr</a></li>
                     </ul>
                 </li>
+
+
             </ul>
 
         </div>

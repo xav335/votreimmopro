@@ -3,6 +3,7 @@
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_type_bien_part.php" ;
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_image_part.php" ;
     require $_SERVER['DOCUMENT_ROOT'] .'/admin/classes/News_part.php';
+    require $_SERVER['DOCUMENT_ROOT'] .'/admin/classes/Email.php';
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/utils.php" ;
 	session_start();
 	
@@ -11,7 +12,7 @@
 	$offre = new Offre_part();
 	$offre_type_bien = new Offre_type_bien_part();
 	$offre_image = new Offre_image_part();
-	
+    $email = new Email();
 	$mon_action = $_POST[ "mon_action" ];
 	$anti_spam = $_POST[ "as" ];
 
@@ -38,7 +39,18 @@
 	// ---- Actions à mener --------------------------- //
 	if ( $mon_action == "poster" && $decode['success'] == true) {
 		//echo "On poste...<br>";
-		
+        try {
+            if (!empty($_POST)){
+                $_POST["message"] = "Type de bien : ". $_POST["type_bien"] ." - Surface: ". $_POST["surface"];
+                $_POST["id_type"] = "1";  // 1-estimation particulier 2-estimation pro - 3 - contact part - 4 contact pro
+                $email->add($_POST);
+            }
+        } catch (Exception $e) {
+            error_log(date("Y-m-d H:i:s") ." Erreur: ". $e->getMessage() ."\n", 3, "spy.log");
+            $email = null;
+            exit();
+        }
+
 	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  " SUCCESS\n", 3, "spy.log");
 	    
 		$entete = "From: ". $_POST[ "nom"] ." <". $_POST[ "email"]. ">\n";
@@ -56,11 +68,11 @@
 		
 		$message = "Bonjour,<br><br>";
 		$message .= "La personne suivante souhaite estimer un bien :<br>";
-		$message .= "Nom : <b>" . $_POST[ "nom" ] . "</b><br>";
-		$message .= "E-mail / Téléphone : <b>" . $_POST[ "email" ] . " / " . $_POST[ "tel" ] . "</b><br>";
+		$message .= "Nom : <b>" . $_POST[ "name" ] . "</b><br>";
+		$message .= "E-mail / Téléphone : <b>" . $_POST[ "email" ] . " / " . $_POST[ "phone" ] . "</b><br>";
 		$message .= "Type de bien : <b>" . $_POST[ "type_bien" ] . "</b><br>";
 		$message .= "Surface : <b>" . $_POST[ "surface" ] . "</b><br>";
-		$message .= "Ville : <b>" . $_POST[ "ville" ] . "</b><br><br>";
+		$message .= "Ville : <b>" . $_POST[ "town" ] . "</b><br><br>";
 		$message .= "Cordialement.";
 		$message = utf8_decode( $message );
 		if ( $debug ) echo $message;
@@ -130,9 +142,9 @@
                 <input type="hidden" name="as" value="" />
 
                 <h2>Estimer un bien</h2>
-                <label><input type="text" name="nom" placeholder="Nom" /></label>
+                <label><input type="text" name="name" placeholder="Nom" /></label>
                 <label><input type="email" name="email" placeholder="e-mail" required /></label>
-                <label><input type="tel" name="tel" placeholder="Téléphone" /></label>
+                <label><input type="tel" name="phone" placeholder="Téléphone" /></label>
                 <div class="row collapse">
                     <div class="large-6 columns">
                         <select name="type_bien" id="type">
@@ -146,7 +158,7 @@
                         <label><input type="text" name="surface" placeholder="Surface (m2)" /></label>
                     </div>
                 </div>
-                <label><input type="text" name="ville" placeholder="Ville" /></label>
+                <label><input type="text" name="town" placeholder="Ville" /></label>
                 <button class="g-recaptcha" data-sitekey="6LdhMg4lAAAAAFEXkAf5TRTFYY5JZJ7gTN1mwUlt"
                         data-callback="onSubmit" >Estimer mon bien</button>
             </form>
