@@ -33,6 +33,7 @@
 		$surface = $result[ 0 ][ "surface" ];
 		$description = nl2br( $result[ 0 ][ "description" ] );
         $bilan_energie = nl2br( $result[ 0 ][ "bilan_energie" ] );
+        $bilan_ges = nl2br( $result[ 0 ][ "bilan_ges" ] );
 		$prix = number_format( $result[ 0 ][ "prix" ], 0, '', ' ' );
 		$fichier_pdf = $result[ 0 ][ "fichier_pdf" ];
 		$num_type_bien = $result[ 0 ][ "num_type_bien" ];
@@ -133,6 +134,10 @@
                 <h4>Bilan Energétique</h4>
                 <p><?=$bilan_energie?></p>
                 <img src="img/bilanEnergie.png" alt="bilan">
+
+                <h4>Bilan émissions GES </h4>
+                <p><?=$bilan_ges?></p>
+                <img src="img/bilanGes.png" alt="bilan">
 			</div>
 		</div>
 		<!-- End Offre -->

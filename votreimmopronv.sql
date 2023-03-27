@@ -165,7 +165,7 @@ CREATE TABLE `email` (
   `email` varchar(100) DEFAULT NULL,
   `message` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +174,7 @@ CREATE TABLE `email` (
 
 LOCK TABLES `email` WRITE;
 /*!40000 ALTER TABLE `email` DISABLE KEYS */;
-INSERT INTO `email` VALUES (90,1,'2023-03-20 12:23:03','','','','','','','Type de bien :  - Surface: '),(91,1,'2023-03-20 12:23:07','Collège Sainte Anne','','','LE BOUSCAT','0681731870','francisco.gonzalez@ac-bordeaux.fr','Type de bien :  - Surface: '),(105,1,'2023-03-20 12:23:37','Gregorio Gonzalez','','','LATRESNE','0556201431','fjavi.gonzalez@gmail.com','Type de bien :  - Surface: '),(106,2,'2023-03-20 12:42:59','','','33700','','','fjavi.gonzalez@gmail.com','Type de bien : Appartement - Surface: 89'),(108,2,'2023-03-20 12:47:35','GONZALEZ','Javier','33700','Merignac','+33681731870','fjavi.gonzalez@gmail.com','Type de bien : Terrain - Surface: 89 \n Message : efze zerze zerz er zer zezr '),(109,1,'2023-03-20 19:22:28','Gregorio Gonzalez','','','LATRESNE','0556201431','fjavi.gonzalez@gmail.com','Type de bien : Appartement - Surface: 89'),(110,2,'2023-03-20 19:23:10','GONZALEZ','Javier','33700','Merignac','+33681731870','fjavi.gonzalez@gmail.com','Type de bien : Terrain - Surface: 110 \n Message : zzzzzzzz');
+INSERT INTO `email` VALUES (90,1,'2023-03-20 12:23:03','','','','','','','Type de bien :  - Surface: '),(91,1,'2023-03-20 12:23:07','Collège Sainte Anne','','','LE BOUSCAT','0681731870','francisco.gonzalez@ac-bordeaux.fr','Type de bien :  - Surface: '),(105,1,'2023-03-20 12:23:37','Gregorio Gonzalez','','','LATRESNE','0556201431','fjavi.gonzalez@gmail.com','Type de bien :  - Surface: '),(106,2,'2023-03-20 12:42:59','','','33700','','','fjavi.gonzalez@gmail.com','Type de bien : Appartement - Surface: 89'),(108,2,'2023-03-20 12:47:35','GONZALEZ','Javier','33700','Merignac','+33681731870','fjavi.gonzalez@gmail.com','Type de bien : Terrain - Surface: 89 \n Message : efze zerze zerz er zer zezr '),(109,1,'2023-03-20 19:22:28','Gregorio Gonzalez','','','LATRESNE','0556201431','fjavi.gonzalez@gmail.com','Type de bien : Appartement - Surface: 89'),(110,2,'2023-03-20 19:23:10','GONZALEZ','Javier','33700','Merignac','+33681731870','fjavi.gonzalez@gmail.com','Type de bien : Terrain - Surface: 110 \n Message : zzzzzzzz'),(111,1,'2023-03-20 19:46:56','','','','','','','Type de bien :  - Surface: ');
 /*!40000 ALTER TABLE `email` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,7 +248,7 @@ CREATE TABLE `news` (
   `image1` varchar(250) DEFAULT NULL,
   `online` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_news`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,7 +277,7 @@ CREATE TABLE `news_part` (
   `image1` varchar(250) DEFAULT NULL,
   `online` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_news`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -465,7 +465,7 @@ CREATE TABLE `offre_image_part` (
   `fichier` varchar(100) NOT NULL,
   `defaut` enum('oui','non') NOT NULL DEFAULT 'non',
   PRIMARY KEY (`num_image`)
-) ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -474,7 +474,7 @@ CREATE TABLE `offre_image_part` (
 
 LOCK TABLES `offre_image_part` WRITE;
 /*!40000 ALTER TABLE `offre_image_part` DISABLE KEYS */;
-INSERT INTO `offre_image_part` VALUES (109,38,'/2018.11.05 - le barp 01 final-38.jpg','oui'),(120,38,'/EXTRAIT_IMAGE_1-38.png','non'),(137,64,'/2018.11.05 - le barp 01 final-64.jpg','oui'),(146,73,'/mars-73.jpg','oui'),(147,74,'/mars-74.jpg','oui'),(162,78,'/Visuel_jour_villa_56-78.jpg','oui'),(166,84,'/IMG_4146-84.jpeg','oui'),(167,84,'/IMG_4148-84.jpeg','non'),(168,84,'/IMG_4151-84.jpeg','non'),(169,84,'/IMG_4160-84.jpeg','non'),(170,79,'/Capture_d_cran_2022_10_05_11..42-79.png','oui'),(171,81,'/Capture_d_cran_2022_10_05_11..42-81.png','oui'),(172,82,'/Capture_d_cran_2022_10_05_11..42-82.png','oui'),(173,85,'/ENTREE-85.jpg','oui'),(174,86,'/TERR_ACOTTA-86.png','oui'),(178,89,'/ANDROMEDE-89.jpg','non'),(184,88,'/Visuel_jour_villa_56-88.jpg','oui'),(185,89,'/vue_pers2-89.jpg','oui'),(186,91,'/DSC_0046-91.jpg','oui');
+INSERT INTO `offre_image_part` VALUES (109,38,'/2018.11.05 - le barp 01 final-38.jpg','oui'),(120,38,'/EXTRAIT_IMAGE_1-38.png','non'),(137,64,'/2018.11.05 - le barp 01 final-64.jpg','oui'),(146,73,'/mars-73.jpg','oui'),(147,74,'/mars-74.jpg','oui'),(162,78,'/Visuel_jour_villa_56-78.jpg','oui'),(166,84,'/IMG_4146-84.jpeg','oui'),(167,84,'/IMG_4148-84.jpeg','non'),(168,84,'/IMG_4151-84.jpeg','non'),(169,84,'/IMG_4160-84.jpeg','non'),(170,79,'/Capture_d_cran_2022_10_05_11..42-79.png','oui'),(171,81,'/Capture_d_cran_2022_10_05_11..42-81.png','oui'),(172,82,'/Capture_d_cran_2022_10_05_11..42-82.png','oui'),(173,85,'/ENTREE-85.jpg','oui'),(174,86,'/TERR_ACOTTA-86.png','oui'),(178,89,'/ANDROMEDE-89.jpg','non'),(184,88,'/Visuel_jour_villa_56-88.jpg','oui'),(185,89,'/vue_pers2-89.jpg','oui'),(186,91,'/DSC_0046-91.jpg','oui'),(196,101,'/161021IMAGEPROJET_1-101.jpg','oui');
 /*!40000 ALTER TABLE `offre_image_part` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -494,10 +494,11 @@ CREATE TABLE `offre_part` (
   `fichier_pdf` varchar(100) DEFAULT '',
   `prix` int(11) NOT NULL,
   `bilan_energie` varchar(250) DEFAULT NULL,
+  `bilan_ges` varchar(150) DEFAULT NULL,
   `a_la_une` enum('oui','non') NOT NULL DEFAULT 'non',
   `online` enum('oui','non') NOT NULL,
   PRIMARY KEY (`num_offre`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -506,7 +507,7 @@ CREATE TABLE `offre_part` (
 
 LOCK TABLES `offre_part` WRITE;
 /*!40000 ALTER TABLE `offre_part` DISABLE KEYS */;
-INSERT INTO `offre_part` VALUES (86,'Maison T4 part',103,0,'Terr\'Acotta est un programme de 6 villas T4, avec garage et place de midi, en pleine propriété.\r\nLes villas sauront vous séduire par la qualité de leurs prestations et leurs agencements idéalement pensés :\r\n\r\n=> Jardins plantés, cloturés et équipés d\'une terrasse bois avec pergola\r\n=> Volets roulants motorisés avec commande radio\r\n=> Climatisation réversible dans le séjour\r\n=> Suite parentale avec dressing et salle d\'eau.\r\n','/test-86.pdf',549000,'209 Classe D','oui','oui'),(88,'Local commercial et d\'activité Part',370,0,'LE BARP (33) Local commercial d\'une surface de 370 m2 neuf, conviendrait à une activité commerciale et professionnelle.\r\nLe local dispose d\'une surface vitrée et à l\'arrière d\'une porte rideau.\r\nParking et aire de livraison.\r\nBail 3-6-9\r\nLoyer 2758 € HT/mois soit 33100 € HT/an\r\nHonoraires 30 % HT sur le loyer annuel HT\r\nDisponibilité immédiate.','',2758,'23 classe A','oui','oui'),(89,'VILLA ANDROMEDE - Artigues-Près-Bordeaux',110,0,'Villas Andromède , c\'est un programme de 16 villas Premium de 4 et 5 pièces toutes équipées d\'un étage, d\'un garage, 2 stationnements extérieurs aménagés au centre-bourg d\'Artigues-Près-Bordeaux .\r\nMitoyennes d\'un seul côté (par le garage), et dans un domaine complètement clos, ces habitations réservent à leurs occupants toute l\'intimité, la verdure et le calme de l\'Entre-Deux-Mers avec commerces et services urbains accessibles à pieds .\r\n=> Accession en pleine propriété\r\n=> Domaine sécurisé\r\n=> Jardins plantés, clôturés, et équipés d\'une terrasse bois avec pergola\r\n=> Piscines 5 x 3 sur certaines typologies\r\n=> Prestations et équipements grand confort\r\n=> Parcelles de 280 à 540m²\r\n=> Architecture contemporaine, toits terrasses végétalisées\r\n','',539000,'23 classe A','oui','oui'),(91,'Appartement à Mérignac',89,0,'Dans un quartier agréable ...','',234000,'23 classe A','oui','oui');
+INSERT INTO `offre_part` VALUES (86,'Maison T4 part',103,0,'Terr\'Acotta est un programme de 6 villas T4, avec garage et place de midi, en pleine propriété.\r\nLes villas sauront vous séduire par la qualité de leurs prestations et leurs agencements idéalement pensés :\r\n\r\n=> Jardins plantés, cloturés et équipés d\'une terrasse bois avec pergola\r\n=> Volets roulants motorisés avec commande radio\r\n=> Climatisation réversible dans le séjour\r\n=> Suite parentale avec dressing et salle d\'eau.\r\n','/test-86.pdf',549000,'209 Classe D','35 classe E','oui','oui'),(88,'Local commercial et d\'activité Part',370,0,'LE BARP (33) Local commercial d\'une surface de 370 m2 neuf, conviendrait à une activité commerciale et professionnelle.\r\nLe local dispose d\'une surface vitrée et à l\'arrière d\'une porte rideau.\r\nParking et aire de livraison.\r\nBail 3-6-9\r\nLoyer 2758 € HT/mois soit 33100 € HT/an\r\nHonoraires 30 % HT sur le loyer annuel HT\r\nDisponibilité immédiate.','',2758,'23 classe A','35 classe E','oui','oui'),(89,'VILLA ANDROMEDE - Artigues-Près-Bordeaux',110,0,'Villas Andromède , c\'est un programme de 16 villas Premium de 4 et 5 pièces toutes équipées d\'un étage, d\'un garage, 2 stationnements extérieurs aménagés au centre-bourg d\'Artigues-Près-Bordeaux .\r\nMitoyennes d\'un seul côté (par le garage), et dans un domaine complètement clos, ces habitations réservent à leurs occupants toute l\'intimité, la verdure et le calme de l\'Entre-Deux-Mers avec commerces et services urbains accessibles à pieds .\r\n=> Accession en pleine propriété\r\n=> Domaine sécurisé\r\n=> Jardins plantés, clôturés, et équipés d\'une terrasse bois avec pergola\r\n=> Piscines 5 x 3 sur certaines typologies\r\n=> Prestations et équipements grand confort\r\n=> Parcelles de 280 à 540m²\r\n=> Architecture contemporaine, toits terrasses végétalisées\r\n','',539000,'23 classe A',NULL,'oui','oui'),(91,'Appartement à Mérignac',89,0,'Dans un quartier agréable ...','',234000,'23 classe A',NULL,'oui','oui'),(101,'test',123,0,'tttt','',345,'23 classe A','35 classe E','oui','oui');
 /*!40000 ALTER TABLE `offre_part` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -554,7 +555,7 @@ CREATE TABLE `offre_type_bien_part` (
 
 LOCK TABLES `offre_type_bien_part` WRITE;
 /*!40000 ALTER TABLE `offre_type_bien_part` DISABLE KEYS */;
-INSERT INTO `offre_type_bien_part` VALUES (86,2),(88,1),(89,2),(90,3),(91,2),(92,2),(93,1),(94,1),(95,1),(96,1),(98,1),(99,1),(100,3);
+INSERT INTO `offre_type_bien_part` VALUES (86,2),(88,1),(89,2),(90,3),(91,2),(92,2),(93,1),(94,1),(95,1),(96,1),(98,1),(99,1),(100,3),(101,3);
 /*!40000 ALTER TABLE `offre_type_bien_part` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -674,4 +675,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-20 19:41:56
+-- Dump completed on 2023-03-27 17:53:55

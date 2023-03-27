@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../edenblue.fr/.idea/edenblue.fr.iml" filepath="$PROJECT_DIR$/../edenblue.fr/.idea/edenblue.fr.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/votreimmopro.iml" filepath="$PROJECT_DIR$/.idea/votreimmopro.iml" />
     </modules>
   </component>

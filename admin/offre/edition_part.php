@@ -38,6 +38,7 @@
 			$fichier_pdf = 	 $result[0][ "fichier_pdf" ];
 			$prix =			 $result[0][ "prix" ];
             $bilan_energie = $result[0][ "bilan_energie" ];
+            $bilan_ges = $result[0][ "bilan_ges" ];
 			$online = 		( $result[0][ "online" ] == 'oui' ) ? "checked" : '';
 			$a_la_une = 	( $result[0][ "a_la_une" ] == 'oui' ) ? "checked" : '';
 			
@@ -126,6 +127,10 @@
                         <div class="form-group" >
                             <label class="col-sm-2" for="bilan_energie">Bilan energétique :</label>
                             <input type="text" class="col-sm-4" name="bilan_energie" required  value="<?=$bilan_energie?>">
+                        </div>
+                        <div class="form-group" >
+                            <label class="col-sm-2" for="bilan_energie">Bilan ges :</label>
+                            <input type="text" class="col-sm-4" name="bilan_ges" required  value="<?=$bilan_ges?>">
                         </div>
 
 						<div class="form-group">

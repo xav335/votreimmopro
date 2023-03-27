@@ -13,7 +13,7 @@
 	<div class="row fullwidth footer">
 		<div class="row">
             <div class="large-2 medium-2 small-2 columns text-center" >
-                <a href="https://www.fnaim.fr/" target="_blank"><img src="/img/fnaim.png"></a>
+                <a href="https://www.fnaim.fr/" target="_blank"><img src="/img/fnaim2.png"></a>
                 <a href="#"><img src="/img/logoPro.png"></a>
             </div>
 			<div class="large-6 medium-6 small-12 columns actualites">
