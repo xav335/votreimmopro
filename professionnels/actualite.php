@@ -49,7 +49,7 @@
                                 <h4><? echo $value["titre"] ?> . "</h4>
                                 <h5><? echo traitement_datetime_affiche($value["date_news"]) ?></h5>
                                 <p><? echo nl2br($value["contenu"]) ?></p>
-                                <? if (isset($value["accroche"])) : ?>
+                                <? if ($value["accroche"] !='') : ?>
                                 <p><a href="<? echo ($value["accroche"]) ?>" target="_blank">En savoir plus...</a></p>
                                 <? endif; ?>
                             </div>

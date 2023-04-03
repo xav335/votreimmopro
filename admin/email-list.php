@@ -107,10 +107,10 @@
                                         $origine_msg =  "Estim - part";
                                         break;
                                     case "2":
-                                        $origine_msg =  "contact part";
+                                        $origine_msg =  "Estim  Pro";
                                         break;
                                     case "3":
-                                        $origine_msg = "estim pro";
+                                        $origine_msg = "contact part";
                                         break;
                                     case "4":
                                         $origine_msg = "contact pro";

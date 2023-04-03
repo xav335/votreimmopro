@@ -1,128 +1,126 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/Contact.php';
-require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/News_part.php";
-require $_SERVER['DOCUMENT_ROOT'] .'/admin/classes/Email.php';
-include_once($_SERVER['DOCUMENT_ROOT'] . '/admin/classes/utils.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/inc/inc.config.php');
+    require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/Contact.php';
+    require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/News_part.php";
+    require $_SERVER['DOCUMENT_ROOT'] .'/admin/classes/Email.php';
+    include_once($_SERVER['DOCUMENT_ROOT'] . '/admin/classes/utils.php');
+    include_once($_SERVER['DOCUMENT_ROOT'] . '/inc/inc.config.php');
 
-$debug = false;
+    $debug = false;
 
-$contact = new Contact();
-$email = new Email();
-//print_pre( $_POST );
+    $contact = new Contact();
+    $email = new Email();
+    //print_pre( $_POST );
 
-/////////////////////////  GOOGLE CAPTCHA //////////////////////////
-// Ma clé privée
-$secret = "6Le4bsYUAAAAAL-nUWFWqRsAelcnrspXQWcidBZx"; //prod
-//$secret = "6LdhMg4lAAAAAAAd23Z9ryv3EkzAX72kfs_fD64d"; //localxav
+    /////////////////////////  GOOGLE CAPTCHA //////////////////////////
+    // Ma clé privée
+    $secret = "6Le4bsYUAAAAAL-nUWFWqRsAelcnrspXQWcidBZx";
+    // Paramètre renvoyé par le recaptcha
+    $response = $_POST['g-recaptcha-response'];
+    // On récupère l'IP de l'utilisateur
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+    $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
+        . $secret
+        . "&response=" . $response
+        . "&remoteip=" . $remoteip ;
 
-// Paramètre renvoyé par le recaptcha
-$response = $_POST['g-recaptcha-response'];
-// On récupère l'IP de l'utilisateur
-$remoteip = $_SERVER['REMOTE_ADDR'];
-$api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
-    . $secret
-    . "&response=" . $response
-    . "&remoteip=" . $remoteip;
-//print_r($api_url);
-$decode = json_decode(file_get_contents($api_url), true);
-//print_r($decode);
-error_log(date("Y-m-d H:i:s") . " : " . $_POST['email'] . "BeforeFORM\n", 3, "spy.log");
+    $decode = json_decode(file_get_contents($api_url), true);
+    //print_r($decode);
+    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "BeforeFORM\n", 3, "spy.log");
 
-if ($decode['success'] == true) {
-    error_log(date("Y-m-d H:i:s") . " : " . $_POST['email'] . "SUCCESS\n", 3, "spy.log");
-    // ---- Post du formulaire ------------------------------- //
-    //echo "On poste...<br>";
+    if ($decode['success'] == true) {
+        error_log(date("Y-m-d H:i:s") . " : " . $_POST['email'] . "SUCCESS\n", 3, "spy.log");
+        // ---- Post du formulaire ------------------------------- //
+        //echo "On poste...<br>";
 
-    try {
-        if (!empty($_POST)){
-            $_POST["message"] = "Type de bien : ". $_POST["type_bien"] ." - Surface: ". $_POST["surface"]." \n Message : ".$_POST["message"];
-            $_POST["id_type"] = "2";  // 1-estimation particulier 2-estimation pro - 3 - contact part - 4 contact pro
-            $email->add($_POST);
+        try {
+            if (!empty($_POST)){
+                $_POST["message"] = "Type de bien : ". $_POST["type_bien"] ." - Surface: ". $_POST["surface"]." \n Message : ".$_POST["message"];
+                $_POST["id_type"] = "3";  // 1-estimation particulier 2-estimation pro - 3 - contact part - 4 contact pro
+                $email->add($_POST);
+            }
+        } catch (Exception $e) {
+            error_log(date("Y-m-d H:i:s") ." Erreur: ". $e->getMessage() ."\n", 3, "spy.log");
+            $email = null;
+            exit();
         }
-    } catch (Exception $e) {
-        error_log(date("Y-m-d H:i:s") ." Erreur: ". $e->getMessage() ."\n", 3, "spy.log");
-        $email = null;
-        exit();
+
+        // ---- Enregistrement dans "contact" -------- //
+        if (1 == 1) {
+            $num_contact = $contact->isContact($_POST["email"], $debug);
+
+            unset($val);
+            $val["id"] = $num_contact;
+            $val["name"] = $_POST["name"];
+            $val["email"] = $_POST["email"];
+            $val["message"] = $_POST["message"];
+            $val["newsletter"] = $_POST["newsletter"];
+            $val["fromcontact"] = "on";
+            if ($num_contact <= 0) $contact->contactAdd($val, $debug);
+            else $contact->contactModify($val, $debug);
+        }
+        // ------------------------------------------- //
+
+        // ---- Envoi du mail à l'admin -------------- //
+        if (1 == 1) {
+            $entete = "From: " . $val["name"] . " <" . $val["email"] . ">\n";
+            $entete .= "MIME-version: 1.0\n";
+            $entete .= "Content-type: text/html; charset= iso-8859-1\n";
+            $entete .= "Bcc:" . $mailBcc . "\n";
+            //$entete .= "Bcc:webmaster@worldselectholidays.com\n";
+            //echo "Entete :<br>" . $entete . "<br><br>";
+
+            $sujet = utf8_decode("Prise de contact VOTREIMMOPRO.COM particulier");
+
+            //$_to = "NePasRepondre@votreimmopro.com";
+            //$_to = "fjavi.gonzalez@gmail.com";
+            $_to = $mailContact;
+            //echo "Envoi du message à : " . $_to . "<br><br>";
+
+            $message = "Bonjour,<br><br>";
+            $message .= "La personne suivante a rempli le formulaire de contact de votre site :<br>";
+            $message .= "Nom : <b>" . $_POST["name"] . " " . $_POST["firstname"] . "</b><br>";
+            $message .= "E-mail / Téléphone : <b>" . $_POST["email"] . " / " . $_POST["phone"] . "</b><br>";
+            $message .= "Type de bien : <b>" . $_POST["type_bien"] . "</b><br>";
+            $message .= "Surface : <b>" . $_POST["surface"] . "</b><br>";
+            $message .= "Code postal : <b>" . $_POST["cp"] . "</b><br>";
+            $message .= "Ville : <b>" . $_POST["town"] . "</b><br>";
+            $message .= "Message : <br><i>" . nl2br($_POST["message"]) . "</i><br><br>";
+            $message .= "Cordialement.";
+            $message = utf8_decode($message);
+            if ($debug) echo $message;
+
+            mail($_to, $sujet, stripslashes($message), $entete);
+            //exit();
+        }
+        // ------------------------------------------- //
+
+    } else {
+        // C'est un robot ou le code de vérification est incorrecte
+        error_log(date("Y-m-d H:i:s") . " : " . $_POST['email'] . "FAIL\n", 3, "spy.log");
     }
+    //////////////   FIN GOOGLE CAPTCHA ///////////////////
 
-    // ---- Enregistrement dans "contact" -------- //
-    if (1 == 1) {
-        $num_contact = $contact->isContact($_POST["email"], $debug);
+    ?>
 
-        unset($val);
-        $val["id"] = $num_contact;
-        $val["name"] = $_POST["name"];
-        $val["email"] = $_POST["email"];
-        $val["message"] = $_POST["message"];
-        $val["newsletter"] = $_POST["newsletter"];
-        $val["fromcontact"] = "on";
-        if ($num_contact <= 0) $contact->contactAdd($val, $debug);
-        else $contact->contactModify($val, $debug);
-    }
-    // ------------------------------------------- //
+    <!doctype html>
+    <html class="no-js" lang="fr">
+    <head>
+        <?php include('include/meta.php'); ?>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Votreimmopro.com | Contact</title>
+        <link rel="stylesheet" href="css/foundation.css"/>
+        <link rel="stylesheet" href="js/vendor/swiper/css/swiper.min.css">
+        <link rel="stylesheet" href="style.css"/>
+        <script src="js/vendor/modernizr.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    </head>
 
-    // ---- Envoi du mail à l'admin -------------- //
-    if (1 == 1) {
-        $entete = "From: " . $val["name"] . " <" . $val["email"] . ">\n";
-        $entete .= "MIME-version: 1.0\n";
-        $entete .= "Content-type: text/html; charset= iso-8859-1\n";
-        $entete .= "Bcc:" . $mailBcc . "\n";
-        //$entete .= "Bcc:webmaster@worldselectholidays.com\n";
-        //echo "Entete :<br>" . $entete . "<br><br>";
+    <body class="contact">
 
-        $sujet = utf8_decode("Prise de contact VOTREIMMOPRO.COM");
-
-        //$_to = "NePasRepondre@votreimmopro.com";
-        //$_to = "fjavi.gonzalez@gmail.com";
-        $_to = $mailContact;
-        //echo "Envoi du message à : " . $_to . "<br><br>";
-
-        $message = "Bonjour,<br><br>";
-        $message .= "La personne suivante a rempli le formulaire de contact de votre site :<br>";
-        $message .= "Nom : <b>" . $_POST["name"] . " " . $_POST["firstname"] . "</b><br>";
-        $message .= "E-mail / Téléphone : <b>" . $_POST["email"] . " / " . $_POST["phone"] . "</b><br>";
-        $message .= "Type de bien : <b>" . $_POST["type_bien"] . "</b><br>";
-        $message .= "Surface : <b>" . $_POST["surface"] . "</b><br>";
-        $message .= "Code postal : <b>" . $_POST["cp"] . "</b><br>";
-        $message .= "Ville : <b>" . $_POST["town"] . "</b><br>";
-        $message .= "Message : <br><i>" . nl2br($_POST["message"]) . "</i><br><br>";
-        $message .= "Cordialement.";
-        $message = utf8_decode($message);
-        if ($debug) echo $message;
-
-        mail($_to, $sujet, stripslashes($message), $entete);
-        //exit();
-    }
-    // ------------------------------------------- //
-
-} else {
-    // C'est un robot ou le code de vérification est incorrecte
-    error_log(date("Y-m-d H:i:s") . " : " . $_POST['email'] . "FAIL\n", 3, "spy.log");
-}
-//////////////   FIN GOOGLE CAPTCHA ///////////////////
-
-?>
-
-<!doctype html>
-<html class="no-js" lang="fr">
-<head>
-    <?php include('include/meta.php'); ?>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Votreimmopro.com | Contact</title>
-    <link rel="stylesheet" href="css/foundation.css"/>
-    <link rel="stylesheet" href="js/vendor/swiper/css/swiper.min.css">
-    <link rel="stylesheet" href="style.css"/>
-    <script src="js/vendor/modernizr.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-</head>
-
-<body class="contact">
-
-<?php
-// ---- Header de la page ------------------ //
-include_once($_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/header.php");
+    <?php
+    // ---- Header de la page ------------------ //
+    include_once($_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/header.php");
 ?>
 
 

@@ -178,12 +178,13 @@
 		
 		<!-- Offres à la une -->
 		<div class="row offres-une">
+            <? if ( !empty( $liste_offre ) ) : ?>
 			<h1>Offres à la une</h1>
 			<div class="swiper-offres">
 				<div class="swiper-wrapper">
 					<?
 					// ---- Affichage des offres "A la une" ---------------- //
-					if ( !empty( $liste_offre ) ) {
+
 						foreach ( $liste_offre as $_offre ) { 
 							
 							// ---- Type de bien --------- //
@@ -215,7 +216,7 @@
 							}    
 							echo "</div>\n";
 						}
-					}
+
 					// ----------------------------------------------------- //
 					?>
 					
@@ -223,6 +224,7 @@
 			</div>
 			<div class="swiper-button-next"></div>
 			<div class="swiper-button-prev"></div>
+            <? endif;?>
 		</div>
 		<!-- End Offres à la une -->
 		

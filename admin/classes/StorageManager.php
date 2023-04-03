@@ -15,9 +15,9 @@ class StorageManager{
 	
 	protected function dbConnect() {
 		$host = "localhost";
-		$user = "votreimmopro";
-		$pass = "votreimmopro33";
-		$bdd = "votreimmopro";
+		$user = "votreimmopronv";
+		$pass = "votreimmopronv33";
+		$bdd = "votreimmopronv";
 			
 		// connexion
 		try {

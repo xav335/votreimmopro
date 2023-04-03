@@ -1,10 +1,10 @@
-<? 
+<?
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/News_part.php" ;
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/utils.php" ;
 	session_start();
-	
+
 	$debug = false;
-	
+
 	$news = new News_part();
 	$result = $news->newsGet( '', $debug );
 	//print_r($result);
@@ -22,9 +22,9 @@
 		<link rel="stylesheet" href="style.css" />
 		<script src="js/vendor/modernizr.js"></script>
 	</head>
-	
+
 	<body>
-		
+
 		<?
 		// ---- Header de la page ------------------ //
 		include_once( $_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/header.php" );
@@ -49,7 +49,7 @@
                                 <h4><? echo $value["titre"] ?> . "</h4>
                                 <h5><? echo traitement_datetime_affiche($value["date_news"]) ?></h5>
                                 <p><? echo nl2br($value["contenu"]) ?></p>
-                                <? if (isset($value["accroche"])) : ?>
+                                <? if ($value["accroche"] !='') : ?>
                                     <p><a href="<? echo ($value["accroche"]) ?>" target="_blank">En savoir plus...</a></p>
                                 <? endif; ?>
                             </div>
@@ -61,25 +61,25 @@
             </ul>
         </div>
         <!-- End Actualité -->
-		
+
 		<?
 		// ---- Footer de la page ------------------ //
 		include_once( $_SERVER['DOCUMENT_ROOT'] . "/particuliers/include/footer.php" );
 		?>
-	
+
 		<script src="js/vendor/jquery.js"></script>
 		<script src="js/foundation.min.js"></script>
 	    <script src="js/vendor/swiper/js/swiper.min.js"></script>
-	    
+
 		<script>
-			
+
 			// ---- Validation du formulaire de newsletter -------------- //
 			if ( 1 == 1 ) {
-				
+
 				$( "#form_news" ).submit(function() {
 					//alert( "validation..." );
 					var erreur = 0;
-					
+
 					$.ajax({
 						type: "POST",
 						cache: false,
@@ -88,28 +88,28 @@
 						error: function() { alert( "Une erreur s'est produite..." ); },
 						success: function( data ){
 							var obj = $.parseJSON( data );
-							
+
 							// Tout s'est bien passé!
 							if ( !obj.error ) {
-								
+
 							}
 							else {
-								
+
 							}
-							
+
 						}
 					});
-					
+
 					return false;
 				});
 			}
 			// ---------------------------------------------------------- //
-			
+
 			$(document).foundation();
-			$(document).ready(function(){			
+			$(document).ready(function(){
 				$('.header .menu a:nth-child(3)').addClass('active');
 			});
-			
+
 			/* Gestion du scroll et du menu */
 			window.addEventListener('scroll', scrollEvent);
 			window.addEventListener('DOMMouseScroll', scrollEvent); // Firefox
@@ -122,8 +122,8 @@
 				}
 			};
 			/* End Gestion du scroll et du menu */
-			
+
 		</script>
-		
+
 	</body>
 </html>

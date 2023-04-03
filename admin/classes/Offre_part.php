@@ -43,7 +43,7 @@ class Offre_part extends StorageManager {
 		$requete .= "INNER JOIN `offre_type_bien_part` ON offre_type_bien_part.num_offre = offre_part.num_offre" ;
 		
 		if ( $tab[ "where" ] == '' ) {
-			$requete .= " WHERE offre_part.num_offre > 0";
+			$requete .= " WHERE offre_part.num_offre > 0 AND online='oui' ";
 			
 			if ( !empty( $tab ) ) {
 				foreach( $tab as $champ => $val ) {

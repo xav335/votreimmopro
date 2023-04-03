@@ -1,13 +1,14 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/Contact.php';
     require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/News.php" ;
+    require $_SERVER['DOCUMENT_ROOT'] .'/admin/classes/Email.php';
 	include_once( $_SERVER['DOCUMENT_ROOT'] . '/admin/classes/utils.php' );
     include_once( $_SERVER['DOCUMENT_ROOT'] . '/inc/inc.config.php');
 	
 	$debug = false;
 	
 	$contact = new Contact();
-	
+    $email = new Email();
 	//print_pre( $_POST );
 	
 	/////////////////////////  GOOGLE CAPTCHA //////////////////////////
@@ -27,6 +28,18 @@
 	error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "BeforeFORM\n", 3, "spy.log");
 	
 	if ($decode['success'] == true) {
+
+        try {
+            if (!empty($_POST)){
+                $_POST["message"] = "Type de bien : ". $_POST["type_bien"] ." - Surface: ". $_POST["surface"]." \n Message : ".$_POST["message"];
+                $_POST["id_type"] = "4";  // 1-estimation particulier 2-estimation pro - 3 - contact part - 4 contact pro
+                $email->add($_POST);
+            }
+        } catch (Exception $e) {
+            error_log(date("Y-m-d H:i:s") ." Erreur: ". $e->getMessage() ."\n", 3, "spy.log");
+            $email = null;
+            exit();
+        }
 	       error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  "SUCCESS\n", 3, "spy.log");
 			// ---- Post du formulaire ------------------------------- //
         		//echo "On poste...<br>";
@@ -37,7 +50,7 @@
         			
         			unset( $val );
         			$val[ "id"] = $num_contact;
-        			$val[ "name"] = $_POST[ "nom" ];
+        			$val[ "name"] = $_POST[ "name" ];
         			$val[ "email"] = $_POST[ "email" ];
         			$val[ "message"] = $_POST[ "message" ];
         			$val[ "newsletter"] = $_POST[ "newsletter" ];
@@ -56,7 +69,7 @@
         			//$entete .= "Bcc:webmaster@worldselectholidays.com\n";
         			//echo "Entete :<br>" . $entete . "<br><br>";
         			
-        			$sujet = utf8_decode( "Prise de contact VOTREIMMOPRO.COM" );
+        			$sujet = utf8_decode( "Prise de contact VOTREIMMOPRO.COM professionnel" );
         			
         			//$_to = "NePasRepondre@votreimmopro.com";
         			//$_to = "fjavi.gonzalez@gmail.com";
@@ -65,7 +78,7 @@
         			
         			$message = "Bonjour,<br><br>";
         			$message .= "La personne suivante a rempli le formulaire de contact de votre site :<br>";
-        			$message .= "Nom : <b>" . $_POST[ "nom" ] . " " . $_POST[ "prenom" ] . "</b><br>";
+        			$message .= "Nom : <b>" . $_POST[ "name" ] . " " . $_POST[ "firstname" ] . "</b><br>";
         			$message .= "E-mail / Téléphone : <b>" . $_POST[ "email" ] . " / " . $_POST[ "tel" ] . "</b><br>";
         			$message .= "Type de bien : <b>" . $_POST[ "type_bien" ] . "</b><br>";
         			$message .= "Surface : <b>" . $_POST[ "surface" ] . "</b><br>";
@@ -122,10 +135,10 @@
 				<form id="formulaire" method="post" action="contact.php">
 					<div class="row">
 						<div class="large-6 columns">
-							<label><input type="text" name="nom" id="nom" placeholder="Nom" required /></label>
+							<label><input type="text" name="name" id="nom" placeholder="Nom" required /></label>
 						</div>
 						<div class="large-6 columns">
-							<label><input type="text" name="prenom" id="prenom" placeholder="Prénom" required /></label>
+							<label><input type="text" name="firstname" id="prenom" placeholder="Prénom" required /></label>
 						</div>
 					</div>
 					<div class="row">

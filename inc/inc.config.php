@@ -8,4 +8,4 @@ $facebookLink = "https://www.linkedin.com";
 //mail d'envoi
 //$mailContact = "contact@votreimmopro.com";
 $mailContact = "fjavi.gonzalez@gmail.com";
-$mailBcc = "fjavi.gonzalez@gmail.com,xav335@hotmail.com";
+$mailBcc = "xav335@hotmail.com";

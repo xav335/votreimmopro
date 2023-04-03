@@ -3,6 +3,7 @@
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_type_bien.php" ;
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/Offre_image.php" ;
     require $_SERVER['DOCUMENT_ROOT'] .'/admin/classes/News.php';
+    require $_SERVER['DOCUMENT_ROOT'] .'/admin/classes/Email.php';
 	require $_SERVER['DOCUMENT_ROOT'] . "/admin/classes/utils.php" ;
 	session_start();
 	
@@ -11,16 +12,48 @@
 	$offre = new Offre();
 	$offre_type_bien = new Offre_type_bien();
 	$offre_image = new Offre_image();
+    $email = new Email();
 	
 	$mon_action = $_POST[ "mon_action" ];
 	$anti_spam = $_POST[ "as" ];
-	
+
+    /////////////////////////  GOOGLE CAPTCHA //////////////////////////
+    // Ma clé privée
+    //$secret = "6Le4bsYUAAAAAL-nUWFWqRsAelcnrspXQWcidBZx"; //prod
+    $secret = "6LdhMg4lAAAAAAAd23Z9ryv3EkzAX72kfs_fD64d"; //localxav
+
+    // Paramètre renvoyé par le recaptcha
+    $response = $_POST['g-recaptcha-response'];
+    // On récupère l'IP de l'utilisateur
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+    $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
+        . $secret
+        . "&response=" . $response
+        . "&remoteip=" . $remoteip;
+    //print_r($api_url);
+    $decode = json_decode(file_get_contents($api_url), true);
+    //print_r($decode);
+    error_log(date("Y-m-d H:i:s") . " : " . $_POST['email'] . "BeforeFORM\n", 3, "spy.log");
+
+
 	// ---- Actions à mener --------------------------- //
-	if ( $mon_action == "poster" && $anti_spam == '' ) {
+    if ( $mon_action == "poster" && $decode['success'] == true) {
 		//echo "On poste...<br>";
-		
-	    error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  " FromHome\n", 3, "spy.log");
-	    
+
+        try {
+            if (!empty($_POST)){
+                $_POST["message"] = "Type de bien : ". $_POST["type_bien"] ." - Surface: ". $_POST["surface"];
+                $_POST["id_type"] = "2";  // 1-estimation particulier 2-estimation pro - 3 - contact part - 4 contact pro
+                $email->add($_POST);
+            }
+        } catch (Exception $e) {
+            error_log(date("Y-m-d H:i:s") ." Erreur: ". $e->getMessage() ."\n", 3, "spy.log");
+            $email = null;
+            exit();
+        }
+
+        error_log(date("Y-m-d H:i:s") ." : ". $_POST['email'] .  " SUCCESS\n", 3, "spy.log");
+
 		$entete = "From: ". $_POST[ "nom"] ." <". $_POST[ "email"]. ">\n";
 		$entete .= "MIME-version: 1.0\n";
 		$entete .= "Content-type: text/html; charset= iso-8859-1\n";
@@ -102,30 +135,33 @@
 
             </div>
 
-			<form method="post" action="index.php" class="estimation">
-				<input type="hidden" name="mon_action" value="poster" />
-				<input type="hidden" name="as" value="" />
-				
-				<h2>Estimer un bien</h2>
-				<label><input type="text" name="nom" placeholder="Nom" /></label>
-				<label><input type="email" name="email" placeholder="e-mail" /></label>
-				<label><input type="tel" name="tel" placeholder="Téléphone" /></label>
-				<div class="row collapse">
-					<div class="large-6 columns">
-						<select name="type_bien" id="type">
-							<option value="">Type de bien</option>
-							<option value="Bureau">Bureau</option>
-							<option value="Bâtiment">Bâtiment</option>
-							<option value="Terrain">Terrain</option>
-						</select>
-					</div>
-					<div class="large-6 columns">
-						<label><input type="text" name="surface" placeholder="Surface (m2)" /></label>
-					</div>
-				</div>
-				<label><input type="text" name="ville" placeholder="Ville" /></label>
-				<button>Estimer mon bien</button>
-			</form>
+            <form method="post" id="formulaire" class="estimation" action="index.php">
+                <input type="hidden" name="mon_action" value="poster" />
+                <input type="hidden" name="as" value="" />
+
+                <h2>Estimer un bien</h2>
+                <label><input type="text" name="name" placeholder="Nom" required /></label>
+                <label><input type="email" name="email" placeholder="e-mail" required /></label>
+                <label><input type="tel" name="phone" placeholder="Téléphone" /></label>
+                <div class="row collapse">
+                    <div class="large-6 columns">
+                        <select name="type_bien" id="type">
+                            <option value="">Type de bien</option>
+                            <option value="Bureau">Bureau</option>
+                            <option value="Bâtiment">Bâtiment</option>
+                            <option value="Terrain">Terrain</option>
+                        </select>
+                    </div>
+                    <div class="large-6 columns">
+                        <label><input type="text" name="surface" placeholder="Surface (m2)" /></label>
+                    </div>
+                </div>
+                <label><input type="text" name="town" placeholder="Ville" /></label>
+                <button class="g-recaptcha" data-sitekey="6LdhMg4lAAAAAFEXkAf5TRTFYY5JZJ7gTN1mwUlt"
+                        data-callback="onSubmit" >Estimer mon bien</button>
+            </form>
+
+
 			<div class="swiper-slider">
 				<div class="motif"></div>
 				<div class="swiper-wrapper">
@@ -196,7 +232,16 @@
 		<script src="js/vendor/jquery.js"></script>
 		<script src="js/foundation.min.js"></script>
 	    <script src="js/vendor/swiper/js/swiper.min.js"></script>
-	    
+
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script type="text/javascript">
+            function onSubmit(token) {
+                console.log(token);
+                document.getElementById("formulaire").submit();
+            }
+        </script>
+
+
 		<script>
 			
 			// ---- Validation du formulaire de newsletter -------------- //
