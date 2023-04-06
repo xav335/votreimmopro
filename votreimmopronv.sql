@@ -1,8 +1,8 @@
--- MariaDB dump 10.17  Distrib 10.4.13-MariaDB, for osx10.10 (x86_64)
+-- MySQL dump 10.19  Distrib 10.3.38-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: votreimmopronv
 -- ------------------------------------------------------
--- Server version	10.4.13-MariaDB
+-- Server version	10.3.38-MariaDB-0+deb10u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `admin` (
   `mdp` varchar(30) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,7 +52,7 @@ CREATE TABLE `categorie` (
   `id` int(10) unsigned NOT NULL,
   `categorie` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,7 +80,7 @@ CREATE TABLE `catproduct` (
   `level` int(11) NOT NULL DEFAULT 0,
   `ordre` smallint(6) NOT NULL DEFAULT 100,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,7 +111,7 @@ CREATE TABLE `contact` (
   `fromgoldbook` tinyint(4) NOT NULL DEFAULT 0,
   `fromcontact` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=895 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=895 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +134,7 @@ DROP TABLE IF EXISTS `contact_categorie`;
 CREATE TABLE `contact_categorie` (
   `id_contact` int(11) unsigned NOT NULL,
   `id_categorie` int(10) unsigned NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,7 +165,7 @@ CREATE TABLE `email` (
   `email` varchar(100) DEFAULT NULL,
   `message` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +174,7 @@ CREATE TABLE `email` (
 
 LOCK TABLES `email` WRITE;
 /*!40000 ALTER TABLE `email` DISABLE KEYS */;
-INSERT INTO `email` VALUES (116,2,'2023-04-03 18:00:18','CLG EMMANUEL DALZON','','','Saint-Médard-en-Jalles','0681731870','francisco.gonzalez@ac-bordeaux.fr','Type de bien : Bâtiment - Surface: 89'),(120,3,'2023-04-03 18:09:36','DALZON','CLG','33160','Saint-Médard-en-Jalles','+33681731870','fjavi.gonzalez@gmail.com','Type de bien : Appartement - Surface: 1233 \n Message : dcsdcsdcsdcs'),(121,4,'2023-04-03 18:10:07','','','33700','','','fjavi.gonzalez@gmail.com','Type de bien : Bâtiment - Surface: 89 \n Message : eczczeczeczezc'),(122,4,'2023-04-03 18:10:39','','','33160','','','francisco.gonzalez@ac-bordeaux.fr','Type de bien : - - Surface:  \n Message : ddds');
+INSERT INTO `email` VALUES (121,4,'2023-04-03 18:10:07','','','33700','','','fjavi.gonzalez@gmail.com','Type de bien : Bâtiment - Surface: 89 \n Message : eczczeczeczezc'),(122,4,'2023-04-03 18:10:39','','','33160','','','francisco.gonzalez@ac-bordeaux.fr','Type de bien : - - Surface:  \n Message : ddds'),(124,1,'2023-04-03 18:41:26','Javier GONZALEZ','','','Merignac','+33681731870','fjavi.gonzalez@gmail.com','Type de bien : Maison - Surface: 110'),(125,3,'2023-04-04 00:50:58','Eric','Eric','','New York','555-555-1212','ericjonesmyemail@gmail.com','Type de bien : Appartement - Surface:  \n Message : Hello votreimmopro.com Admin! \r\n\r\nMy name is Eric and unlike a lot of emails you might get, I wanted to instead provide you with a word of encouragement – Congratulations\r\n\r\nWhat for?  \r\n\r\nPart of my job is to check out websites and the work you’ve done with votreimmopro.com definitely stands out. \r\n\r\nIt’s clear you took building a website seriously and made a real investment of time and resources into making it top quality.\r\n\r\nThere is, however, a catch… more accurately, a question…\r\n\r\nSo when someone like me happens to find your site – maybe at the top of the search results (nice job BTW) or just through a random link, how do you know? \r\n\r\nMore importantly, how do you make a connection with that person?\r\n\r\nStudies show that 7 out of 10 visitors don’t stick around – they’re there one second and then gone with the wind.\r\n\r\nHere’s a way to create INSTANT engagement that you may not have known about… \r\n\r\nWeb Visitors Into Leads is a software widget that’s works on your site, ready to capture any visitor’s Name, Email address and Phone Number.  It lets you know INSTANTLY that they’re interested – so that you can talk to that lead while they’re literally checking out votreimmopro.com.\r\n\r\nCLICK HERE https://advanceleadgeneration.com to try out a Live Demo with Web Visitors Into Leads now to see exactly how it works.\r\n\r\nIt could be a game-changer for your business – and it gets even better… once you’ve captured their phone number, with our new SMS Text With Lead feature, you can automatically start a text (SMS) conversation – immediately (and there’s literally a 100X difference between contacting someone within 5 minutes versus 30 minutes.)\r\n\r\nPlus then, even if you don’t close a deal right away, you can connect later on with text messages for new offers, content links, even just follow up notes to build a relationship.\r\n\r\nEverything I’ve just described is simple, easy, and effective. \r\n\r\nCLICK HERE https://advanceleadgeneration.com to discover what Web Visitors Into Leads can do for your business.\r\n\r\nYou could be converting up to 100X more leads today!\r\n\r\nEric\r\nPS: Web Visitors Into Leads offers a FREE 14 days trial – and it even includes International Long Distance Calling. \r\nYou have customers waiting to talk with you right now… don’t keep them waiting. \r\nCLICK HERE https://advanceleadgeneration.com to try Web Visitors Into Leads now.\r\n\r\nIf you\'d like to unsubscribe click here http://advanceleadgeneration.com/unsubscribe.aspx?d=votreimmopro.com\r\n');
 /*!40000 ALTER TABLE `email` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,7 +193,7 @@ CREATE TABLE `goldbook` (
   `message` text DEFAULT NULL,
   `online` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +220,7 @@ CREATE TABLE `media_news` (
   `url_apercu` varchar(250) NOT NULL,
   `type_media` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`,`id_news`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -248,7 +248,7 @@ CREATE TABLE `news` (
   `image1` varchar(250) DEFAULT NULL,
   `online` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_news`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +257,6 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (32,'2022-06-09 00:00:00','Le B. Retail Park','linkedin','Les enseignes WELDOM, MIDAS, ORANGE BLEU, GENERATION PISCINE, GSF, ....s\'implantent au coeur du programme Le B. Retail Park, il ne reste que deux lots disponibles, \r\n\r\nOuverture octobre','/2018.11.05 - le barp 01 final-32.jpg',1),(34,'2022-10-12 00:00:00','WELDOM OUVRE SES PORTES','','L\'enseigne WELDOM, magasin de bricolage situé au sein du Retail Park du Barp , a ouvert ses portes le 12 octobre.','/Capture_d_cran_2022_10_13_10..02-.png',1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,7 +276,7 @@ CREATE TABLE `news_part` (
   `image1` varchar(250) DEFAULT NULL,
   `online` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_news`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -286,7 +285,6 @@ CREATE TABLE `news_part` (
 
 LOCK TABLES `news_part` WRITE;
 /*!40000 ALTER TABLE `news_part` DISABLE KEYS */;
-INSERT INTO `news_part` VALUES (34,'2023-03-09 00:00:00','Ouverte de l\'espace particulier','http://votreimmopro.localxav.lan/particuliers','A partir du mois d\'avril 2023 vous pourrez trouver des offres de particuliers également dans notre agence.','/Capture_d_cran_2022_06_09_14..41-34.png',1);
 /*!40000 ALTER TABLE `news_part` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,7 +301,7 @@ CREATE TABLE `newsletter` (
   `titre` varchar(250) DEFAULT NULL,
   `bas_page` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -331,7 +329,7 @@ CREATE TABLE `newsletter_detail` (
   `link` varchar(250) DEFAULT NULL,
   `texte` text DEFAULT NULL,
   PRIMARY KEY (`id`,`id_newsletter`)
-) ENGINE=InnoDB AUTO_INCREMENT=333 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=333 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -356,7 +354,7 @@ CREATE TABLE `newsletter_journal` (
   `date_envoi` timestamp NOT NULL DEFAULT current_timestamp(),
   `id_newsletter` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -378,11 +376,11 @@ DROP TABLE IF EXISTS `newsletter_journal_detail`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `newsletter_journal_detail` (
   `id_newsletter_journal` int(11) unsigned NOT NULL,
-  `email` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `read` tinyint(4) NOT NULL DEFAULT 0,
-  `coderandom` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
-  `error` varchar(250) CHARACTER SET utf8 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `coderandom` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `error` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -413,7 +411,7 @@ CREATE TABLE `offre` (
   `a_la_une` enum('oui','non') NOT NULL DEFAULT 'non',
   `online` enum('oui','non') NOT NULL,
   PRIMARY KEY (`num_offre`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -422,7 +420,7 @@ CREATE TABLE `offre` (
 
 LOCK TABLES `offre` WRITE;
 /*!40000 ALTER TABLE `offre` DISABLE KEYS */;
-INSERT INTO `offre` VALUES (38,'Le B. Retail Park',428,0,'A LOUER, en exclusivité, sur la commune de Le Barp, Local d\'une surface de 428 m2\r\nA proximité des supermarchés SUPER U et LEADER PRICE, les enseignes qui seront présentes : WELDOM, ORANGE BLEU, MIDAS, GENERATION PISCINE,........\r\nDisponible immédiatement, loyer annuel 48 900 € HT, LOT 2, Bail 3-6-9\r\nHonoraires: 30 % HT','',4075,'oui','oui'),(64,'Le B. Retail Park',331,0,'A LOUER, en exclusivité, sur la commune de Le Barp, Local d\'une surface de 331 m2\r\nA proximité des supermarchés SUPER U et LEADER PRICE, les enseignes qui seront présentes : WELDOM, ORANGE BLEU, MIDAS, GENERATION PISCINE,........\r\nDisponible immédiatement, loyer annuel 33 100 € HT, LOT 5, Bail 3-6-9\r\nHonoraires: 30 % HT','',2750,'oui','oui'),(78,'VILLA MERIGNAC',120,0,'A vendre à Mérignac, quartier résidentiel, proche accès rocade, villa T5, comprenant au rdc, un grand séjour, cuisine, cellier, WC.\r\nA l\'étage, 3 chambres, une suite parentale avec douche italienne, une salle de bains familiale, WC.\r\nGarage et jardin clos.\r\nLes travaux ont démarré, livraison fin du premier trimestre 2022.','',496000,'oui','oui'),(79,'Local commercial',108,0,'Situé à Libourne (33), sur un axe très passant nous vous proposons un ensemble commercial d\'une surface de +300 m2 au sol, disposant de 12 places de parking, divisible en 3 lots.\r\nLOT A : 108 m2, loyer mensuel 2100 € HT\r\nHonoraires 30 % HT sur loyer annuel','/Pr_sentation_Locaux_commerciaux_-79.pdf',2100,'oui','oui'),(81,'LOCAL COMMERCIAL',113,0,'Situé à Libourne (33), sur un axe très passant nous vous proposons un ensemble commercial d\'une surface de +300 m2 au sol, disposant de 12 places de parking, divisible en 3 lots.\r\nLOT B : 113 m2, loyer mensuel 2100 € HT\r\nHonoraires 30 % HT sur loyer annuel','/Pr_sentation_Locaux_commerciaux_-81.pdf',2100,'oui','oui'),(82,'LOCAL COMMERCIAL',113,0,'Situé à Libourne (33), sur un axe très passant nous vous proposons un ensemble commercial d\'une surface de +300 m2 au sol, disposant de 12 places de parking, divisible en 3 lots.\r\nLOT C : 113 m2, loyer mensuel 2100 € HT\r\nHonoraires 30 % HT sur loyer annuel','/Pr_sentation_Locaux_commerciaux_-82.pdf',2100,'oui','oui'),(84,'BUREAUX et LOCAL d\'ACTIVITES',484,0,'A CENON, au coeur d\'un centre d\'affaires sécurisé, locaux professionnels comprenant 200 m2 de bureaux, cloisonnés et climatisés, fibre optique.\r\n284 m2 de dépôt équipé de 2 portes sectionnelles et d\'une mezzanine.\r\n12 places de parking privatives - Bail 3-6-9\r\nDisponible.\r\nLoyer mensuel 5000 € HT + charges\r\n€ HT/HC\r\nHonoraires : 20 % HT','',5000,'oui','oui'),(85,'BATIMENT D\'ACTIVITE',2000,0,'Sur une parcelle de 4950 m2, bâtiment de stockage développant 1993 m2 de surface de plancher, équipé de panneaux photovoltaïques.\r\nL\'ensemble est livré clé en main, VRD, clôtures et portail, espace vert,....\r\nPossibilité de location.\r\nSitué sur l\'axe RN 10 à 35 km de BORDEAUX\r\nVente en VEFA - livraison fin premier trimestre 2024 - prix de vente 2 940 000 € HT FAI\r\nDossier sur demande\r\n','',2940000,'oui','oui'),(86,'Maison T4',103,0,'Terr\'Acotta est un programme de 6 villas T4, avec garage et place de midi, en pleine propriété.\r\nLes villas sauront vous séduire par la qualité de leurs prestations et leurs agencements idéalement pensés :\r\n\r\n=> Jardins plantés, cloturés et équipés d\'une terrasse bois avec pergola\r\n=> Volets roulants motorisés avec commande radio\r\n=> Climatisation réversible dans le séjour\r\n=> Suite parentale avec dressing et salle d\'eau.\r\n',' ',549000,'oui','oui'),(88,'Local commercial et d\'activité RETAIL PARK ',370,0,'LE BARP (33) Local commercial d\'une surface de 370 m2 neuf, conviendrait à une activité commerciale et professionnelle.\r\nLe local dispose d\'une surface vitrée et à l\'arrière d\'une porte rideau.\r\nParking et aire de livraison.\r\nBail 3-6-9\r\nLoyer 2758 € HT/mois soit 33100 € HT/an\r\nHonoraires 30 % HT sur le loyer annuel HT\r\nDisponibilité immédiate.',' ',2758,'oui','oui'),(89,'VILLA ANDROMEDE - Artigues-Près-Bordeaux',110,0,'Villas Andromède , c\'est un programme de 16 villas Premium de 4 et 5 pièces toutes équipées d\'un étage, d\'un garage, 2 stationnements extérieurs aménagés au centre-bourg d\'Artigues-Près-Bordeaux .\r\nMitoyennes d\'un seul côté (par le garage), et dans un domaine complètement clos, ces habitations réservent à leurs occupants toute l\'intimité, la verdure et le calme de l\'Entre-Deux-Mers avec commerces et services urbains accessibles à pieds .\r\n=> Accession en pleine propriété\r\n=> Domaine sécurisé\r\n=> Jardins plantés, clôturés, et équipés d\'une terrasse bois avec pergola\r\n=> Piscines 5 x 3 sur certaines typologies\r\n=> Prestations et équipements grand confort\r\n=> Parcelles de 280 à 540m²\r\n=> Architecture contemporaine, toits terrasses végétalisées\r\n',' ',539000,'oui','oui'),(90,'Maison familiale',149,0,'Dans un environnement calme, proche du centre bourg, des transports et de toutes ses commodités, maison familiale de plein pied d\'une surface habitable d\'environ 149m2. \r\nElle se compose d\'une spacieuse et lumineuse pièce de vie de plus de 47m2 avec une salle à manger, une cuisine ouverte équipée de 14m2, cheminée et poêle à bois intégré avec accès terrasse/jardin et piscine. \r\nDe 4 chambres dont une avec salle d\'eau. \r\nD\'une chambre parentale avec dressing, douche à l\'italienne, double vasque, sèche serviettes. \r\nUne salle de bain avec baignoire, double vasque, sèche serviette ainsi que des WC. \r\nEspace bureau, ainsi qu\'un cellier/buanderie. \r\n\r\nA l’extérieur, sur une parcelle de près de 2400m2 entièrement clôturée, arborée et verdoyante, un grand garage d\'une surface de 45m2 environ et une piscine sécurisée avec sa terrasse. \r\n\r\nChauffage aérothermique réversible, double vitrage, fibre, clim réversible, panneaux solaires dernière génération installés en janvier dernier. \r\n\r\nDiagnostiques réalisés ok \r\n\r\nPrix de vente : 505 000 € \r\nHonoraires charge vendeur \r\n\r\n\r\nPour toutes informations complémentaires, ainsi que des photos supplémentaires, contactez moi. \r\n06 03 33 77 78 \r\nAgence VotreImmopro',' ',505000,'oui','oui'),(91,'Maison individuelle',140,0,'Maison de plein pied d\'environ 140m2 sur un terrain d\'une superficie de 720m2. En bordure de foret, dans un quartier résidentiel, calme et verdoyant. A 2 min du centre bourg de Margaux-Cantenac, a 5 minutes de Soussans. \r\nPortail coulissant électrique avec vidéophonie connecté/vidéosurveillance. \r\nMaison composée d\'un hall d\'entrée avec placard et WC, d\'une pièce à vivre, salon, cuisine d\'environ 47m2 avec 2 baies vitrées coulissantes, salon cheminée demi-lune avec insert.\r\nLa cuisine, équipée avec comptoir bar donnant sur le salon. \r\nUne chambre parentale avec salle d\'eau, douche à l\'italienne, WC. \r\n3 chambres supplémentaires, une salle de bain avec baignoire ainsi qu\'une 4ème pièce pouvant servir de local professionnel ou salle de jeux avec entrée/sortie indépendante.\r\nBureau, cellier équipé d\'une chaudière à gaz.\r\nMezzanine de 12m2, buanderie/garage avec sortie sur le jardin. \r\n\r\nPetite terrasse bois avec barbecue en pierre.\r\nVolet électrique, fibre, cabanon dans le jardin\r\n\r\nHonoraire charge vendeur. \r\n\r\nPour toutes informations complémentaires, visites, et photos :\r\n06 03 33 77 78',' ',362250,'oui','oui'),(92,'PARC D\'ACTIVITE PESSAC (33)',0,0,'A LOUER OU A VENDRE LOCAUX D\'ACTIVITES ET DE BUREAUX\r\nACTIVITES : DE 80 € HT à 100 € HT le m2 PAR AN\r\nBUREAUX : DE 125 € HT à 145 € HT le m2 PAR AN\r\n\r\nDOSSIER COMPLET SUR DEMANDE',' ',0,'oui','oui');
+INSERT INTO `offre` VALUES (38,'Le B. Retail Park',428,0,'A LOUER, en exclusivité, sur la commune de Le Barp, Local d\'une surface de 428 m2\r\nA proximité des supermarchés SUPER U et LEADER PRICE, WELDOM, MIDAS, GENERATION PISCINE,........\r\nDisponible immédiatement, loyer annuel 48 900 € HT, LOT C1, Bail 3-6-9\r\nHonoraires: 30 % HT sur loyer annuel.','',48900,'oui','oui'),(64,'Le B. Retail Park',385,0,'A LOUER, en exclusivité, sur la commune de Le Barp, Local d\'une surface de 385 m2\r\nA proximité des supermarchés SUPER U et LEADER PRICE, WELDOM, MIDAS, GENERATION PISCINE, GSF,...\r\nDisponible immédiatement, loyer annuel 34 300 € HT, LOT 6, Bail 3-6-9\r\n\r\nHonoraires: 30 % HT sur loyer annuel','',34300,'oui','oui'),(79,'Local commercial',108,0,'EN EXCLUSIVITÉ: Situé à Libourne (33), sur un axe très passant nous vous proposons un ensemble commercial d\'une surface de 334 m2 au sol, disposant de parking, divisible en 3 lots.\r\nLOT A : 108 m2, loyer annuel 26 500 € HT\r\nHonoraires 30 % HT sur loyer annuel soit: 7 950 € HT\r\nLivraison: fin 2023','',26500,'oui','oui'),(81,'LOCAL COMMERCIAL',113,0,'EN EXCLUSIVITÉ, Situé à Libourne (33), sur un axe très passant nous vous proposons un ensemble commercial d\'une surface de 334 m2 au sol, disposant de parking, divisible en 3 lots.\r\nLOT B : 113 m2, loyer annuel 26 500 € HT\r\nHonoraires 30 % HT sur loyer annuel soit 7 950 € HT\r\nLivraison fin 2023','',26500,'oui','oui'),(82,'LOCAL COMMERCIAL',113,0,'EN EXCLUSIVITÉ, Situé à Libourne (33), sur un axe très passant nous vous proposons un ensemble commercial d\'une surface de 334 m2 au sol, disposant de parking.\r\nLOT C : 113 m2, loyer annuel 28 000 € HT\r\nHonoraires 30 % HT sur loyer annuel soit 8 400 € HT\r\nLivraison fin 2023','',28000,'oui','oui'),(84,'BUREAUX et LOCAL d\'ACTIVITES',484,0,'A CENON, au coeur d\'un centre d\'affaires sécurisé, locaux professionnels comprenant 200 m2 de bureaux, cloisonnés et climatisés, fibre optique.\r\n284 m2 de dépôt équipé de 2 portes sectionnelles et d\'une mezzanine.\r\n12 places de parking privatives - Bail 3-6-9\r\nDisponible.\r\nLoyer mensuel 4900 € HT + charges\r\nHonoraires : 20 % HT sur loyer annuel','',58800,'oui','oui'),(88,'Local commercial et d\'activité RETAIL PARK ',370,0,'LE BARP (33) Local commercial d\'une surface de 370 m2 neuf, conviendrait à une activité commerciale et professionnelle.\r\nLe local dispose d\'une surface vitrée et à l\'arrière d\'une porte rideau.\r\nParking et aire de livraison.\r\nBail 3-6-9\r\nHonoraires 30 % HT sur le loyer annuel HT\r\nDisponibilité immédiate.','',33100,'oui','oui'),(95,'LOCAUX d\'ACTIVITE PESSAC',343,0,'Au coeur d\'un parc d\'activités en pleine expansion, situé à PESSAC BERSOL, au sein d\'un des principaux pôles tertiaires et technologiques  de l\'agglomération Bordelaise, cet ensemble édifié dans un parc de 4 hectares présente des avantages importants:\r\n-Environnement tertiaire\r\n-Proximité de l\'aéroport de Bordeaux Mérignac\r\n-Transports en commun desservant le site\r\n-Le centre ville de Bordeaux à 20 mn par la rocade\r\n-Parc hôtelier\r\n-360 places de parking, dont 137 en sous-sol avec accès sécurisé.\r\nBail 6 ans fermes\r\nLoyer annuel à partir de 80 € HT le m2 par an pour l\'activité\r\nLoyer annuel à partir de 125 € HT le m2 par an pout les bureaux\r\n\r\nExemple pour un local de 343 m2 comprenant 261 m2 d\'activité et 82 m2 de bureaux le loyer annuel est de 31 130 € HT\r\nDossier complet sur demande\r\n','',31130,'oui','oui'),(97,'A LOUER LOCAL COMMERCIAL',349,0,'EN EXCLUSIVITÉ, A louer local commercial en première ligne, situé avenue du Médoc 33114 Le Barp, aux sein du nouveau retail Park Le B.\r\nLocal commercial, d\'une surface de 349 m2 formant un angle entièrement vitrée, environnement commercial, SUPER U, WELDOM, MIDAS, GENERATION PISCINE, GSF,...\r\nDisponible\r\nHonoraires: 13 500 € HT','',45000,'oui','oui'),(98,'A LOUER A MIOS (33)',224,0,'Au coeur d\'un parc d\'activité situé à MIOS, local à louer, lot N°7, d\'une surface au sol de 190 m2 équipé d\'une mezzanine d\'une surface de 34 m2, bâtiment neuf, disponibilité immédiate, 6 places de parking sont attribuées avec le lot.\r\nLoyer annuel 19 040 € HT\r\nHonoraires: 3 808 € HT\r\nDossier complet sur demande','',19040,'oui','oui'),(99,'BATIMENT D\'ACTIVITE A LOUER A MIOS (33)',217,0,'Au coeur d\'un parc d\'activité situé à MIOS, local à louer, lot N°15, d\'une surface au sol de 183 m2 équipé d\'une mezzanine d\'une surface de 34 m2, bâtiment neuf, disponibilité immédiate, 6 places de parking sont attribuées avec le lot.\r\nLoyer annuel 18 445 € HT\r\nHonoraires: 3 689 € HT\r\nDossier complet sur demande','',18445,'oui','oui');
 /*!40000 ALTER TABLE `offre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,7 +437,7 @@ CREATE TABLE `offre_image` (
   `fichier` varchar(100) NOT NULL,
   `defaut` enum('oui','non') NOT NULL DEFAULT 'non',
   PRIMARY KEY (`num_image`)
-) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=233 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -448,7 +446,7 @@ CREATE TABLE `offre_image` (
 
 LOCK TABLES `offre_image` WRITE;
 /*!40000 ALTER TABLE `offre_image` DISABLE KEYS */;
-INSERT INTO `offre_image` VALUES (109,38,'/2018.11.05 - le barp 01 final-38.jpg','oui'),(120,38,'/EXTRAIT_IMAGE_1-38.png','non'),(137,64,'/2018.11.05 - le barp 01 final-64.jpg','oui'),(146,73,'/mars-73.jpg','oui'),(147,74,'/mars-74.jpg','oui'),(162,78,'/Visuel_jour_villa_56-78.jpg','oui'),(166,84,'/IMG_4146-84.jpeg','oui'),(167,84,'/IMG_4148-84.jpeg','non'),(168,84,'/IMG_4151-84.jpeg','non'),(169,84,'/IMG_4160-84.jpeg','non'),(170,79,'/Capture_d_cran_2022_10_05_11..42-79.png','oui'),(171,81,'/Capture_d_cran_2022_10_05_11..42-81.png','oui'),(172,82,'/Capture_d_cran_2022_10_05_11..42-82.png','oui'),(173,85,'/ENTREE-85.jpg','oui'),(174,86,'/TERR_ACOTTA-86.png','oui'),(176,88,'/LOT_5-88.jpg','oui'),(177,88,'/LOT_5_bis-88.jpg','non'),(178,89,'/ANDROMEDE-89.jpg','oui'),(179,90,'/IMG_1377-90.jpeg','oui'),(180,90,'/IMG_3945-90.jpeg','non'),(181,90,'/IMG_3929-90.jpeg','non'),(182,90,'/IMG_1267-90.jpeg','non'),(183,90,'/IMG_3935-90.jpeg','non'),(184,91,'/IMG_4092 - Copy 1-91.jpeg','oui'),(185,91,'/IMG_4073 - Copy 1-91.jpeg','non'),(186,91,'/IMG_4101 - Copy 1-91.jpeg','non'),(187,91,'/IMG_4091 - Copy 1-91.jpeg','non'),(188,91,'/IMG_4099 - Copy 1-91.jpeg','non'),(189,91,'/IMG_4096 - Copy 1-91.jpeg','non'),(190,92,'/FULTON PESSAC-92.png','oui');
+INSERT INTO `offre_image` VALUES (109,38,'/2018.11.05 - le barp 01 final-38.jpg','oui'),(120,38,'/EXTRAIT_IMAGE_1-38.png','non'),(137,64,'/2018.11.05 - le barp 01 final-64.jpg','oui'),(146,73,'/mars-73.jpg','oui'),(147,74,'/mars-74.jpg','oui'),(170,79,'/Capture_d_cran_2022_10_05_11..42-79.png','oui'),(171,81,'/Capture_d_cran_2022_10_05_11..42-81.png','oui'),(172,82,'/Capture_d_cran_2022_10_05_11..42-82.png','oui'),(176,88,'/LOT_5-88.jpg','oui'),(177,88,'/LOT_5_bis-88.jpg','non'),(195,95,'/FULTON_PESSAC-95.png','oui'),(197,97,'/LOT_9_Le_B-97.jpeg','oui'),(198,97,'/LOT9_Le_B_Facade-97.jpeg','non'),(199,84,'/1-84.jpg','non'),(200,84,'/10-84.jpg','non'),(201,84,'/11-84.jpg','non'),(202,84,'/12-84.jpg','non'),(203,84,'/2-84.jpg','non'),(204,84,'/3-84.jpg','non'),(205,84,'/4-84.jpg','oui'),(206,84,'/6-84.jpg','non'),(207,84,'/7-84.jpg','non'),(208,84,'/8-84.jpg','non'),(209,84,'/9-84.jpg','non'),(210,84,'/1-84.jpg','non'),(211,84,'/10-84.jpg','non'),(212,84,'/11-84.jpg','non'),(213,84,'/12-84.jpg','non'),(214,84,'/2-84.jpg','non'),(215,84,'/3-84.jpg','non'),(216,84,'/4-84.jpg','non'),(217,84,'/6-84.jpg','non'),(218,84,'/7-84.jpg','non'),(219,84,'/8-84.jpg','non'),(220,84,'/9-84.jpg','non'),(221,98,'/A-98.jpg','oui'),(222,98,'/B-98.jpg','non'),(223,98,'/D-98.jpg','non'),(224,98,'/E-98.jpg','non'),(225,99,'/A-99.jpg','non'),(226,99,'/B-99.jpg','non'),(227,99,'/D-99.jpg','oui'),(228,99,'/E-99.jpg','non');
 /*!40000 ALTER TABLE `offre_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -465,7 +463,7 @@ CREATE TABLE `offre_image_part` (
   `fichier` varchar(100) NOT NULL,
   `defaut` enum('oui','non') NOT NULL DEFAULT 'non',
   PRIMARY KEY (`num_image`)
-) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -498,7 +496,7 @@ CREATE TABLE `offre_part` (
   `a_la_une` enum('oui','non') NOT NULL DEFAULT 'non',
   `online` enum('oui','non') NOT NULL,
   PRIMARY KEY (`num_offre`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -521,7 +519,7 @@ CREATE TABLE `offre_type_bien` (
   `num_offre` int(11) NOT NULL,
   `num_type_bien` int(11) NOT NULL,
   PRIMARY KEY (`num_offre`,`num_type_bien`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -530,7 +528,7 @@ CREATE TABLE `offre_type_bien` (
 
 LOCK TABLES `offre_type_bien` WRITE;
 /*!40000 ALTER TABLE `offre_type_bien` DISABLE KEYS */;
-INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2),(11,2),(12,1),(13,2),(15,2),(16,2),(16,3),(20,3),(22,1),(23,2),(24,2),(24,3),(25,2),(25,3),(26,2),(27,1),(28,1),(29,2),(30,2),(31,3),(32,3),(33,2),(34,2),(35,2),(36,2),(37,3),(38,1),(39,1),(40,2),(41,1),(42,1),(43,1),(44,1),(45,1),(46,1),(47,1),(48,1),(49,2),(50,1),(51,1),(52,1),(53,2),(54,2),(55,1),(56,2),(57,2),(58,2),(59,2),(60,2),(61,2),(62,2),(63,2),(64,1),(65,1),(66,1),(67,1),(68,1),(69,1),(70,1),(71,1),(72,1),(73,2),(74,2),(75,2),(76,2),(77,1),(78,2),(79,1),(80,2),(81,1),(82,1),(83,1),(84,1),(85,2),(85,3),(86,2),(87,2),(88,1),(89,2),(90,2),(91,2),(92,1),(92,2),(93,2),(94,1);
+INSERT INTO `offre_type_bien` VALUES (1,1),(2,1),(4,2),(5,3),(6,3),(7,3),(8,3),(9,3),(10,2),(11,2),(12,1),(13,2),(15,2),(16,2),(16,3),(20,3),(22,1),(23,2),(24,2),(24,3),(25,2),(25,3),(26,2),(27,1),(28,1),(29,2),(30,2),(31,3),(32,3),(33,2),(34,2),(35,2),(36,2),(37,3),(38,1),(39,1),(40,2),(41,1),(42,1),(43,1),(44,1),(45,1),(46,1),(47,1),(48,1),(49,2),(50,1),(51,1),(52,1),(53,2),(54,2),(55,1),(56,2),(57,2),(58,2),(59,2),(60,2),(61,2),(62,2),(63,2),(64,1),(65,1),(66,1),(67,1),(68,1),(69,1),(70,1),(71,1),(72,1),(73,2),(74,2),(75,2),(76,2),(77,1),(78,2),(79,1),(80,2),(81,1),(82,1),(83,1),(84,1),(85,2),(85,3),(86,2),(87,2),(88,1),(89,2),(90,2),(91,2),(92,1),(92,2),(93,2),(94,1),(95,1),(96,1),(97,1),(98,1),(99,1),(100,1);
 /*!40000 ALTER TABLE `offre_type_bien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -545,7 +543,7 @@ CREATE TABLE `offre_type_bien_part` (
   `num_offre` int(11) NOT NULL,
   `num_type_bien` int(11) NOT NULL,
   PRIMARY KEY (`num_offre`,`num_type_bien`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -571,7 +569,7 @@ CREATE TABLE `planning` (
   `url` varchar(250) NOT NULL,
   `pdf` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -604,7 +602,7 @@ CREATE TABLE `product` (
   `image2` varchar(250) DEFAULT NULL,
   `image3` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -628,7 +626,7 @@ CREATE TABLE `product_categorie` (
   `id_product` int(11) NOT NULL,
   `id_categorie` int(11) NOT NULL,
   PRIMARY KEY (`id_product`,`id_categorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -652,7 +650,7 @@ CREATE TABLE `type_bien` (
   `num_type_bien` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(30) NOT NULL,
   PRIMARY KEY (`num_type_bien`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -674,4 +672,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-03 18:35:33
+-- Dump completed on 2023-04-06 10:52:58
