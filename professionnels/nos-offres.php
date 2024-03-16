@@ -60,7 +60,7 @@
 							$image_defaut = $offre_image->getImageDefaut( $value[ "num_offre" ], $debug );
 							
 							echo "	<a class='bien' href='offre.php?id=" . $value[ "num_offre" ] . "'>\n";
-							echo "		<img src='/professionnels//photos/offre/vignette" . $image_defaut[ "fichier" ] . "' alt='' />\n";
+							echo "		<img src='/professionnels/photos/offre/vignette" . $image_defaut[ "fichier" ] . "' alt='' />\n";
 							echo "		<h2>" . $value[ "titre" ] . "</h2>\n";
 							echo "		<p>" . couper_correctement( $value[ "description" ], 200, ' ', false ) . " ...</p>\n";
 							echo "		<div class='prix'>" . number_format( $value[ "prix" ], 0, '', ' ' ) . " € $fai</div>\n";
